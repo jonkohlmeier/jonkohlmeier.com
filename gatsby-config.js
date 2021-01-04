@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Pipe Comfort`,
+    title: `Puffs of Smoke`,
     author: {
       name: `Jonathan Kohlmeier`,
       summary: `a technologist living in Cedar Rapids, IA, often found with a pipe between his teeth.`,
