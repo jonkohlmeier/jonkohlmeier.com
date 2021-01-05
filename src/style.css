@@ -266,7 +266,7 @@ a:focus {
 }
 
 .global-header {
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing);
   background-color: var(--color-primary);
   padding: var(--spacing-10);
 }

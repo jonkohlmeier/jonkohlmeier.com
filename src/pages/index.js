@@ -1,7 +1,10 @@
 import React from "react"
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
+import { Container, Row, Col } from "react-bootstrap"
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -25,12 +28,15 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <ol style={{ listStyle: `none` }}>
+      <Container fluid>
+        <Row>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
-
+        
           return (
-            <li key={post.fields.slug}>
+            <Col lg={4} md={4} sm={12}>
+
+            <div key={post.fields.slug}>
               <article
                 className="post-list-item"
                 itemScope
@@ -53,10 +59,13 @@ const BlogIndex = ({ data, location }) => {
                   />
                 </section>
               </article>
-            </li>
+              </div>
+               </Col>
           )
+          
         })}
-      </ol>
+        </Row>
+        </Container>
     </Layout>
   )
 }
