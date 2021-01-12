@@ -1,15 +1,15 @@
 ---
-title: "Morning Routine"
-date: "2017-01-14"
-categories: 
-  - "life"
-  - "productivity"
-tags: 
-  - "life"
-  - "morning-routine"
-  - "productivity"
-  - "routine"
-coverImage: "morning-routine.jpeg"
+title: 'Morning Routine'
+date: '2017-01-14'
+categories:
+  - 'life'
+  - 'productivity'
+tags:
+  - 'life'
+  - 'morning-routine'
+  - 'productivity'
+  - 'routine'
+headerImage: './morning-routine.jpg'
 ---
 
 _This post contains Amazon.com affiliate links, which means that if you click on one of the product links, I may receive commission on the items purchased through Amazon._
@@ -30,7 +30,7 @@ After waking up, the first thing I do is head to the shower. That has proven to 
 
 ### Coffee & Breakfast
 
-Next up is coffee. This process begins **by 6:15** at the absolute latest. Most days it's much earlier. First cup of coffee is usually whatever bean from [Fresh Roasted Coffee, LLC](http://amzn.to/2iU7MtB) I have on hand at the moment brewed with an AeroPress (Amazon \[amazon\_link asins='B0047BIWSK' template='PriceLink' store='monofmeq-20' marketplace='US' link\_id='43e24399-da8b-11e6-aa67-314c27541167'\]). I manually grind the beans to a fine grind and usually log about 5 minutes of exercise on my Apple Watch in the process. (More on coffee and my brewing techniques in a later post.)
+Next up is coffee. This process begins **by 6:15** at the absolute latest. Most days it's much earlier. First cup of coffee is usually whatever bean from [Fresh Roasted Coffee, LLC](http://amzn.to/2iU7MtB) I have on hand at the moment brewed with an AeroPress (Amazon \[amazon_link asins='B0047BIWSK' template='PriceLink' store='monofmeq-20' marketplace='US' link_id='43e24399-da8b-11e6-aa67-314c27541167'\]). I manually grind the beans to a fine grind and usually log about 5 minutes of exercise on my Apple Watch in the process. (More on coffee and my brewing techniques in a later post.)
 
 With a fresh cup of coffee in hand, it's time to cook breakfast! Always the same thing - two eggs fried over easy or over hard depending on how I'm feeling that morning. These are seasoned with salt and pepper while cooking and topped with some hot sauce. (Recently its been [either habanero or datil pepper sauce](http://amzn.to/2jjbtwj).)
 
@@ -60,13 +60,9 @@ After that I'll check email and calendar and make any necessary changes to the p
 
 Generally we start our day with staff devotions in the office when everyone arrives.
 
- 
-
 There's my weekday morning routine. It gives me a grounded center to a day where I may not know what else will go on. I'm continually tweaking the morning routine with my change in priorities. This is what currently signals the beginning of my day.
 
 [In the next post, I walk through my evening routine. Read it here!](http://jonkohlmeiertest.local/life/evening-routine/)
-
- 
 
 ### Your Turn!
 

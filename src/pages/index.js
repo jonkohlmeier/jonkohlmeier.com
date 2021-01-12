@@ -2,11 +2,13 @@ import React from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import { Container, Row, Col } from "react-bootstrap"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -32,7 +34,7 @@ const BlogIndex = ({ data, location }) => {
         <Row>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
-        
+          
           return (
             <Col lg={4} md={4} sm={12}>
 
@@ -45,7 +47,7 @@ const BlogIndex = ({ data, location }) => {
                 <header>
                   <h2>
                       <Link to={post.fields.slug} itemProp="url">
-                      <img src={post.frontmatter.coverImage} />
+                        <Img sizes={post.frontmatter.headerImage.childImageSharp.sizes} />
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
@@ -87,11 +89,17 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-          coverImage
-        }
+            date(formatString: "DD MMMM, YYYY")
+            title
+            description
+            headerImage {
+              childImageSharp {
+                sizes(maxWidth: 1400) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
+          }
       }
     }
   }

@@ -1,15 +1,15 @@
 ---
-title: "Evening Routine"
-date: "2017-01-24"
-categories: 
-  - "life"
-  - "productivity"
-tags: 
-  - "evening-routine"
-  - "life"
-  - "productivity"
-  - "routine"
-coverImage: "evening-routine.jpg"
+title: 'Evening Routine'
+date: '2017-01-24'
+categories:
+  - 'life'
+  - 'productivity'
+tags:
+  - 'evening-routine'
+  - 'life'
+  - 'productivity'
+  - 'routine'
+headerImage: './evening-routine.jpg'
 ---
 
 [In my last post, we journeyed through my morning routine](http://jonkohlmeiertest.local/life/morning-routine/). The morning routine gives me a solid start to the day by helping me to be alert, grounded, and ready to conquer anything the day can throw at me. My evening routine is also rigid in terms of schedule - the difference is that it contains much more "margin" time.
@@ -49,8 +49,6 @@ I wrap up anything left on my task list for the day and assign anything I haven'
 ### 10:00 - Bed
 
 The best way to wake up early? Go to sleep early!
-
- 
 
 ### Your Turn!
 

@@ -8,7 +8,7 @@ tags:
   - 'career'
   - 'life'
   - 'web-development'
-coverImage: 'screen-shot-2019-12-08-at-8.23.27-pm.png'
+headerImage: './screen-shot-2019-12-08-at-8.23.27-pm.png'
 ---
 
 Apparently, 11 years ago today I was finishing up building a website using Dreamweaver - complete with image maps and using tables for layout. This wasn’t the first website that I ever built, but it was the first one that would be the internet home for an organization. (In this case, my church).

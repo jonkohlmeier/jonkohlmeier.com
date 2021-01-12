@@ -10,7 +10,7 @@ tags:
   - 'listening'
   - 'reading'
   - 'weekly-things'
-coverImage: 'weekly-things.jpg'
+headerImage: './weekly-things.jpg'
 ---
 
 Tim Ferris puts out a weekly email called [5-bullet Friday](https://go.tim.blog/5-bullet-friday/) where he discusses the 5 things he's "been loving, using, and reading."
@@ -19,15 +19,11 @@ Honestly.. I don't find his things overly helpful or interesting - so I unsubscr
 
 So here are some things that I watched, read, listened to, or otherwise enjoyed this week that I noticed enough to jot down.
 
-
-
 ## Watching
 
 ### **Netflix's The Punisher Season 2**
 
 Overall really well done season. I also just learned that Netflix doesn't have an overly intuitive way to share a link directly to their content, so you'll have to search it.
-
-
 
 ## Reading
 
@@ -36,8 +32,6 @@ Overall really well done season. I also just learned that Netflix doesn't have a
 [Stan Lemon](https://stanlemon.net) sent me this book and I'm finally finishing the third book in the volume on the Parables of Judgement. I have really been enjoying his treatment of the parables.
 
 [Get it on Amazon.](https://amzn.to/2GzFwLl)
-
-
 
 ## Listening
 
@@ -58,8 +52,6 @@ Interesting listen on habit theory.
 Introducing the new co-host of Mac Power Users.
 
 [Listen on Overcast](https://overcast.fm/+FrCG31W5M)
-
-
 
 ## Consuming
 

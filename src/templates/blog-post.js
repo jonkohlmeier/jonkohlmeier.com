@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Image from 'gatsby-image'
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -24,6 +25,9 @@ const BlogPostTemplate = ({ data, location }) => {
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
+          <div className="headerImage">
+            <Image sizes={post.frontmatter.headerImage.childImageSharp.sizes} />
+        </div>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -85,6 +89,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        headerImage {
+              childImageSharp {
+                sizes(maxWidth: 1400) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            } 
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
@@ -103,5 +114,4 @@ export const pageQuery = graphql`
         title
       }
     }
-  }
-`
+  }`

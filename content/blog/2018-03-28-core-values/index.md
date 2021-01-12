@@ -3,7 +3,7 @@ title: 'What Gets Priority? An Exercise in Discovering and Defining Core Values'
 date: '2018-03-28'
 categories:
   - 'life'
-coverImage: 'if-more-of-us-valued-food-and-cheer-and-song-above-hoarded-gold-it-would-be-a-merrier-world-5.jpg'
+headerImage: './if-more-of-us-valued-food-and-cheer-and-song-above-hoarded-gold-it-would-be-a-merrier-world-5.jpg'
 ---
 
 ## **The Background**
