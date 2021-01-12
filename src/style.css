@@ -92,7 +92,7 @@ main {
 footer {
   padding: var(--spacing-6);
   background-color: var(--color-primary);
-  color: var(--color-text-light);
+  color: var(--color-accent);
 }
 
 footer > a {
@@ -275,6 +275,16 @@ a:focus {
   font-size: var(--fontSize-7);
   margin: 0;
   color: var(--color-text-light);
+}
+
+.main-heading a:hover {
+  text-decoration: none;
+  color: var(--color-text-light);
+}
+
+.subtitle {
+  color: var(--color-accent);
+  font-size: var(--fontSize-2);
 }
 
 .post-list-item {
