@@ -16,7 +16,6 @@ jobs:
         uses: actions/setup-node@v1.4.4
         with:
           node-version: '12'
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       - run: npm install
       - run: npm run build
         env:
