@@ -68,4 +68,4 @@ There's my weekday morning routine. It gives me a grounded center to a day where
 
 Thanks for taking the time to read through my daily routine. Like I said above, I'm always looking for ways to tweak it to fit with my priorities.
 
-What does your morning routine include? Is there anything that throws off your whole day when you miss it? Let me know in the comments!
+What does your morning routine include? Is there anything that throws off your whole day when you miss it.

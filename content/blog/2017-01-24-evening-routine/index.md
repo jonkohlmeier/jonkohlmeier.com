@@ -12,7 +12,7 @@ tags:
 headerImage: './evening-routine.jpg'
 ---
 
-[In my last post, we journeyed through my morning routine](http://jonkohlmeiertest.local/life/morning-routine/). The morning routine gives me a solid start to the day by helping me to be alert, grounded, and ready to conquer anything the day can throw at me. My evening routine is also rigid in terms of schedule - the difference is that it contains much more "margin" time.
+[In my last post, we journeyed through my morning routine](/2017-01-24-evening-routine/). The morning routine gives me a solid start to the day by helping me to be alert, grounded, and ready to conquer anything the day can throw at me. My evening routine is also rigid in terms of schedule - the difference is that it contains much more "margin" time.
 
 The evening routine serves as a calming and reflective ritual that also allows me to do some of my best work of the day.
 
@@ -54,4 +54,4 @@ The best way to wake up early? Go to sleep early!
 
 Thanks for taking the time to read through my daily evening routine. Like I said above, I'm always looking for ways to tweak it to fit with my priorities.
 
-What does your evening routine include? Is there anything that throws off your whole day, or the next day, when you miss it? Let me know in the comments!
+What does your evening routine include? Is there anything that throws off your whole day, or the next day, when you miss it?

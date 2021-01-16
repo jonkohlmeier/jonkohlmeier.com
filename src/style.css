@@ -172,6 +172,16 @@ h6 > a {
   color: var(--color-heading);
 }
 
+h1 > a:hover,
+h2 > a:hover,
+h3 > a:hover,
+h4 > a:hover,
+h5 > a:hover,
+h6 > a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Prose */
 
 p {
@@ -244,12 +254,15 @@ table thead tr th {
 
 /* Link */
 
-a {
-  color: var(--color-primary);
+a,
+p > a {
+  color: var(--color-heading);
 }
 
 a:hover,
-a:focus {
+a:focus,
+p > a:hover {
+  color: var(--color-text-light);
   text-decoration: none;
 }
 
@@ -365,5 +378,11 @@ a:focus {
   ul,
   ol {
     list-style-position: inside;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-heading > .subtitle {
+    display: block;
   }
 }

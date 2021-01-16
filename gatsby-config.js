@@ -7,9 +7,6 @@ module.exports = {
     },
     description: `Thoughts and dreams from behind a tobacco pipe.`,
     siteUrl: `https://jonkohlmeier.com`,
-    social: {
-      twitter: `jonkohlmeier`,
-    },
   },
   plugins: [
     {
