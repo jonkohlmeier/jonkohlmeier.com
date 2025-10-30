@@ -1,0 +1,62 @@
+---
+const pathname = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/writing/', label: 'Writing', aliases: ['/blog/'] },
+  { href: '/about/', label: 'About' },
+  { href: '/services/', label: 'Advisory' },
+  { href: '/contact/', label: 'Contact' },
+];
+
+const socialLinks = [
+  { href: 'https://www.linkedin.com/in/jonkohlmeier/', label: 'LinkedIn' },
+  { href: 'https://www.instagram.com/jon.kohlmeier/', label: 'Instagram' },
+  { href: 'https://twistoflemonpod.com', label: 'Podcast' },
+  { href: '/rss.xml', label: 'RSS' },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-slate-800/60 bg-slate-950/75 backdrop-blur">
+  <nav class="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5">
+    <a href="/" class="group flex flex-col text-left">
+      <span class="text-xs uppercase tracking-[0.4em] text-slate-400">Puffs of Smoke</span>
+      <span class="text-xl font-semibold text-amber-300 transition group-hover:text-amber-200">
+        Jonathan Kohlmeier
+      </span>
+      <span class="text-sm text-slate-400">Technologist · RevOps Strategist · Writer</span>
+    </a>
+    <div class="flex flex-wrap items-center gap-3 text-sm font-medium">
+      {navLinks.map(({ href, label, aliases = [] }) => {
+        const normalizedPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
+        const isHome = href === '/';
+        const aliasMatch = aliases.some((alias) => normalizedPath.startsWith(alias));
+        const isActive = isHome
+          ? normalizedPath === '/'
+          : normalizedPath.startsWith(href) || aliasMatch;
+        return (
+          <a
+            href={href}
+            class={`rounded-full px-3 py-1 transition hover:bg-slate-800/70 hover:text-amber-200 ${
+              isActive ? 'bg-slate-800/90 text-amber-300' : 'text-slate-200'
+            }`}
+          >
+            {label}
+          </a>
+        );
+      })}
+    </div>
+    <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-slate-500">
+      {socialLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          target={href.startsWith('/') ? undefined : '_blank'}
+          rel={href.startsWith('/') ? undefined : 'noopener noreferrer'}
+          class="transition hover:text-amber-200"
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  </nav>
+</header>

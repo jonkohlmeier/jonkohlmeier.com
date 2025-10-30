@@ -1,0 +1,62 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout title="Contact" description="Reach out to Jonathan for speaking, advisory, or collaboration opportunities.">
+  <section class="mx-auto max-w-3xl space-y-8 text-slate-300">
+    <header class="space-y-4 text-center">
+      <p class="text-xs uppercase tracking-[0.4em] text-amber-200">Contact</p>
+      <h1 class="text-4xl font-bold text-slate-100">Let’s build something together</h1>
+      <p class="text-lg text-slate-300">
+        Whether you need fractional RevOps support, a technical sounding board, or want a speaker for
+        your next event, I’m excited to hear what you’re working on.
+      </p>
+    </header>
+
+    <div class="rounded-3xl border border-slate-800/70 bg-slate-900/60 p-8 shadow-xl">
+      <form
+        class="grid gap-6"
+        action="https://formsubmit.co/hello@jonkohlmeier.com"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="Puffs of Smoke inquiry" />
+        <input type="hidden" name="_next" value="https://jonkohlmeier.com/thanks/" />
+        <label class="space-y-2 text-sm">
+          <span class="text-xs uppercase tracking-[0.3em] text-slate-500">Name</span>
+          <input
+            class="w-full rounded-full border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-300/60"
+            type="text"
+            name="name"
+            required
+          />
+        </label>
+        <label class="space-y-2 text-sm">
+          <span class="text-xs uppercase tracking-[0.3em] text-slate-500">Email</span>
+          <input
+            class="w-full rounded-full border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-300/60"
+            type="email"
+            name="email"
+            required
+          />
+        </label>
+        <label class="space-y-2 text-sm">
+          <span class="text-xs uppercase tracking-[0.3em] text-slate-500">How can I help?</span>
+          <textarea
+            class="h-36 w-full rounded-3xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-300/60"
+            name="message"
+            required
+          ></textarea>
+        </label>
+        <button
+          type="submit"
+          class="inline-flex w-full justify-center rounded-full bg-amber-300 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-amber-200"
+        >
+          Send message
+        </button>
+        <p class="text-xs text-slate-500">
+          Prefer email? Write to <a href="mailto:hello@jonkohlmeier.com">hello@jonkohlmeier.com</a>.
+        </p>
+      </form>
+    </div>
+  </section>
+</SiteLayout>

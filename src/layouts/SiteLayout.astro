@@ -1,0 +1,36 @@
+---
+import type { ImageMetadata } from 'astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: ImageMetadata;
+  showHeader?: boolean;
+  className?: string;
+}
+
+const { title, description, image, showHeader = true, className } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased">
+    <a
+      href="#page-content"
+      class="absolute left-4 top-4 z-50 -translate-y-20 rounded-full bg-amber-400 px-4 py-2 text-sm font-semibold text-slate-900 transition focus:translate-y-0 focus:outline-none"
+    >
+      Skip to content
+    </a>
+    {showHeader && <Header />}
+    <main id="page-content" class={`mx-auto w-full max-w-6xl px-6 pb-24 pt-16 ${className ?? ''}`}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,22 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout title="Thank you" description="Thanks for reaching out to Jonathan Kohlmeier.">
+  <div class="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center text-slate-300">
+    <p class="text-xs uppercase tracking-[0.4em] text-amber-200">Message received</p>
+    <h1 class="text-4xl font-bold text-slate-100">Thanks for reaching out!</h1>
+    <p>
+      I appreciate the note and typically respond within two business days. In the meantime, explore
+      recent essays or learn more about how I partner with teams.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a class="rounded-full bg-amber-300 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-amber-200" href="/writing/">
+        Read the latest essays
+      </a>
+      <a class="rounded-full border border-slate-700 px-5 py-2 text-sm font-semibold text-slate-200 transition hover:border-slate-500 hover:text-amber-200" href="/services/">
+        Explore services
+      </a>
+    </div>
+  </div>
+</SiteLayout>

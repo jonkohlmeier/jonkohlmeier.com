@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import SiteLayout from './SiteLayout.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.props;
+---
+
+<SiteLayout title={`${title} · Puffs of Smoke`} description={description} image={heroImage}>
+  <article class="mx-auto max-w-3xl space-y-10">
+    <header class="space-y-6 text-center">
+      <p class="text-xs uppercase tracking-[0.4em] text-amber-300">Essay</p>
+      <h1 class="text-4xl font-bold text-slate-100 sm:text-5xl">{title}</h1>
+      <div class="flex flex-col items-center justify-center gap-2 text-sm text-slate-400 sm:flex-row sm:gap-4">
+        <FormattedDate date={pubDate} />
+        {updatedDate && (
+          <span class="inline-flex items-center gap-2">
+            <span class="h-1 w-1 rounded-full bg-slate-600" aria-hidden="true"></span>
+            Updated <FormattedDate date={updatedDate} />
+          </span>
+        )}
+      </div>
+    </header>
+
+    {heroImage && (
+      <div class="overflow-hidden rounded-3xl border border-slate-800/70 bg-slate-900/60 shadow-xl">
+        <Image
+          src={heroImage}
+          alt={heroAlt ?? ''}
+          widths={[640, 960, 1280]}
+          sizes="(min-width: 1024px) 960px, 100vw"
+          class="h-auto w-full"
+        />
+      </div>
+    )}
+
+    <div class="prose prose-invert prose-amber max-w-none space-y-6 text-left">
+      <slot />
+    </div>
+  </article>
+</SiteLayout>
