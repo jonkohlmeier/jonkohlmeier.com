@@ -21,6 +21,7 @@ const { title, description, image, showHeader = true, className } = Astro.props;
     <BaseHead title={title} description={description} image={image} />
     <script is:inline>
       (() => {
+        if (typeof window === 'undefined') return;
         const root = document.documentElement;
         const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
         let theme = 'light';

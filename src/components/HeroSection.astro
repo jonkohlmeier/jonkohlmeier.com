@@ -20,12 +20,13 @@ const { eyebrow, title, description, primaryCta, secondaryCta, image } = Astro.p
 const hasAsideSlot = Astro.slots.has('aside');
 ---
 
-<section class="section-gap">
-  <div class="container-page grid gap-10 lg:grid-cols-[1.2fr,1fr] lg:items-center">
-    <div class="space-y-6">
+<section class="section-gap relative overflow-hidden">
+  <div class="hero-gradient"></div>
+  <div class="container-page grid gap-12 lg:grid-cols-[minmax(0,1.2fr),minmax(0,0.8fr)] lg:items-center">
+    <div class="space-y-6" style="max-width: 60ch;">
       {eyebrow && <span class="badge">{eyebrow}</span>}
-      <h1>{title}</h1>
-      {description && <p class="text-lg text-subtle max-w-2xl">{description}</p>}
+      <h1 class="hero-heading">{title}</h1>
+      {description && <p class="text-lg text-subtle">{description}</p>}
       {(primaryCta || secondaryCta) && (
         <div class="flex flex-wrap gap-3">
           {primaryCta && (
@@ -54,7 +55,7 @@ const hasAsideSlot = Astro.slots.has('aside');
               width={image.width}
               height={image.height}
               alt={image.attributes?.alt ?? ''}
-              class="h-auto w-full rounded-[var(--radius-card)] border border-[var(--color-border)]"
+              class="hero-portrait h-auto w-full"
               loading="lazy"
             />
           )}

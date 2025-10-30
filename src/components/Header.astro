@@ -10,21 +10,17 @@ const isActive = (href: string, aliases: string[] = []) => {
   return pathname.startsWith(href) || aliases.some((alias) => pathname.startsWith(alias));
 };
 ---
-<header class="sticky top-0 z-40 border-b border-[var(--color-border)]" style="background-color: var(--color-bg); backdrop-filter: blur(14px);">
-  <div class="container-page grid grid-cols-[auto,1fr,auto] items-center gap-4 py-4">
+<header class="sticky top-0 z-40 border-b border-[var(--color-border)] bg-[var(--color-bg)]/92 supports-[backdrop-filter]:backdrop-blur-[18px]" style="min-height: 84px;">
+  <div class="container-page grid grid-cols-[auto,1fr,auto] items-center gap-6 py-5">
     <a href="/" class="flex flex-col text-left">
-      <span class="text-sm font-semibold text-[var(--color-text)]">Puffs of Smoke</span>
-      <span class="text-xs uppercase tracking-[0.32em] text-subtle">Jonathan Kohlmeier</span>
+      <span class="brand-title">Puffs of Smoke</span>
+      <span class="brand-subtitle">Jonathan Kohlmeier</span>
     </a>
 
     <nav class="hidden items-center justify-center gap-2 text-sm font-medium lg:flex">
       {NAV_LINKS.map((link) => (
         <a
-          class={`rounded-full px-4 py-2 transition ${
-            isActive(link.href, link.aliases)
-              ? 'bg-[var(--color-surface-muted)] text-[var(--color-accent)]'
-              : 'text-subtle hover:text-[var(--color-accent)]'
-          }`}
+          class={`nav-link ${isActive(link.href, link.aliases) ? 'nav-link--active' : ''}`}
           href={link.href}
         >
           {link.label}

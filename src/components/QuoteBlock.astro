@@ -10,17 +10,17 @@ const { quote, author, role } = Astro.props;
 
 <section class="section-gap">
   <div class="container-page">
-    <div class="card-muted relative overflow-hidden">
-      <blockquote class="text-2xl font-medium leading-snug text-[var(--color-text)]">
+    <div class="card relative overflow-hidden">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(211,163,74,0.18),transparent_60%)] opacity-70"></div>
+      <blockquote class="relative text-2xl font-medium leading-snug text-[var(--color-text)]">
         “{quote}”
       </blockquote>
       {(author || role) && (
-        <p class="mt-4 text-sm text-subtle">
+        <p class="relative mt-4 text-sm text-subtle">
           — {author}
           {role && <span class="text-muted"> · {role}</span>}
         </p>
       )}
-      <div class="pointer-events-none absolute inset-0 rounded-[var(--radius-card)] shadow-[var(--shadow-inner)]"></div>
     </div>
   </div>
 </section>
