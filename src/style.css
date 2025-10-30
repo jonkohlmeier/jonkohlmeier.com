@@ -303,7 +303,7 @@ p > a:hover {
 }
 
 .global-header {
-  margin-bottom: var(--spacing-6);
+  margin-bottom: 0;
   background-color: var(--color-primary);
   padding: var(--spacing-10);
 }
