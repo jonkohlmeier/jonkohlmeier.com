@@ -1,91 +1,79 @@
 /**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
+ * SEO helper for Gatsby's Head API.
+ * Pulls site metadata once via useStaticQuery so individual pages can remain lean.
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-const SEO = ({ description, lang, meta, title }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            social {
-              twitter
-            }
+const Seo = ({ title, description, pathname, image, children }) => {
+  const { site } = useStaticQuery(graphql`
+    query SeoQuery {
+      site {
+        siteMetadata {
+          title
+          titleTemplate
+          description
+          siteUrl
+          siteLanguage
+          keywords
+          social {
+            twitter
           }
         }
       }
-    `
-  )
+    }
+  `);
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const {
+    title: defaultTitle,
+    titleTemplate,
+    description: defaultDescription,
+    siteUrl,
+    siteLanguage,
+    keywords,
+    social,
+  } = site.siteMetadata;
+
+  const seo = {
+    title: title || defaultTitle,
+    description: description || defaultDescription,
+  };
+
+  const fullTitle = title
+    ? (titleTemplate?.replace(`%s`, title) ?? `${title} | ${defaultTitle}`)
+    : defaultTitle;
+  const url = pathname ? new URL(pathname, siteUrl).href : siteUrl;
+  const imageUrl = image ? new URL(image, siteUrl).href : undefined;
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.social?.twitter || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
-  )
-}
+    <>
+      <html lang={siteLanguage || `en`} />
+      <title>{fullTitle}</title>
+      <meta name="description" content={seo.description} />
+      {keywords?.length && (
+        <meta name="keywords" content={keywords.join(", ")} />
+      )}
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:description" content={seo.description} />
+      <meta property="og:url" content={url} />
+      {imageUrl && <meta property="og:image" content={imageUrl} />}
+      <meta
+        name="twitter:card"
+        content={imageUrl ? `summary_large_image` : `summary`}
+      />
+      <meta
+        name="twitter:creator"
+        content={social?.twitter ? `@${social.twitter}` : ``}
+      />
+      <meta name="twitter:title" content={seo.title} />
+      <meta name="twitter:description" content={seo.description} />
+      {imageUrl && <meta name="twitter:image" content={imageUrl} />}
+      <link rel="canonical" href={url} />
+      {children}
+    </>
+  );
+};
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-}
-
-export default SEO
+export default Seo;

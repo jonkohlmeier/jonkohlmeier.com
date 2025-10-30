@@ -1,22 +1,18 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Image from 'gatsby-image'
+import React from "react";
+import { Link, graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
 
 const BlogPostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = data
+  const post = data.markdownRemark;
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const { previous, next } = data;
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
       <article
         className="blog-post"
         itemScope
@@ -24,18 +20,26 @@ const BlogPostTemplate = ({ data, location }) => {
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-          <div className="headerImage">
-            <Image sizes={post.frontmatter.headerImage.childImageSharp.sizes} />
-        </div>
+          <p className="post-meta">
+            <time dateTime={post.frontmatter.dateISO}>
+              {post.frontmatter.date}
+            </time>
+          </p>
+          {post.frontmatter.headerImage && (
+            <div className="headerImage">
+              <GatsbyImage
+                image={getImage(post.frontmatter.headerImage)}
+                alt={post.frontmatter.title}
+              />
+            </div>
+          )}
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
         <hr />
-          <Bio />
-
+        <Bio />
       </article>
       <nav className="blog-post-nav">
         <ul
@@ -64,10 +68,10 @@ const BlogPostTemplate = ({ data, location }) => {
         </ul>
       </nav>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
@@ -87,14 +91,18 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        dateISO: date
         description
         headerImage {
-              childImageSharp {
-                sizes(maxWidth: 1400) {
-                  ...GatsbyImageSharpSizes
-                }
-              }
-            } 
+          childImageSharp {
+            gatsbyImageData(
+              layout: CONSTRAINED
+              width: 1400
+              quality: 90
+              placeholder: BLURRED
+            )
+          }
+        }
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
@@ -113,4 +121,25 @@ export const pageQuery = graphql`
         title
       }
     }
-  }`
+  }
+`;
+
+export const Head = ({ data, location }) => {
+  const post = data.markdownRemark;
+  return (
+    <Seo
+      title={post.frontmatter.title}
+      description={post.frontmatter.description || post.excerpt}
+      pathname={location.pathname}
+      image={
+        post.frontmatter.headerImage?.childImageSharp?.gatsbyImageData?.images
+          ?.fallback?.src
+      }
+    >
+      <meta
+        property="article:published_time"
+        content={post.frontmatter.dateISO}
+      />
+    </Seo>
+  );
+};
