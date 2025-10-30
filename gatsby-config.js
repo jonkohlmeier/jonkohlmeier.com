@@ -14,7 +14,7 @@ module.exports = {
     siteUrl,
     social: {
       twitter: `jonkohlmeier`,
-      instagram: `jonkohlmeier`,
+      instagram: `jon.kohlmeier`,
       linkedin: `jonkohlmeier`,
     },
   },

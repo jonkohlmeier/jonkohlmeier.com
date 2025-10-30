@@ -30,7 +30,7 @@ const Navigation = () => {
               Podcast ↗
             </Nav.Link>
             <Nav.Link
-              href="https://instagram.com/jonkohlmeier"
+              href="https://www.instagram.com/jon.kohlmeier/"
               target="_blank"
               rel="noopener noreferrer"
             >
