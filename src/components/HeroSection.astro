@@ -1,0 +1,66 @@
+---
+import type { ImageMetadata } from 'astro';
+
+interface CTA {
+  label: string;
+  href: string;
+  variant?: 'primary' | 'secondary';
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  primaryCta?: CTA;
+  secondaryCta?: CTA;
+  image?: ImageMetadata;
+}
+
+const { eyebrow, title, description, primaryCta, secondaryCta, image } = Astro.props;
+const hasAsideSlot = Astro.slots.has('aside');
+---
+
+<section class="section-gap">
+  <div class="container-page grid gap-10 lg:grid-cols-[1.2fr,1fr] lg:items-center">
+    <div class="space-y-6">
+      {eyebrow && <span class="badge">{eyebrow}</span>}
+      <h1>{title}</h1>
+      {description && <p class="text-lg text-subtle max-w-2xl">{description}</p>}
+      {(primaryCta || secondaryCta) && (
+        <div class="flex flex-wrap gap-3">
+          {primaryCta && (
+            <a class="btn btn-primary" href={primaryCta.href}>
+              {primaryCta.label}
+            </a>
+          )}
+          {secondaryCta && (
+            <a
+              class={`btn ${secondaryCta.variant === 'secondary' ? 'btn-secondary' : 'btn-ghost'}`}
+              href={secondaryCta.href}
+            >
+              {secondaryCta.label}
+            </a>
+          )}
+        </div>
+      )}
+      <slot name="extra" />
+    </div>
+    {(hasAsideSlot || image) && (
+      <div class="card-muted relative overflow-hidden">
+        <slot name="aside">
+          {image && (
+            <img
+              src={image.src}
+              width={image.width}
+              height={image.height}
+              alt={image.attributes?.alt ?? ''}
+              class="h-auto w-full rounded-[var(--radius-card)] border border-[var(--color-border)]"
+              loading="lazy"
+            />
+          )}
+        </slot>
+        <div class="pointer-events-none absolute inset-0 rounded-[var(--radius-card)] shadow-[var(--shadow-inner)]"></div>
+      </div>
+    )}
+  </div>
+</section>

@@ -1,45 +1,49 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 
 const lastUpdated = new Date('2025-10-30');
 ---
 
 <SiteLayout title="Now" description="What Jonathan Kohlmeier is focused on right now.">
-  <article class="mx-auto max-w-3xl space-y-8 text-slate-300">
-    <header class="space-y-2 text-center">
-      <p class="text-xs uppercase tracking-[0.4em] text-amber-200">Now page</p>
-      <h1 class="text-4xl font-bold text-slate-100">What I’m focused on right now</h1>
-      <p class="text-sm text-slate-500">
-        Last updated <FormattedDate date={lastUpdated} />
-      </p>
-    </header>
-
-    <section class="space-y-4">
-      <h2 class="text-2xl font-semibold text-slate-100">RevOps & client work</h2>
-      <ul class="space-y-3">
-        <li>• Leading a roadmap to unify marketing, sales, and success analytics across HubSpot and Salesforce.</li>
-        <li>• Coaching product teams on shipping faster with Astro, Tailwind, and measurable performance budgets.</li>
-        <li>• Developing a diagnostic playbook that helps founders spot RevOps gaps in 90 minutes.</li>
-      </ul>
-    </section>
-
-    <section class="space-y-4">
-      <h2 class="text-2xl font-semibold text-slate-100">Writing & experiments</h2>
-      <ul class="space-y-3">
-        <li>• Drafting a guide on “Hospitality-Driven RevOps.”</li>
-        <li>• Testing an AI-assisted research workflow for longform writing.</li>
-        <li>• Curating a quarterly reading list on leadership, craftsmanship, and theology.</li>
-      </ul>
-    </section>
-
-    <section class="space-y-4">
-      <h2 class="text-2xl font-semibold text-slate-100">Personal</h2>
-      <ul class="space-y-3">
-        <li>• Exploring new rusticated pipes and blends for the fall rotation.</li>
-        <li>• Training for the winter RAGBRAI prep rides in Cedar Rapids.</li>
-        <li>• Co-hosting new episodes of <a href="https://twistoflemonpod.com" target="_blank" rel="noopener noreferrer">Life with a Twist of Lemon</a>.</li>
-      </ul>
-    </section>
-  </article>
+  <section class="section-gap">
+    <div class="container-page space-y-8">
+      <SectionHeader
+        eyebrow="Now"
+        title="What I’m focused on right now"
+        align="center"
+      >
+        <span slot="description">
+          Last updated <span class="text-muted"><FormattedDate date={lastUpdated} /></span>
+        </span>
+      </SectionHeader>
+      <div class="grid gap-6 md:grid-cols-3">
+        <article class="card">
+          <h3 class="text-lg font-semibold text-[var(--color-text)]">RevOps & client work</h3>
+          <ul class="mt-3 space-y-2 text-sm text-subtle">
+            <li>• Aligning marketing, sales, and success analytics across HubSpot and Salesforce.</li>
+            <li>• Coaching product teams on Astro + Tailwind performance budgets.</li>
+            <li>• Building a RevOps diagnostic playbook that surfaces quick wins in 90 minutes.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 class="text-lg font-semibold text-[var(--color-text)]">Writing & experiments</h3>
+          <ul class="mt-3 space-y-2 text-sm text-subtle">
+            <li>• Drafting a hospitality-driven RevOps guide.</li>
+            <li>• Testing AI-assisted research workflows for longform essays.</li>
+            <li>• Curating a quarterly reading list on leadership, craftsmanship, and theology.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 class="text-lg font-semibold text-[var(--color-text)]">Personal</h3>
+          <ul class="mt-3 space-y-2 text-sm text-subtle">
+            <li>• Rotating new rusticated pipes into the fall lineup.</li>
+            <li>• Training for winter RAGBRAI prep rides around Cedar Rapids.</li>
+            <li>• Recording new episodes of <a class="link-underline" href="https://twistoflemonpod.com" target="_blank" rel="noopener noreferrer">Life with a Twist of Lemon</a>.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
 </SiteLayout>

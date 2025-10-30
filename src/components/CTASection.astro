@@ -1,0 +1,20 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ctaLabel: string;
+  ctaLink: string;
+}
+
+const { title, description, ctaLabel, ctaLink } = Astro.props;
+---
+
+<section class="section-gap bg-[var(--color-surface-muted)]">
+  <div class="container-page flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+    <div class="space-y-3 max-w-2xl">
+      <h2 class="text-3xl font-semibold text-[var(--color-text)]">{title}</h2>
+      {description && <p class="text-subtle">{description}</p>}
+    </div>
+    <a class="btn btn-primary" href={ctaLink}>{ctaLabel}</a>
+  </div>
+</section>

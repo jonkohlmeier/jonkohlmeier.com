@@ -1,0 +1,12 @@
+export interface SocialLink {
+  name: 'linkedin' | 'instagram' | 'podcast' | 'rss';
+  label: string;
+  url: string;
+}
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  { name: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/jonkohlmeier/' },
+  { name: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/jon.kohlmeier/' },
+  { name: 'podcast', label: 'Podcast', url: 'https://twistoflemonpod.com' },
+  { name: 'rss', label: 'RSS', url: '/rss.xml' },
+];

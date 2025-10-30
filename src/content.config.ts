@@ -21,4 +21,17 @@ const blog = defineCollection({
 		}),
 });
 
-export const collections = { blog };
+const advisory = defineCollection({
+	loader: glob({ base: './src/content/advisory', pattern: '**/*.{md,mdx}' }),
+	schema: z.object({
+		name: z.string(),
+		description: z.string(),
+		who_it_is_for: z.string(),
+		outcomes: z.array(z.string()).min(1),
+		cta_label: z.string(),
+		cta_link: z.string(),
+		order: z.number().optional(),
+	}),
+});
+
+export const collections = { blog, advisory };

@@ -1,0 +1,28 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  align?: 'left' | 'center';
+}
+
+const { eyebrow, title, description, align = 'left' } = Astro.props;
+const hasDescriptionSlot = Astro.slots.has('description');
+---
+
+<div class={`space-y-3 ${align === 'center' ? 'text-center mx-auto max-w-3xl' : 'text-left'}`}>
+  {eyebrow && (
+    <span class="badge inline-flex h-7 items-center justify-center text-xs tracking-[0.4em]">
+      {eyebrow}
+    </span>
+  )}
+  <h2 class="text-[color:var(--color-text)] text-3xl font-semibold">
+    {title}
+  </h2>
+  {description && <p class="text-subtle text-base">{description}</p>}
+  {!description && hasDescriptionSlot && (
+    <p class="text-subtle text-base">
+      <slot name="description" />
+    </p>
+  )}
+</div>

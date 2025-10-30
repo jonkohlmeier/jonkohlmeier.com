@@ -1,82 +1,77 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
-import Avatar from '../assets/profile-pic.jpg';
 import { Image } from 'astro:assets';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import QuoteBlock from '../components/QuoteBlock.astro';
+import CTASection from '../components/CTASection.astro';
+import Avatar from '../assets/profile-pic.jpg';
 ---
 
-<SiteLayout title="About Jonathan" description="Get to know technologist and RevOps strategist Jonathan Kohlmeier.">
-  <article class="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[2fr,1fr]">
-    <div class="space-y-8 text-slate-300">
-      <h1 class="text-4xl font-bold text-slate-100">Hi, I’m Jonathan Kohlmeier.</h1>
-      <p>
-        I lead web development and RevOps initiatives, translating complex technical challenges into
-        human-friendly systems that help teams make better decisions. I’ve shipped dozens of marketing
-        and product experiences, run point on migrations, and built playbooks that keep growth teams in
-        sync.
-      </p>
-      <p>
-        My work blends engineering discipline with hospitality. I love bringing clarity to messy
-        operations, teaching teams how to use their tools with confidence, and crafting experiences that
-        feel hand-made—even at scale.
-      </p>
-      <section class="space-y-4">
-        <h2 class="text-2xl font-semibold text-slate-100">What I’m known for</h2>
-        <ul class="space-y-3">
-          <li>• RevOps diagnostics that highlight friction and surface the next best play.</li>
-          <li>• Systems audits across HubSpot, Salesforce, and the web stack.</li>
-          <li>• Guiding engineering teams through re-platforms without losing sight of users.</li>
-          <li>• Workshops and frameworks that help leaders communicate and execute with purpose.</li>
-        </ul>
-      </section>
-      <section class="space-y-4">
-        <h2 class="text-2xl font-semibold text-slate-100">Outside the office</h2>
-        <p>
-          You’ll find me sampling new pipe tobaccos, experimenting with coffee gear, co-hosting
-          <a href="https://twistoflemonpod.com" target="_blank" rel="noopener noreferrer">Life with a Twist of Lemon</a>, and collecting books that spark better conversations. I live in Cedar Rapids, Iowa with my family.
-        </p>
-      </section>
-      <div class="flex flex-wrap gap-4">
-        <a
-          class="rounded-full bg-amber-300 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-amber-200"
-          href="/services/"
-        >
-          Work with me
-        </a>
-        <a
-          class="rounded-full border border-slate-700 px-5 py-2 text-sm font-semibold text-slate-200 transition hover:border-slate-500 hover:text-amber-200"
-          href="/contact/"
-        >
-          Say hello
-        </a>
+<SiteLayout title="About Jonathan" description="Technologist and RevOps strategist focused on people-first systems.">
+  <section class="section-gap">
+    <div class="container-page grid gap-10 lg:grid-cols-[2fr,1fr] lg:items-start">
+      <div class="space-y-6">
+        <SectionHeader
+          eyebrow="About"
+          title="A technologist who treats RevOps like hospitality"
+          description="My career grew from building church websites in Dreamweaver to leading engineering and revenue operations teams. The through line: make complex systems feel warm, intentional, and reliable for the people who rely on them."
+        />
+        <div class="prose">
+          <p>
+            Today I serve as Director of Web Development at McNary Marketing & Design while partnering with
+            operators as a fractional RevOps lead. I map go-to-market systems, steward product migrations,
+            and design enablement rituals that stick.
+          </p>
+          <p>
+            My toolkit spans HubSpot and Salesforce, Astro and React, customer research, and the art of
+            getting leaders in the same room to make a decision. I still take pride in polishing the edges—
+            whether that’s accessibility, dashboard semantics, or the quality of a meeting agenda.
+          </p>
+          <p>
+            When the laptop closes, you’ll find me roasting coffee, sampling new pipe blends, podcasting on
+            <a class="link-underline" href="https://twistoflemonpod.com" target="_blank" rel="noopener noreferrer">Life with a Twist of Lemon</a>, or reading theology and leadership histories. Cedar Rapids is home base for my family and the workshop where most experiments begin.
+          </p>
+        </div>
       </div>
+      <aside class="card-muted flex flex-col items-center gap-4 text-sm text-subtle">
+        <Image
+          src={Avatar}
+          width={280}
+          height={280}
+          alt="Jonathan Kohlmeier"
+          class="h-auto w-full max-w-[14rem] rounded-[var(--radius-card)] border border-[var(--color-border)]"
+        />
+        <div class="w-full space-y-3">
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-muted">Focus</p>
+            <p>RevOps diagnostics, product operations, performance and accessibility, storytelling.</p>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-muted">Credentials</p>
+            <p>HubSpot Solutions Partner · Google Analytics · Vercel · Astro · Salesforce Admin</p>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-muted">Connect</p>
+            <ul class="space-y-2">
+              <li><a class="link-underline" href="https://www.linkedin.com/in/jonkohlmeier/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a class="link-underline" href="https://www.instagram.com/jon.kohlmeier/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a class="link-underline" href="mailto:hello@jonkohlmeier.com">hello@jonkohlmeier.com</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
     </div>
-    <aside class="h-fit rounded-3xl border border-slate-800/70 bg-slate-900/60 p-6 shadow-xl">
-      <div class="mx-auto mb-4 h-32 w-32 overflow-hidden rounded-full border border-slate-700 shadow-lg">
-        <Image src={Avatar} alt="Jonathan Kohlmeier" width={256} height={256} />
-      </div>
-      <div class="space-y-4 text-sm text-slate-300">
-        <div>
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Roles</p>
-          <p>Director of Web Development @ McNary Marketing &amp; Design</p>
-          <p>Fractional RevOps &amp; Product Ops Advisor</p>
-        </div>
-        <div>
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Focus</p>
-          <p>Systems thinking, RevOps alignment, web performance, accessible design</p>
-        </div>
-        <div>
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Certs &amp; Tools</p>
-          <p>HubSpot Solutions Partner • Google Analytics • Vercel • Astro • Salesforce</p>
-        </div>
-        <div>
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Let’s connect</p>
-          <ul class="space-y-2">
-            <li><a href="https://www.linkedin.com/in/jonkohlmeier/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="https://www.instagram.com/jon.kohlmeier/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            <li><a href="mailto:hello@jonkohlmeier.com">hello@jonkohlmeier.com</a></li>
-          </ul>
-        </div>
-      </div>
-    </aside>
-  </article>
+  </section>
+
+  <QuoteBlock
+    quote="Craftsmanship is a posture—it shows up in code reviews, customer journeys, and the way we plan a meeting. That’s the energy I bring to every engagement."
+    author="Jonathan Kohlmeier"
+  />
+
+  <CTASection
+    title="Curious how a hospitality-minded RevOps partner could help your team?"
+    description="Let’s talk through your current stack, bottlenecks, and what a bespoke engagement could unlock."
+    ctaLabel="Reach out"
+    ctaLink="/contact/"
+  />
 </SiteLayout>

@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="card flex h-full flex-col justify-between gap-6">
+  <div class="space-y-4">
+    <p class="text-xs uppercase tracking-[0.3em] text-muted">
+      <FormattedDate date={post.data.pubDate} />
+    </p>
+    <h3 class="text-xl font-semibold text-[var(--color-text)]">
+      <a class="link-underline" href={`/blog/${post.id}/`}>{post.data.title}</a>
+    </h3>
+    <p class="text-sm text-subtle">{post.data.description}</p>
+    {post.data.tags && (
+      <div class="flex flex-wrap gap-2">
+        {post.data.tags.map((tag) => (
+          <span class="rounded-full border border-[var(--color-border)] px-3 py-1 text-xs text-muted">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+  <a
+    class="flex items-center gap-2 text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-strong)]"
+    href={`/blog/${post.id}/`}
+  >
+    Read essay
+    <span aria-hidden="true">→</span>
+  </a>
+</article>

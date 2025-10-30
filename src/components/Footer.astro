@@ -1,33 +1,46 @@
 ---
+import { SOCIAL_LINKS } from '../data/social';
 const year = new Date().getFullYear();
-const footerLinks = [
-  { href: '/now/', label: 'Now' },
-  { href: '/writing/', label: 'Writing' },
-  { href: '/services/', label: 'Advisory' },
-  { href: '/rss.xml', label: 'RSS' },
-];
 ---
 
-<footer class="border-t border-slate-800/60 bg-slate-950/80">
-  <div class="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
-    <div>
-      <p class="font-semibold text-slate-200">© {year} Jonathan Kohlmeier</p>
-      <p class="mt-1 max-w-xl leading-relaxed text-slate-400">
-        Building thoughtful RevOps systems, writing about leadership and technology, and sharing the
-        finer things like pipes, coffee, and books.
+<footer class="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+  <div class="container-page flex flex-col gap-8 py-10 md:flex-row md:items-start md:justify-between">
+    <div class="max-w-xl space-y-3">
+      <p class="text-xs uppercase tracking-[0.4em] text-subtle">Puffs of Smoke</p>
+      <p class="text-lg font-semibold text-[var(--color-text)]">Jonathan Kohlmeier</p>
+      <p class="text-sm text-subtle">
+        Writing and advisory for operators who believe craftsmanship still matters. Pipes, RevOps, and
+        product systems for people-first teams.
       </p>
+      <p class="text-xs text-muted">© {year} Jonathan Kohlmeier. All rights reserved.</p>
     </div>
-    <div class="flex flex-wrap gap-4 uppercase tracking-[0.3em]">
-      {footerLinks.map(({ href, label }) => (
+    <div class="flex flex-col gap-4 text-sm">
+      <p class="text-xs uppercase tracking-[0.3em] text-subtle">Stay in the smoke circle</p>
+      <p class="text-sm text-subtle">
+        Subscribe to the monthly dispatch for experiments, deep dives, and resources for RevOps leaders.
+      </p>
+      <a
+        class="btn-primary btn w-fit"
+        href="https://buttondown.email/jonkohlmeier"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Join the mailing list
+      </a>
+    </div>
+    <div class="flex flex-col gap-2 text-sm">
+      <p class="text-xs uppercase tracking-[0.3em] text-subtle">Elsewhere</p>
+      {SOCIAL_LINKS.map((link) => (
         <a
-          href={href}
-          class="text-slate-500 transition hover:text-amber-200"
-          target={href.startsWith('/') ? undefined : '_blank'}
-          rel={href.startsWith('/') ? undefined : 'noopener noreferrer'}
+          class="text-subtle hover:text-[var(--color-accent)]"
+          href={link.url}
+          target={link.url.startsWith('/') ? undefined : '_blank'}
+          rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}
         >
-          {label}
+          {link.label}
         </a>
       ))}
+      <a class="text-subtle hover:text-[var(--color-accent)]" href="/now/">Now page</a>
     </div>
   </div>
 </footer>

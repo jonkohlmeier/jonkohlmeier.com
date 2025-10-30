@@ -1,0 +1,44 @@
+---
+const label = 'Toggle theme';
+---
+
+<button
+  class="btn-ghost rounded-full border border-transparent px-3 py-1 text-sm font-medium text-subtle hover:border-[var(--color-border-strong)] hover:text-[var(--color-accent)] focus-visible:border-[var(--color-border-strong)]"
+  type="button"
+  aria-label={label}
+  id="theme-toggle"
+>
+  <span class="hidden sm:inline">Toggle theme</span>
+  <span class="sm:hidden">Theme</span>
+</button>
+
+<script is:inline>
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const storedTheme = localStorage.getItem('theme');
+  const initialTheme = storedTheme || (prefersDark.matches ? 'dark' : 'light');
+
+  const applyTheme = (theme) => {
+    document.documentElement.dataset.theme = theme;
+    if (theme === 'dark') {
+      document.body?.classList.add('theme-dark');
+    } else {
+      document.body?.classList.remove('theme-dark');
+    }
+  };
+
+  applyTheme(initialTheme);
+
+  const toggleButton = document.getElementById('theme-toggle');
+  toggleButton?.addEventListener('click', () => {
+    const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('theme', next);
+  });
+
+  prefersDark.addEventListener('change', (event) => {
+    const stored = localStorage.getItem('theme');
+    if (stored) return;
+    applyTheme(event.matches ? 'dark' : 'light');
+  });
+</script>

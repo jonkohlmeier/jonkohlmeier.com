@@ -1,0 +1,26 @@
+---
+interface Props {
+  quote: string;
+  author?: string;
+  role?: string;
+}
+
+const { quote, author, role } = Astro.props;
+---
+
+<section class="section-gap">
+  <div class="container-page">
+    <div class="card-muted relative overflow-hidden">
+      <blockquote class="text-2xl font-medium leading-snug text-[var(--color-text)]">
+        “{quote}”
+      </blockquote>
+      {(author || role) && (
+        <p class="mt-4 text-sm text-subtle">
+          — {author}
+          {role && <span class="text-muted"> · {role}</span>}
+        </p>
+      )}
+      <div class="pointer-events-none absolute inset-0 rounded-[var(--radius-card)] shadow-[var(--shadow-inner)]"></div>
+    </div>
+  </div>
+</section>
