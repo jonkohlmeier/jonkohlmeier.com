@@ -5,18 +5,22 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50, quality: 95) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(
+            width: 64
+            height: 64
+            quality: 95
+            placeholder: BLURRED
+            layout: FIXED
+          )
         }
       }
       site {
@@ -31,24 +35,22 @@ const Bio = () => {
         }
       }
     }
-  `)
+  `);
 
   // Set these values by editing "siteMetadata" in gatsby-config.js
-  const author = data.site.siteMetadata?.author
-  const social = data.site.siteMetadata?.social
+  const author = data.site.siteMetadata?.author;
+  const social = data.site.siteMetadata?.social;
 
-  const avatar = data?.avatar?.childImageSharp?.fixed
+  const avatar = getImage(data?.avatar);
 
   return (
     <div className="bio">
       {avatar && (
-        <Image
-          fixed={avatar}
-          alt={author?.name || ``}
+        <GatsbyImage
+          image={avatar}
+          alt={author?.name || `Author avatar`}
           className="bio-avatar"
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
+          imgStyle={{ borderRadius: `50%` }}
         />
       )}
       {author?.name && (
@@ -57,7 +59,7 @@ const Bio = () => {
         </p>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Bio
+export default Bio;

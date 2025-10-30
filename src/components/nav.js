@@ -1,20 +1,53 @@
-import React from "react"
-import "bootstrap/dist/css/bootstrap.min.css"
-
-import { Nav, Navbar } from "react-bootstrap"
+import React from "react";
+import { Link } from "gatsby";
+import { Nav, Navbar, Container } from "react-bootstrap";
 
 const Navigation = () => {
-    return (
-        <Navbar className="justify-content-end" sticky="top" bg="dark" variant="dark">
-            <Nav className="justify-content-end">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="https://twistoflemonpod.com" target="_blank">Podcast &#x2192;</Nav.Link>
-                <Nav.Link href="https://instagram.com/jonkohlmeier" target="_blank">Instagram &#x2192;</Nav.Link>
-                <Nav.Link href="https://linkedin.com/in/jonkohlmeier" target="_blank">LinkedIn &#x2192;</Nav.Link>
-            </Nav>
-  </Navbar>
-    )
-}
+  return (
+    <Navbar
+      expand="lg"
+      sticky="top"
+      bg="dark"
+      variant="dark"
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <Container>
+        <Navbar.Brand as={Link} to="/">
+          Puffs of Smoke
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="primary-navigation" />
+        <Navbar.Collapse id="primary-navigation">
+          <Nav className="ms-auto">
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
+            <Nav.Link
+              href="https://twistoflemonpod.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Podcast ↗
+            </Nav.Link>
+            <Nav.Link
+              href="https://instagram.com/jonkohlmeier"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram ↗
+            </Nav.Link>
+            <Nav.Link
+              href="https://linkedin.com/in/jonkohlmeier"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn ↗
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
 
-export default Navigation
-
+export default Navigation;

@@ -1,7 +1,7 @@
 /* CSS Custom Properties Definitions */
 
 :root {
-  --maxWidth-none: 'none';
+  --maxWidth-none: "none";
   --maxWidth-xs: 20rem;
   --maxWidth-sm: 24rem;
   --maxWidth-md: 28rem;
@@ -10,9 +10,9 @@
   --maxWidth-2xl: 42rem;
   --maxWidth-3xl: 48rem;
   --maxWidth-4xl: 56rem;
-  --maxWidth-full: '100%';
+  --maxWidth-full: "100%";
   --maxWidth-wrapper: var(--maxWidth-full);
-  --spacing-px: '1px';
+  --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
@@ -27,11 +27,12 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  --fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --fontFamily-serif: 'Merriweather', 'Georgia', Cambria, 'Times New Roman',
-    Times, serif;
+  --fontFamily-sans:
+    Montserrat, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --fontFamily-serif:
+    "Merriweather", "Georgia", Cambria, "Times New Roman", Times, serif;
   --font-body: var(--fontFamily-serif);
   --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;
@@ -274,12 +275,35 @@ p > a:hover {
   background-color: #ffffff;
 }
 
-.global-wrapper[data-is-root-path='true'] .bio {
+.global-wrapper[data-is-root-path="true"] .bio {
   margin-bottom: var(--spacing-20);
 }
 
+.skip-to-content {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.skip-to-content:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
 .global-header {
-  margin-bottom: var(--spacing);
+  margin-bottom: var(--spacing-6);
   background-color: var(--color-primary);
   padding: var(--spacing-10);
 }
@@ -303,6 +327,10 @@ p > a:hover {
 .post-list-item {
   margin-bottom: var(--spacing-8);
   margin-top: var(--spacing-8);
+  padding: var(--spacing-4);
+  border-radius: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .post-list-item p {
@@ -318,6 +346,36 @@ p > a:hover {
 
 .post-list-item header {
   margin-bottom: var(--spacing-4);
+}
+
+.post-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-link:focus,
+.post-link:hover {
+  text-decoration: none;
+}
+
+.post-list-image {
+  border-radius: 0.5rem;
+  margin-bottom: var(--spacing-3);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.post-link:focus .post-list-image,
+.post-link:hover .post-list-image {
+  transform: scale(1.02);
+}
+
+.post-meta {
+  font-size: var(--fontSize-0);
+  color: var(--color-text-light);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .header-link-home {
@@ -340,8 +398,9 @@ p > a:hover {
 .bio-avatar {
   margin-right: var(--spacing-4);
   margin-bottom: var(--spacing-0);
-  min-width: 50px;
+  min-width: 64px;
   border-radius: 100%;
+  overflow: hidden;
 }
 
 .blog-post {
