@@ -407,20 +407,22 @@ textarea:focus {
 .hero-gradient {
   position: absolute;
   inset: -20%;
-  background: radial-gradient(circle at 30% 20%, rgba(211, 163, 74, 0.32), transparent 55%),
-    radial-gradient(circle at 70% 70%, rgba(255, 122, 89, 0.22), transparent 65%);
-  opacity: 0.7;
-  filter: blur(50px);
-  z-index: -2;
+  background: radial-gradient(circle at 32% 18%, rgba(211, 163, 74, 0.45), transparent 60%),
+    radial-gradient(circle at 72% 72%, rgba(255, 122, 89, 0.28), transparent 68%),
+    radial-gradient(circle at 50% 50%, rgba(84, 71, 48, 0.18), transparent 75%);
+  opacity: 0.85;
+  filter: blur(60px);
+  z-index: -3;
 }
 
 .hero-smoke {
   position: absolute;
   width: 280px;
   height: 520px;
-  background: radial-gradient(circle at 40% 20%, rgba(255, 122, 89, 0.18), transparent 70%);
-  opacity: 0.48;
-  filter: blur(55px);
+  background: radial-gradient(circle at 40% 20%, rgba(255, 122, 89, 0.26), transparent 65%),
+    radial-gradient(circle at 60% 70%, rgba(211, 163, 74, 0.3), transparent 70%);
+  opacity: 0.58;
+  filter: blur(50px);
   pointer-events: none;
   animation: smokeDrift 28s ease-in-out infinite;
   z-index: -1;
@@ -457,11 +459,11 @@ textarea:focus {
   width: 320px;
   height: 420px;
   pointer-events: none;
-  filter: blur(60px);
-  opacity: 0.42;
-  mix-blend-mode: screen;
-  background: radial-gradient(circle at 45% 30%, rgba(211, 163, 74, 0.42), transparent 72%),
-    conic-gradient(from 140deg at 60% 60%, rgba(255, 122, 89, 0.26), transparent 35%, rgba(161, 76, 53, 0.18) 55%, transparent 80%);
+  filter: blur(55px);
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  background: radial-gradient(circle at 45% 30%, rgba(211, 163, 74, 0.52), transparent 72%),
+    conic-gradient(from 110deg at 60% 60%, rgba(255, 122, 89, 0.26), transparent 35%, rgba(161, 76, 53, 0.2) 55%, transparent 80%);
   animation: smokeHover 32s ease-in-out infinite;
   z-index: -1;
 }
@@ -503,6 +505,24 @@ textarea:focus {
   opacity: 0.48;
   background: radial-gradient(circle at 35% 25%, rgba(211, 163, 74, 0.34), transparent 70%),
     conic-gradient(from 110deg at 55% 55%, rgba(255, 122, 89, 0.22), transparent 35%, rgba(84, 112, 161, 0.25) 60%, transparent 85%);
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: -5% -10% 40% -15%;
+  background: radial-gradient(circle at 20% 25%, rgba(211, 163, 74, 0.45), transparent 60%),
+    conic-gradient(from 120deg at 35% 40%, rgba(255, 122, 89, 0.25), transparent 40%),
+    radial-gradient(circle at 85% 65%, rgba(161, 76, 53, 0.22), transparent 70%);
+  filter: blur(65px);
+  opacity: 0.6;
+  z-index: -2;
+}
+
+:root[data-theme='dark'] .hero-section::before {
+  opacity: 0.5;
+  background: radial-gradient(circle at 28% 30%, rgba(211, 163, 74, 0.32), transparent 60%),
+    conic-gradient(from 140deg at 45% 55%, rgba(255, 122, 89, 0.2), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(58, 81, 116, 0.35), transparent 75%);
 }
 
 @keyframes smokeHover {
