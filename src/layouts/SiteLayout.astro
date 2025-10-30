@@ -20,9 +20,19 @@ const { title, description, image, showHeader = true, className } = Astro.props;
   <head>
     <BaseHead title={title} description={description} image={image} />
     <script is:inline>
-      const storedTheme = localStorage.getItem('theme');
-      const preferred = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.dataset.theme = preferred;
+      (() => {
+        const root = document.documentElement;
+        const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
+        let theme = 'light';
+        try {
+          const stored = localStorage.getItem('theme');
+          theme = stored || (prefersDark ? 'dark' : 'light');
+        } catch (err) {
+          theme = prefersDark ? 'dark' : 'light';
+        }
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+      })();
     </script>
   </head>
   <body>

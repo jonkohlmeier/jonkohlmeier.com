@@ -10,17 +10,44 @@ const isActive = (href: string, aliases: string[] = []) => {
   return pathname.startsWith(href) || aliases.some((alias) => pathname.startsWith(alias));
 };
 ---
-
-<header class="border-b border-[var(--color-border)]" style="background-color: var(--color-bg); backdrop-filter: blur(12px);">
-  <div class="container-page flex items-center justify-between gap-4 py-4">
+<header class="sticky top-0 z-40 border-b border-[var(--color-border)]" style="background-color: var(--color-bg); backdrop-filter: blur(14px);">
+  <div class="container-page grid grid-cols-[auto,1fr,auto] items-center gap-4 py-4">
     <a href="/" class="flex flex-col text-left">
-      <span class="text-xs uppercase tracking-[0.4em] text-subtle">Puffs of Smoke</span>
-      <span class="text-lg font-semibold text-[var(--color-text)]">Jonathan Kohlmeier</span>
+      <span class="text-sm font-semibold text-[var(--color-text)]">Puffs of Smoke</span>
+      <span class="text-xs uppercase tracking-[0.32em] text-subtle">Jonathan Kohlmeier</span>
     </a>
-    <div class="flex items-center gap-3 lg:hidden">
+
+    <nav class="hidden items-center justify-center gap-2 text-sm font-medium lg:flex">
+      {NAV_LINKS.map((link) => (
+        <a
+          class={`rounded-full px-4 py-2 transition ${
+            isActive(link.href, link.aliases)
+              ? 'bg-[var(--color-surface-muted)] text-[var(--color-accent)]'
+              : 'text-subtle hover:text-[var(--color-accent)]'
+          }`}
+          href={link.href}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center justify-end gap-3">
+      <div class="hidden items-center gap-3 text-xs uppercase tracking-[0.3em] text-subtle lg:flex">
+        {SOCIAL_LINKS.map((link) => (
+          <a
+            class="rounded-full px-3 py-1 transition hover:text-[var(--color-accent)]"
+            href={link.url}
+            target={link.url.startsWith('/') ? undefined : '_blank'}
+            rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
       <ThemeToggle />
       <button
-        class="btn-ghost border border-[var(--color-border)] px-3 py-2 text-subtle"
+        class="btn-ghost border border-[var(--color-border)] px-3 py-2 text-subtle lg:hidden"
         type="button"
         aria-label="Toggle navigation"
         aria-expanded="false"
@@ -31,32 +58,8 @@ const isActive = (href: string, aliases: string[] = []) => {
         </svg>
       </button>
     </div>
-    <nav class="hidden w-full items-center justify-center gap-3 lg:flex">
-      {NAV_LINKS.map((link) => (
-        <a
-          class={`btn-ghost px-4 py-2 text-sm font-medium transition ${
-            isActive(link.href, link.aliases) ? 'bg-[var(--color-surface-muted)] text-[var(--color-accent)]' : 'text-subtle'
-          }`}
-          href={link.href}
-        >
-          {link.label}
-        </a>
-      ))}
-    </nav>
-    <div class="hidden items-center gap-3 lg:flex">
-      {SOCIAL_LINKS.map((link) => (
-        <a
-          class="btn-ghost text-xs uppercase tracking-[0.3em] text-subtle hover:text-[var(--color-accent)]"
-          href={link.url}
-          target={link.url.startsWith('/') ? undefined : '_blank'}
-          rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}
-        >
-          {link.label}
-        </a>
-      ))}
-      <ThemeToggle />
-    </div>
   </div>
+
   <div class="mobile-nav hidden border-t border-[var(--color-border)] bg-[var(--color-surface)] lg:hidden" data-mobile-menu>
     <div class="container-page flex flex-col gap-4 py-6">
       <nav class="flex flex-col gap-2">
@@ -68,6 +71,7 @@ const isActive = (href: string, aliases: string[] = []) => {
                 : 'text-subtle hover:bg-[var(--color-surface-muted)]'
             }`}
             href={link.href}
+            data-mobile-link
           >
             {link.label}
           </a>
@@ -80,6 +84,7 @@ const isActive = (href: string, aliases: string[] = []) => {
             href={link.url}
             target={link.url.startsWith('/') ? undefined : '_blank'}
             rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}
+            data-mobile-link
           >
             {link.label}
           </a>
@@ -92,11 +97,27 @@ const isActive = (href: string, aliases: string[] = []) => {
 <script is:inline>
   const toggle = document.querySelector('[data-mobile-toggle]');
   const menu = document.querySelector('[data-mobile-menu]');
+  const links = document.querySelectorAll('[data-mobile-link]');
   if (toggle && menu) {
+    const closeMenu = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.add('hidden');
+    };
+
     toggle.addEventListener('click', () => {
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', (!expanded).toString());
       menu.classList.toggle('hidden');
+    });
+
+    links.forEach((link) => {
+      link.addEventListener('click', () => closeMenu());
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) {
+        closeMenu();
+      }
     });
   }
 </script>
