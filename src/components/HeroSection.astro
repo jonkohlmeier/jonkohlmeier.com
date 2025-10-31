@@ -21,15 +21,14 @@ const hasAsideSlot = Astro.slots.has('aside');
 ---
 
 <section class="hero-section section-gap relative overflow-hidden">
-  <div class="hero-gradient"></div>
-  <div class="hero-smoke hero-smoke--left"></div>
-  <div class="hero-smoke hero-smoke--right"></div>
-  <div class="smoke-ring smoke-ring--large smoke-ring--hero-left"></div>
-  <div class="smoke-ring smoke-ring--hero-right"></div>
-  <div class="smoke-watermark smoke-watermark--wide smoke-watermark--hero-top"></div>
-  <div class="smoke-watermark smoke-watermark--hero-bottom"></div>
+  <div class="hero-gradient" aria-hidden="true"></div>
+  <div class="hero-smoke-field" aria-hidden="true">
+    {Array.from({ length: 6 }).map((_, index) => (
+      <span class={`hero-smoke-field__ring hero-smoke-field__ring--${index + 1}`}></span>
+    ))}
+  </div>
   <div class="container-page grid gap-12 lg:grid-cols-[minmax(0,1.2fr),minmax(0,0.8fr)] lg:items-center">
-    <div class="space-y-6" style="max-width: 60ch;">
+    <div class="space-y-8" style="max-width: 60ch;">
       {eyebrow && <span class="badge">{eyebrow}</span>}
       <h1 class="hero-heading">{title}</h1>
       {description && <p class="text-lg text-subtle">{description}</p>}

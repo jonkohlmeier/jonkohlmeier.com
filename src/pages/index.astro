@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import SectionHeader from '../components/SectionHeader.astro';
@@ -9,7 +8,6 @@ import PostPreviewCard from '../components/PostPreviewCard.astro';
 import AdvisoryCard from '../components/AdvisoryCard.astro';
 import QuoteBlock from '../components/QuoteBlock.astro';
 import CTASection from '../components/CTASection.astro';
-import Avatar from '../assets/profile-pic.jpg';
 
 const posts = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
@@ -27,19 +25,27 @@ const advisory = (await getCollection('advisory')).sort(
 >
   <HeroSection
     eyebrow="Home base"
-    title="Building trustworthy products, RevOps systems, and the teams that power them."
-    description="I’m Jonathan Kohlmeier—an engineering-minded RevOps leader blending technology, hospitality, and a fondness for pipe smoke. Puffs of Smoke is where essays, frameworks, and advisory work help people-first operators win without losing their craft."
-    primaryCta={{ label: 'Read the latest essays', href: '/writing/' }}
-    secondaryCta={{ label: 'Explore advisory services', href: '/services/', variant: 'secondary' }}
+    title="Every good idea starts with a good conversation."
   >
-    <Image
-      slot="aside"
-      src={Avatar}
-      width={320}
-      height={320}
-      alt="Portrait of Jonathan Kohlmeier"
-      class="hero-portrait mx-auto h-auto w-full max-w-xs"
-    />
+    <div slot="extra" class="hero-copy text-lg text-subtle">
+      <p class="hero-copy__subheading text-sm uppercase tracking-[0.3em] text-muted">…and maybe a bit of smoke in the air</p>
+      <p>
+        I’m Jonathan Kohlmeier. I build RevOps systems that help teams work with more clarity, connection,
+        and craft.
+      </p>
+      <p>
+        Puffs of Smoke is my study — a place for reflection and slow thinking, where curiosity lingers and
+        half-formed ideas find shape.
+      </p>
+      <p>
+        Here, I write to make sense of work, technology, and the quiet, human moments that hold it all
+        together.
+      </p>
+      <div class="flex flex-wrap gap-3" data-hero-cta>
+        <a class="btn btn-primary" href="/writing/">Read the latest essays</a>
+        <a class="btn btn-ghost" href="/services/">Explore advisory services</a>
+      </div>
+    </div>
   </HeroSection>
 
   <section class="bg-[var(--color-surface-muted)] py-4">

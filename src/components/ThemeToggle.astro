@@ -1,82 +1,41 @@
----
-const label = 'Toggle theme';
----
-
 <button
-  class="btn-ghost flex items-center gap-2 rounded-full border border-[var(--color-border)] px-3 py-1 text-sm font-medium text-subtle transition hover:border-[var(--color-border-strong)] hover:text-[var(--color-accent)] focus-visible:border-[var(--color-accent)]"
+  class="theme-toggle btn-ghost flex items-center justify-center rounded-full border border-[var(--color-border)] p-2 text-subtle transition hover:border-[var(--color-border-strong)] hover:text-[var(--color-accent)] focus-visible:border-[var(--color-accent)]"
   type="button"
-  aria-label={label}
+  aria-label="Toggle theme"
+  aria-pressed="false"
   data-theme-toggle
 >
-  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-    <path d="M12 4.75V3" stroke-linecap="round" />
-    <path d="M12 21v-1.75" stroke-linecap="round" />
-    <path d="M4.75 12H3" stroke-linecap="round" />
-    <path d="M21 12h-1.75" stroke-linecap="round" />
-    <path d="m18.364 5.636-1.237 1.237" stroke-linecap="round" />
-    <path d="m6.873 17.127-1.237 1.237" stroke-linecap="round" />
-    <path d="m5.636 5.636 1.237 1.237" stroke-linecap="round" />
-    <path d="m17.127 17.127 1.237 1.237" stroke-linecap="round" />
-    <path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" />
+  <span class="sr-only">Toggle theme</span>
+  <svg
+    class="theme-toggle__icon theme-toggle__icon--sun h-4 w-4"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 4V2" stroke-linecap="round" />
+    <path d="M12 22v-2" stroke-linecap="round" />
+    <path d="M4 12H2" stroke-linecap="round" />
+    <path d="M22 12h-2" stroke-linecap="round" />
+    <path d="m19.07 4.93-1.41 1.41" stroke-linecap="round" />
+    <path d="m6.34 17.66-1.41 1.41" stroke-linecap="round" />
+    <path d="m4.93 4.93 1.41 1.41" stroke-linecap="round" />
+    <path d="m17.66 17.66 1.41 1.41" stroke-linecap="round" />
   </svg>
-  <span class="hidden sm:inline">Toggle theme</span>
-  <span class="sm:hidden">Theme</span>
+  <svg
+    class="theme-toggle__icon theme-toggle__icon--moon h-4 w-4"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    aria-hidden="true"
+  >
+    <path
+      d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 21 12.79Z"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
 </button>
-
-<script is:inline>
-  (() => {
-    const root = document.documentElement;
-
-    const getStoredTheme = () => {
-      try {
-        return localStorage.getItem('theme');
-      } catch (err) {
-        return null;
-      }
-    };
-
-    const storeTheme = (theme) => {
-      try {
-        localStorage.setItem('theme', theme);
-      } catch (err) {
-        /* ignore */
-      }
-    };
-
-    const setTheme = (theme) => {
-      const next = theme === 'dark' ? 'dark' : 'light';
-      root.dataset.theme = next;
-      root.style.colorScheme = next;
-      storeTheme(next);
-    };
-
-    const initTheme = () => {
-      const stored = getStoredTheme();
-      if (stored) {
-        setTheme(stored);
-      } else {
-        const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
-        setTheme(prefersDark ? 'dark' : 'light');
-      }
-    };
-
-    initTheme();
-
-    const toggleTheme = () => {
-      const current = root.dataset.theme === 'dark' ? 'dark' : 'light';
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    };
-
-    document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
-      button.addEventListener('click', toggleTheme);
-    });
-
-    const media = window.matchMedia?.('(prefers-color-scheme: dark)');
-    if (media?.addEventListener) {
-      media.addEventListener('change', (event) => {
-        if (getStoredTheme()) return;
-        setTheme(event.matches ? 'dark' : 'light');
-      });
-    }
-  })();
-</script>

@@ -21,18 +21,74 @@ const { title, description, image, showHeader = true, className } = Astro.props;
     <BaseHead title={title} description={description} image={image} />
     <script is:inline>
       (() => {
-        if (typeof window === 'undefined') return;
-        const root = document.documentElement;
-        const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
-        let theme = 'light';
-        try {
-          const stored = localStorage.getItem('theme');
-          theme = stored || (prefersDark ? 'dark' : 'light');
-        } catch (err) {
-          theme = prefersDark ? 'dark' : 'light';
+        if (typeof window === 'undefined') {
+          return;
         }
-        root.dataset.theme = theme;
-        root.style.colorScheme = theme;
+
+        const storageKey = 'theme';
+        const root = document.documentElement;
+        const mediaQuery = window.matchMedia?.('(prefers-color-scheme: dark)');
+
+        const getStoredTheme = () => {
+          try {
+            return localStorage.getItem(storageKey);
+          } catch (error) {
+            return null;
+          }
+        };
+
+        const storeTheme = (value) => {
+          try {
+            localStorage.setItem(storageKey, value);
+          } catch (error) {
+            /* ignore */
+          }
+        };
+
+        const applyTheme = (value, { persist = true } = {}) => {
+          const next = value === 'dark' ? 'dark' : 'light';
+          if (persist) {
+            storeTheme(next);
+          }
+          root.dataset.theme = next;
+          root.style.colorScheme = next;
+
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            button.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+          });
+        };
+
+        const initialTheme = getStoredTheme() ?? (mediaQuery?.matches ? 'dark' : 'light');
+        applyTheme(initialTheme, { persist: false });
+
+        const toggleTheme = () => {
+          const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          applyTheme(next);
+        };
+
+        const bindToggles = () => {
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            if (button.dataset.themeToggleBound === 'true') {
+              return;
+            }
+            button.dataset.themeToggleBound = 'true';
+            button.addEventListener('click', toggleTheme);
+          });
+          applyTheme(root.dataset.theme, { persist: false });
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', bindToggles, { once: true });
+        } else {
+          bindToggles();
+        }
+
+        mediaQuery?.addEventListener?.('change', (event) => {
+          if (getStoredTheme()) {
+            return;
+          }
+          applyTheme(event.matches ? 'dark' : 'light', { persist: false });
+        });
       })();
     </script>
   </head>
