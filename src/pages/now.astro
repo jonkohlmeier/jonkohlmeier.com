@@ -1,47 +1,54 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-
-const lastUpdated = new Date('2025-10-30');
 ---
 
-<SiteLayout title="Now" description="What Jonathan Kohlmeier is focused on right now.">
+<SiteLayout title="Now" description="What Jon Kohlmeier is focused on right now.">
   <section class="section-gap">
-    <div class="container-page space-y-8">
-      <SectionHeader
-        eyebrow="Now"
-        title="What I’m focused on right now"
-        align="center"
-      >
-        <span slot="description">
-          Last updated <span class="text-muted"><FormattedDate date={lastUpdated} /></span>
-        </span>
-      </SectionHeader>
-      <div class="grid gap-6 md:grid-cols-3">
-        <article class="card">
-          <h3 class="text-lg font-semibold text-[var(--color-text)]">RevOps & client work</h3>
-          <ul class="mt-3 space-y-2 text-sm text-subtle">
-            <li>• Aligning marketing, sales, and success analytics across HubSpot and Salesforce.</li>
-            <li>• Coaching product teams on Astro + Tailwind performance budgets.</li>
-            <li>• Building a RevOps diagnostic playbook that surfaces quick wins in 90 minutes.</li>
-          </ul>
+    <div class="container-page space-y-10">
+      <div class="space-y-2 text-center max-w-2xl mx-auto">
+        <p class="text-xs uppercase tracking-[0.4em] text-muted">Now</p>
+        <h1 class="text-3xl font-semibold text-[var(--color-text)]">What I’m focused on right now</h1>
+        <p class="text-sm text-subtle">Last updated November 2025</p>
+      </div>
+
+      <div class="now-sections">
+        <article class="card now-card">
+          <h3>Work & RevOps</h3>
+          <p>
+            I’m focused on crafting a more delightful customer experience, refining email templates, refreshing web
+            pages, and improving response times so real people get real help faster. I’m deep in data cleanup and
+            process simplification, working to make systems fade into the background so front-line associates can focus
+            on what matters most: serving customers.
+          </p>
+          <p>
+            I’m always knee-deep in HubSpot betas, talking with product teams, and rebuilding lead flows from top of
+            funnel to close. Most of my energy is going toward connecting people, simplifying language, and keeping
+            marketing focused on emotional connection over feature lists. Leadership, I’ve decided, is something you
+            practice, not something you pick up from a podcast.
+          </p>
         </article>
-        <article class="card">
-          <h3 class="text-lg font-semibold text-[var(--color-text)]">Writing & experiments</h3>
-          <ul class="mt-3 space-y-2 text-sm text-subtle">
-            <li>• Drafting a hospitality-driven RevOps guide.</li>
-            <li>• Testing AI-assisted research workflows for longform essays.</li>
-            <li>• Curating a quarterly reading list on leadership, craftsmanship, and theology.</li>
-          </ul>
+
+        <article class="card now-card">
+          <h3>Writing & Experiments</h3>
+          <p>
+            I’m writing again to rebuild the muscle, exploring craftsmanship in RevOps and the human side of automation.
+            Most of my tinkering happens here and on the podcast with Stan, Life with a Twist of Lemon, where we talk
+            about technology, craftsmanship, and friendship.
+          </p>
+          <p>
+            I’m also experimenting with AI-assisted coding, rebuilding this site, and playing with routines that make
+            room for reflection and creative work. I’m between wine fermentations for now but enjoying a pipe and a glass
+            of wine most evenings.
+          </p>
         </article>
-        <article class="card">
-          <h3 class="text-lg font-semibold text-[var(--color-text)]">Personal</h3>
-          <ul class="mt-3 space-y-2 text-sm text-subtle">
-            <li>• Rotating new rusticated pipes into the fall lineup.</li>
-            <li>• Training for winter RAGBRAI prep rides around Cedar Rapids.</li>
-            <li>• Recording new episodes of <a class="link-underline" href="https://twistoflemonpod.com" target="_blank" rel="noopener noreferrer">Life with a Twist of Lemon</a>.</li>
-          </ul>
+
+        <article class="card now-card">
+          <h3>Personal</h3>
+          <p>
+            At home, I’m soaking up the cool fall weather, walks with the dog, leaves underfoot, and plenty of time reading
+            to my daughter (Blueberries for Sal is on repeat). We’ve got some family travel ahead and I’m working on staying
+            consistent with morning coffee, exercise, and being more intentional with how I use time, money, and energy.
+          </p>
         </article>
       </div>
     </div>

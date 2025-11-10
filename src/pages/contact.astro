@@ -1,45 +1,50 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import SectionHeader from '../components/SectionHeader.astro';
 ---
 
 <SiteLayout
   title="Contact"
-  description="Reach out to Jonathan for speaking, advisory, or collaboration opportunities."
+  description="Reach out to Jon for speaking, advisory, or collaboration opportunities."
 >
   <section class="section-gap">
-    <div class="container-page mx-auto max-w-3xl space-y-10">
-      <SectionHeader
-        eyebrow="Contact"
-        title="Let’s build something together"
-        description="Share a little about your team, product, or RevOps challenge. I typically respond within two business days."
-        align="center"
-      />
-      <div class="card">
-        <form
-          class="grid gap-5"
-          action="https://formsubmit.co/hello@jonkohlmeier.com"
-          method="POST"
-        >
-          <input type="hidden" name="_subject" value="Puffs of Smoke inquiry" />
-          <input type="hidden" name="_next" value="https://jonkohlmeier.com/thanks/" />
-          <label class="space-y-2 text-sm text-subtle">
-            <span class="text-xs uppercase tracking-[0.3em] text-muted">Name</span>
-            <input type="text" name="name" required placeholder="Your name" />
-          </label>
-          <label class="space-y-2 text-sm text-subtle">
-            <span class="text-xs uppercase tracking-[0.3em] text-muted">Email</span>
-            <input type="email" name="email" required placeholder="you@example.com" />
-          </label>
-          <label class="space-y-2 text-sm text-subtle">
-            <span class="text-xs uppercase tracking-[0.3em] text-muted">How can I help?</span>
-            <textarea name="message" required placeholder="Share a bit about what you’re working on"></textarea>
-          </label>
-          <button type="submit" class="btn btn-primary self-start">Send message</button>
-        </form>
-        <p class="mt-6 text-xs text-muted">
-          Prefer email? Write to <a class="link-underline" href="mailto:hello@jonkohlmeier.com">hello@jonkohlmeier.com</a>.
+    <div class="container-page contact-panel contact-panel--single">
+      <div class="contact-panel__copy">
+        <p class="contact-panel__eyebrow">WRITE FROM YOUR CORNER.</p>
+        <h2 class="contact-panel__title">
+          I always enjoy hearing what others are building, learning, or thinking about.
+        </h2>
+        <p class="contact-panel__body">
+          Share a thought, a story, or just a hello. I usually reply within a couple of days, sometimes with a resource,
+          sometimes with a question, sometimes just to keep the conversation going.
         </p>
+        <div class="contact-panel__focus">
+          <p>If you’re reaching out, it’s usually about:</p>
+          <ul class="contact-panel__list">
+            <li>Finding more clarity and connection in your work</li>
+            <li>Building systems that make room for people</li>
+            <li>Practicing craftsmanship and care in leadership or life</li>
+          </ul>
+        </div>
+        <div class="contact-panel__meta">
+          <span>Prefer LinkedIn?</span>
+          <a
+            class="link-underline"
+            href="https://www.linkedin.com/in/jonkohlmeier/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Send a note on LinkedIn
+          </a>
+        </div>
+        <div class="contact-panel__socials">
+          <p>Find me elsewhere</p>
+          <div>
+            <a href="https://www.linkedin.com/in/jonkohlmeier/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/jonkohlmeier" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.instagram.com/jon.kohlmeier/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.facebook.com/jon.kohlmeier" target="_blank" rel="noopener noreferrer">Facebook</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>

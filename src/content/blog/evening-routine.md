@@ -34,7 +34,7 @@ Usually in the form of 30 minutes on the stationary bike. I try to put in 10 mil
 
 ### 5:45 – 8:00 – What's important?
 
-This is where I get a lot of my [freelance web work](https://jonkohlmeier.com/services/) in during the week. Other regular guests during this time include household chores, making/eating dinner, and spending quality time with my wife.
+This is where I get a lot of my freelance web work in during the week. Other regular guests during this time include household chores, making/eating dinner, and spending quality time with my wife.
 
 ### 8:00 – Personal goals
 

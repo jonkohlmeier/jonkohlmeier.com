@@ -1,6 +1,6 @@
 # Puffs of Smoke
 
-Personal site and writing hub for Jonathan Kohlmeier. Built with [Astro](https://astro.build/), Tailwind, and content collections.
+Personal site and writing hub for Jon Kohlmeier. Built with [Astro](https://astro.build/), Tailwind, and content collections.
 
 ## Getting started
 
@@ -24,8 +24,8 @@ The development server runs at <http://localhost:4321>. Astro uses file-based ro
 
 - `src/pages/index.astro` – landing page with hero, lead capture, and service overview.
 - `src/pages/writing/` – writing archive with `/blog/` routes for backward compatibility.
-- `src/content/blog/` – Markdown essays with typed frontmatter (see `src/content.config.ts`).
-- `src/pages/services.astro`, `contact.astro`, `now.astro`, `thanks.astro` – supporting pages for advisory work and outreach.
+- `src/content/blog/` – Markdown thoughts with typed frontmatter (see `src/content.config.ts`).
+- `src/pages/contact.astro`, `now.astro`, `thanks.astro` – supporting pages for outreach and updates.
 
 Images for posts live in `src/assets/blog/`. Global styles and design tokens live in `src/styles/global.css` with Tailwind utilities layered on top.
 
@@ -35,4 +35,4 @@ The site expects Node 18+ (see CI workflow in `.github/workflows/build-and-deplo
 
 ## License
 
-Copyright © 2025 Jonathan Kohlmeier. All rights reserved.
+Copyright © 2025 Jon Kohlmeier. All rights reserved.

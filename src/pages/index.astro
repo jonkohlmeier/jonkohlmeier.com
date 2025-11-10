@@ -5,23 +5,16 @@ import HeroSection from '../components/HeroSection.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import ContentGrid from '../components/ContentGrid.astro';
 import PostPreviewCard from '../components/PostPreviewCard.astro';
-import AdvisoryCard from '../components/AdvisoryCard.astro';
-import QuoteBlock from '../components/QuoteBlock.astro';
-import CTASection from '../components/CTASection.astro';
 
 const posts = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
-
-const advisory = (await getCollection('advisory')).sort(
-  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0),
-);
 ---
 
 <SiteLayout
   title="Puffs of Smoke"
-  description="Pipes, product, and leadership musings from technologist Jonathan Kohlmeier."
+  description="Pipes, product, and leadership musings from technologist Jon Kohlmeier."
 >
   <HeroSection
     eyebrow="Welcome In"
@@ -30,7 +23,7 @@ const advisory = (await getCollection('advisory')).sort(
     <div slot="extra" class="hero-copy text-lg text-subtle">
       <p class="hero-copy__subheading text-sm uppercase tracking-[0.3em] text-muted">…and maybe a bit of smoke in the air</p>
       <p>
-        I’m Jonathan Kohlmeier. I build RevOps systems that help teams work with more clarity, connection,
+        I’m Jon Kohlmeier. I build RevOps systems that help teams work with more clarity, connection,
         and craft.
       </p>
       <p>
@@ -48,24 +41,22 @@ const advisory = (await getCollection('advisory')).sort(
     </div>
   </HeroSection>
 
-  <section class="bg-[var(--color-surface-muted)] py-4">
-    <div class="container-page flex flex-wrap items-center justify-between gap-3 text-sm text-subtle">
-      <p>Writing and advisory for operators who care about craftsmanship.</p>
-      <div class="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-muted">
-        <span>RevOps</span>
-        <span>Product Ops</span>
-        <span>Leadership</span>
-        <span>Pipes</span>
-      </div>
+  <section class="hero-ribbon">
+    <div class="container-page hero-ribbon__inner">
+      <p class="hero-ribbon__eyebrow">Pull up a chair.</p>
+      <p class="hero-ribbon__body">
+        This is where I think out loud about work, faith, and the craft of making things better. Most of what I write
+        starts with a good conversation, a quiet evening in the study, or a bit of smoke curling toward the ceiling.
+      </p>
     </div>
   </section>
 
-  <section class="section-gap">
-    <div class="container-page space-y-8">
+  <section class="section-gap section-study">
+    <div class="container-page study-panel space-y-8">
       <SectionHeader
-        eyebrow="Fresh writing"
-        title="Latest essays and field notes"
-        description="Ideas tested in RevOps war rooms, over AeroPress brews, and occasionally beside a briar pipe."
+        eyebrow="Puffs from the Study"
+        title="Pull up a chair"
+        description="Here’s what I’ve been thinking about lately. Ideas that start in conversation, take shape over coffee, and stick around long enough to be worth sharing."
       />
       <ContentGrid>
         {posts.map((post) => (
@@ -75,38 +66,4 @@ const advisory = (await getCollection('advisory')).sort(
     </div>
   </section>
 
-  <section class="section-gap bg-[var(--color-surface)]">
-    <div class="container-page space-y-8">
-      <SectionHeader
-        eyebrow="Advisory"
-        title="Fractional leadership for thoughtful teams"
-        description="Choose the partnership that keeps momentum without sacrificing craft."
-      />
-      <ContentGrid columns={2}>
-        {advisory.map((item) => (
-          <AdvisoryCard
-            name={item.data.name}
-            description={item.data.description}
-            who={item.data.who_it_is_for}
-            outcomes={item.data.outcomes}
-            ctaLabel={item.data.cta_label}
-            ctaLink={item.data.cta_link}
-          />
-        ))}
-      </ContentGrid>
-    </div>
-  </section>
-
-  <QuoteBlock
-    quote="Most of this started as notes over a pipe. It turned into a way to help people-first teams win without burning out their craft."
-    author="Jonathan Kohlmeier"
-    role="Technologist & RevOps partner"
-  />
-
-  <CTASection
-    title="Need a trusted partner for your next RevOps or product initiative?"
-    description="Let’s map your systems, build go-to-market clarity, and give your team the instrumentation they need to move faster." 
-    ctaLabel="Start a conversation"
-    ctaLink="/contact/"
-  />
 </SiteLayout>

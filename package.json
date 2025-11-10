@@ -2,8 +2,8 @@
   "name": "jonkohlmeier",
   "type": "module",
   "version": "0.0.1",
-  "description": "Puffs of Smoke — Jonathan Kohlmeier's hub for writing, work, and experiments.",
-  "author": "Jonathan Kohlmeier",
+  "description": "Puffs of Smoke — Jon Kohlmeier's hub for writing, work, and experiments.",
+  "author": "Jon Kohlmeier",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -19,6 +19,8 @@
     "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.3",
+    "lucide-astro": "^0.553.0",
+    "openai": "^6.8.1",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.1.16"
   }

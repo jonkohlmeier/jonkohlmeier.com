@@ -3,11 +3,10 @@
 
 export const SITE_TITLE = 'Puffs of Smoke';
 export const SITE_DESCRIPTION =
-  'Pipes, product, and leadership musings from technologist Jonathan Kohlmeier.';
+  'Pipes, product, and leadership musings from technologist Jon Kohlmeier.';
 export const SITE_URL = 'https://jonkohlmeier.com';
 export const AUTHOR = {
-  name: 'Jonathan Kohlmeier',
-  email: 'hello@jonkohlmeier.com',
+  name: 'Jon Kohlmeier',
   location: 'Cedar Rapids, Iowa',
 };
 

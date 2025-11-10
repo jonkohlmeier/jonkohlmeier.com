@@ -1,77 +1,121 @@
 ---
 import { Image } from 'astro:assets';
 import SiteLayout from '../layouts/SiteLayout.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import QuoteBlock from '../components/QuoteBlock.astro';
-import CTASection from '../components/CTASection.astro';
-import Avatar from '../assets/profile-pic.jpg';
+import Avatar from '../assets/jon-pipe-smoking.jpg';
+import { Handshake, Orbit, Ear, Wind, CupSoda } from 'lucide-astro';
 ---
 
-<SiteLayout title="About Jonathan" description="Technologist and RevOps strategist focused on people-first systems.">
-  <section class="section-gap">
-    <div class="container-page grid gap-10 lg:grid-cols-[2fr,1fr] lg:items-start">
-      <div class="space-y-6">
-        <SectionHeader
-          eyebrow="About"
-          title="A technologist who treats RevOps like hospitality"
-          description="My career grew from building church websites in Dreamweaver to leading engineering and revenue operations teams. The through line: make complex systems feel warm, intentional, and reliable for the people who rely on them."
-        />
-        <div class="prose">
-          <p>
-            Today I serve as Director of Web Development at McNary Marketing & Design while partnering with
-            operators as a fractional RevOps lead. I map go-to-market systems, steward product migrations,
-            and design enablement rituals that stick.
+<SiteLayout title="About · Puffs of Smoke" description="Good systems start with good conversations.">
+  <main class="about-layout mx-auto max-w-5xl px-5 py-20 lg:py-24 xl:px-0">
+    <section class="about-hero grid items-start gap-12 rounded-[2.5rem] border border-[var(--color-border-strong)] bg-[var(--color-surface)]/92 px-7 py-12 shadow-[var(--shadow-soft)] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.8fr)] lg:px-16">
+      <div class="space-y-8 max-w-xl">
+        <p class="about-eyebrow">About</p>
+        <h1 class="about-title">Good systems start with good conversations.</h1>
+        <div class="about-accent"></div>
+        <div class="space-y-5">
+          <p class="about-lede">
+            I have always believed that the way we work says something about who we are.
           </p>
-          <p>
-            My toolkit spans HubSpot and Salesforce, Astro and React, customer research, and the art of
-            getting leaders in the same room to make a decision. I still take pride in polishing the edges—
-            whether that’s accessibility, dashboard semantics, or the quality of a meeting agenda.
-          </p>
-          <p>
-            When the laptop closes, you’ll find me roasting coffee, sampling new pipe blends, podcasting on
-            <a class="link-underline" href="https://twistoflemonpod.com" target="_blank" rel="noopener noreferrer">Life with a Twist of Lemon</a>, or reading theology and leadership histories. Cedar Rapids is home base for my family and the workshop where most experiments begin.
+          <p class="about-body">
+            When we take the time to listen, align, and build with care, the result is something that not only works but
+            feels right to the people using it. That is the craft I keep chasing.
           </p>
         </div>
       </div>
-      <aside class="card-muted flex flex-col items-center gap-4 text-sm text-subtle">
-        <Image
-          src={Avatar}
-          width={280}
-          height={280}
-          alt="Jonathan Kohlmeier"
-          class="h-auto w-full max-w-[14rem] rounded-[var(--radius-card)] border border-[var(--color-border)]"
-        />
-        <div class="w-full space-y-3">
-          <div>
-            <p class="text-xs uppercase tracking-[0.3em] text-muted">Focus</p>
-            <p>RevOps diagnostics, product operations, performance and accessibility, storytelling.</p>
-          </div>
-          <div>
-            <p class="text-xs uppercase tracking-[0.3em] text-muted">Credentials</p>
-            <p>HubSpot Solutions Partner · Google Analytics · Vercel · Astro · Salesforce Admin</p>
-          </div>
-          <div>
-            <p class="text-xs uppercase tracking-[0.3em] text-muted">Connect</p>
-            <ul class="space-y-2">
-              <li><a class="link-underline" href="https://www.linkedin.com/in/jonkohlmeier/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a class="link-underline" href="https://www.instagram.com/jon.kohlmeier/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a class="link-underline" href="mailto:hello@jonkohlmeier.com">hello@jonkohlmeier.com</a></li>
-            </ul>
-          </div>
+      <div class="about-portrait mx-auto w-full max-w-xs lg:mx-0">
+        <div class="overflow-hidden rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-surface-muted)]/85 shadow-[var(--shadow-soft)]">
+          <Image src={Avatar} width={320} height={320} alt="Portrait of Jon Kohlmeier" class="h-auto w-full" />
         </div>
-      </aside>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <QuoteBlock
-    quote="Craftsmanship is a posture—it shows up in code reviews, customer journeys, and the way we plan a meeting. That’s the energy I bring to every engagement."
-    author="Jonathan Kohlmeier"
-  />
+    <section class="about-section">
+      <h2 class="about-heading">
+        <span class="about-heading__icon" aria-hidden="true">
+          <Handshake aria-hidden="true" />
+        </span>
+        <span>Helping people work better, together.</span>
+      </h2>
+      <p class="about-body">
+        I am Jon Kohlmeier, RevOps Lead at West Music, where I help bring marketing, sales, and service teams
+        together around clear and connected systems that make work feel more human.
+      </p>
+      <p class="about-body">
+        I started my career in IT and fell in love with web development. Over time I worked across marketing, nonprofit,
+        and agency web projects before finding my home in RevOps. Through it all, one thread has stayed the same. Make
+        complex systems simple and help good people succeed.
+      </p>
+    </section>
 
-  <CTASection
-    title="Curious how a hospitality-minded RevOps partner could help your team?"
-    description="Let’s talk through your current stack, bottlenecks, and what a bespoke engagement could unlock."
-    ctaLabel="Reach out"
-    ctaLink="/contact/"
-  />
+    <section class="about-section about-section--wide">
+      <figure class="about-card about-card--quote text-center">
+        <blockquote>“Jon makes people successful.”</blockquote>
+        <figcaption>Stan Lemon</figcaption>
+      </figure>
+      <p class="about-body">
+        My good friend Stan Lemon once told his son, “Jon makes people successful.” That is what I try to do every day.
+        Build things that make others better at what they do.
+      </p>
+    </section>
+
+    <section class="about-section">
+      <h2 class="about-heading">
+        <span class="about-heading__icon" aria-hidden="true">
+          <Orbit aria-hidden="true" />
+        </span>
+        <span>Working with HubSpot</span>
+      </h2>
+      <p class="about-body">
+        In 2025 I served on the HubSpot Customer Advisory Board, collaborating with product leaders and operators to
+        help shape how teams use HubSpot. I am also part of Lighthouse, HubSpot’s customer advocacy community, focused
+        on sharing insight, craftsmanship, and what it means to grow with care instead of chaos.
+      </p>
+    </section>
+
+    <section class="about-section">
+      <h2 class="about-heading">
+        <span class="about-heading__icon" aria-hidden="true">
+          <Ear aria-hidden="true" />
+        </span>
+        <span>Listening and communicating</span>
+      </h2>
+      <p class="about-body">
+        At my core, I am a listener and a communicator. Whether I am helping an engineer and a salesperson finally
+        understand each other, or sitting down as a Reconciler for the Lutheran Church Missouri Synod to help people
+        talk through conflict, I have learned that good systems and good relationships both start the same way. With
+        clarity, respect, and a real effort to understand.
+      </p>
+    </section>
+
+    <section class="about-section">
+      <h2 class="about-heading">
+        <span class="about-heading__icon" aria-hidden="true">
+          <Wind aria-hidden="true" />
+        </span>
+        <span>Puffs of Smoke</span>
+      </h2>
+      <p class="about-body">
+        Puffs of Smoke is my study. It is where I step back from the dashboards and reflect on craftsmanship,
+        technology, and the human side of work. It is where I think out loud about what makes systems trustworthy,
+        communication meaningful, and craft worth protecting.
+      </p>
+    </section>
+
+    <section class="about-section about-section--wide">
+      <div class="about-card space-y-5">
+        <h2 class="about-heading">
+          <span class="about-heading__icon" aria-hidden="true">
+            <CupSoda aria-hidden="true" />
+          </span>
+          <span>Life outside the laptop</span>
+        </h2>
+        <p class="about-body">
+          When I am not building systems, I am usually fermenting wine, recording an episode of Life with a Twist of
+          Lemon, or spending time with my wife and daughter in Cedar Rapids. A good evening usually ends with
+          conversation, a little pipe smoke, and the satisfaction of having helped someone do their work just a little
+          bit better.
+        </p>
+      </div>
+    </section>
+  </main>
 </SiteLayout>
