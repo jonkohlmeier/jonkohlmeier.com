@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Puffs of Smoke" href="https://jonkohlmeier.com/rss.xml"><meta name="generator" content="Astro v5.15.4"><meta name="author" content="Jon Kohlmeier"><meta name="description" content="How I wind down each weekday to reflect, recharge, and prep for the next day."><meta name="keywords" content="revops, leadership, web performance, jonathan kohlmeier"><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><link rel="canonical" href="https://jonkohlmeier.com/writing/evening-routine/"><title>Evening Routine · Puffs of Smoke</title><meta property="og:site_name" content="Puffs of Smoke"><meta property="og:type" content="website"><meta property="og:url" content="https://jonkohlmeier.com/writing/evening-routine/"><meta property="og:title" content="Evening Routine · Puffs of Smoke"><meta property="og:description" content="How I wind down each weekday to reflect, recharge, and prep for the next day."><meta property="og:image" content="https://jonkohlmeier.com/_astro/evening-routine.DttP0A3Z.jpg"><meta property="og:image:alt" content="Evening Routine · Puffs of Smoke"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@jonkohlmeier"><meta name="twitter:title" content="Evening Routine · Puffs of Smoke"><meta name="twitter:description" content="How I wind down each weekday to reflect, recharge, and prep for the next day."><meta name="twitter:image" content="https://jonkohlmeier.com/_astro/evening-routine.DttP0A3Z.jpg"><script>
+      (() => {
+        if (typeof window === 'undefined') {
+          return;
+        }
+
+        const storageKey = 'theme';
+        const root = document.documentElement;
+        const mediaQuery = window.matchMedia?.('(prefers-color-scheme: dark)');
+
+        const getStoredTheme = () => {
+          try {
+            return localStorage.getItem(storageKey);
+          } catch (error) {
+            return null;
+          }
+        };
+
+        const storeTheme = (value) => {
+          try {
+            localStorage.setItem(storageKey, value);
+          } catch (error) {
+            /* ignore */
+          }
+        };
+
+        const applyTheme = (value, { persist = true } = {}) => {
+          const next = value === 'dark' ? 'dark' : 'light';
+          if (persist) {
+            storeTheme(next);
+          }
+          root.dataset.theme = next;
+          root.style.colorScheme = next;
+
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            button.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+          });
+        };
+
+        const initialTheme = getStoredTheme() ?? (mediaQuery?.matches ? 'dark' : 'light');
+        applyTheme(initialTheme, { persist: false });
+
+        const toggleTheme = () => {
+          const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          applyTheme(next);
+        };
+
+        const bindToggles = () => {
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            if (button.dataset.themeToggleBound === 'true') {
+              return;
+            }
+            button.dataset.themeToggleBound = 'true';
+            button.addEventListener('click', toggleTheme);
+          });
+          applyTheme(root.dataset.theme, { persist: false });
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', bindToggles, { once: true });
+        } else {
+          bindToggles();
+        }
+
+        mediaQuery?.addEventListener?.('change', (event) => {
+          if (getStoredTheme()) {
+            return;
+          }
+          applyTheme(event.matches ? 'dark' : 'light', { persist: false });
+        });
+      })();
+    </script><link rel="stylesheet" href="/_astro/_slug_.BymNvMHr.css"></head> <body> <a href="#page-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-[var(--color-accent)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[var(--color-accent-contrast)]">
+Skip to content
+</a> <header class="sticky top-0 z-40 border-b border-[var(--color-border)] bg-[var(--color-bg)]/92 supports-[backdrop-filter]:backdrop-blur-[20px]" style="min-height: 86px;"> <div class="relative"> <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_100%,rgba(211,163,74,0.14),transparent_60%)] opacity-60"></div> <div class="container-page flex items-center justify-between gap-6 py-5"> <a href="/" class="flex items-center gap-4 text-left"> <div class="flex flex-col"> <span class="brand-title text-2xl">Puffs of Smoke</span> <span class="brand-subtitle">Jon Kohlmeier</span> </div> </a> <nav class="hidden items-center justify-center gap-3 text-sm font-medium lg:flex"> <a class="nav-link " href="/"> Home </a><a class="nav-link nav-link--active" href="/writing/"> Writing </a><a class="nav-link " href="/about/"> About </a><a class="nav-link " href="https://twistoflemonpod.com" target="_blank" rel="noopener noreferrer"> Podcast ↗ </a><a class="nav-link " href="/contact/"> Contact </a> </nav> <div class="flex items-center gap-3"> <div class="hidden items-center gap-2 lg:flex"> <a class="rounded-full border border-[var(--color-border)] bg-[var(--color-surface-muted)]/70 p-2 text-subtle transition hover:border-[var(--color-orange)] hover:text-[var(--color-orange)]" href="https://www.linkedin.com/in/jonkohlmeier/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"> <g><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm.02 6H2v11h3V9.5Zm6.12 0H9v11h3v-5.7c0-1.47.7-2.3 1.91-2.3 1.1 0 1.79.74 1.79 2.3V20.5h3v-6.3c0-2.98-1.59-4.5-3.72-4.5-1.64 0-2.36.9-2.77 1.54V9.5Z" /></g> </svg> </a><a class="rounded-full border border-[var(--color-border)] bg-[var(--color-surface-muted)]/70 p-2 text-subtle transition hover:border-[var(--color-orange)] hover:text-[var(--color-orange)]" href="https://www.instagram.com/jon.kohlmeier/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"> <g><rect x="3" y="3" width="18" height="18" rx="4" /><path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z" /><circle cx="17" cy="7" r="1" /></g> </svg> </a><a class="rounded-full border border-[var(--color-border)] bg-[var(--color-surface-muted)]/70 p-2 text-subtle transition hover:border-[var(--color-orange)] hover:text-[var(--color-orange)]" href="/rss.xml" aria-label="RSS feed"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"> <g><path d="M5 19a2 2 0 1 1 0-4 2 2 0 0 1 0 4Zm10-1H12c0-3.87-3.13-7-7-7V8c5.52 0 10 4.48 10 10Zm4 0h-3c0-6.63-5.37-12-12-12V3c8.28 0 15 6.72 15 15Z" /></g> </svg> </a> </div> <button class="theme-toggle btn-ghost flex items-center justify-center rounded-full border border-[var(--color-border)] p-2 text-subtle transition hover:border-[var(--color-border-strong)] hover:text-[var(--color-accent)] focus-visible:border-[var(--color-accent)]" type="button" aria-label="Toggle theme" aria-pressed="false" data-theme-toggle> <span class="sr-only">Toggle theme</span> <svg class="theme-toggle__icon theme-toggle__icon--sun h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 4V2" stroke-linecap="round"></path> <path d="M12 22v-2" stroke-linecap="round"></path> <path d="M4 12H2" stroke-linecap="round"></path> <path d="M22 12h-2" stroke-linecap="round"></path> <path d="m19.07 4.93-1.41 1.41" stroke-linecap="round"></path> <path d="m6.34 17.66-1.41 1.41" stroke-linecap="round"></path> <path d="m4.93 4.93 1.41 1.41" stroke-linecap="round"></path> <path d="m17.66 17.66 1.41 1.41" stroke-linecap="round"></path> </svg> <svg class="theme-toggle__icon theme-toggle__icon--moon h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"> <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 21 12.79Z" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </button> <button class="btn-ghost border border-[var(--color-border)] px-3 py-2 text-subtle lg:hidden" type="button" aria-label="Toggle navigation" aria-expanded="false" data-mobile-toggle> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"> <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"></path> </svg> </button> </div> </div> </div> <div class="mobile-nav hidden border-t border-[var(--color-border)] bg-[var(--color-surface)] lg:hidden" data-mobile-menu> <div class="container-page flex flex-col gap-4 py-6"> <nav class="flex flex-col gap-2"> <a class="rounded-full px-4 py-2 text-base font-medium transition text-subtle hover:bg-[var(--color-surface-muted)]" href="/" data-mobile-link> Home </a><a class="rounded-full px-4 py-2 text-base font-medium transition bg-[var(--color-surface-muted)] text-[var(--color-accent)]" href="/writing/" data-mobile-link> Writing </a><a class="rounded-full px-4 py-2 text-base font-medium transition text-subtle hover:bg-[var(--color-surface-muted)]" href="/about/" data-mobile-link> About </a><a class="rounded-full px-4 py-2 text-base font-medium transition text-subtle hover:bg-[var(--color-surface-muted)]" href="https://twistoflemonpod.com" target="_blank" rel="noopener noreferrer" data-mobile-link> Podcast ↗ </a><a class="rounded-full px-4 py-2 text-base font-medium transition text-subtle hover:bg-[var(--color-surface-muted)]" href="/contact/" data-mobile-link> Contact </a> </nav> <div class="flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-subtle"> <a class="rounded-full border border-[var(--color-border)] px-3 py-1 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]" href="https://www.linkedin.com/in/jonkohlmeier/" target="_blank" rel="noopener noreferrer" data-mobile-link> LinkedIn </a><a class="rounded-full border border-[var(--color-border)] px-3 py-1 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]" href="https://www.instagram.com/jon.kohlmeier/" target="_blank" rel="noopener noreferrer" data-mobile-link> Instagram </a><a class="rounded-full border border-[var(--color-border)] px-3 py-1 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]" href="/rss.xml" data-mobile-link> RSS feed </a> </div> </div> </div> </header> <script>
+  const toggle = document.querySelector('[data-mobile-toggle]');
+  const menu = document.querySelector('[data-mobile-menu]');
+  const links = document.querySelectorAll('[data-mobile-link]');
+  if (toggle && menu) {
+    const closeMenu = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.add('hidden');
+    };
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', (!expanded).toString());
+      menu.classList.toggle('hidden');
+    });
+
+    links.forEach((link) => {
+      link.addEventListener('click', () => closeMenu());
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) {
+        closeMenu();
+      }
+    });
+  }
+</script> <main id="page-content" class="min-h-screen ">  <main class="article-layout mx-auto max-w-5xl px-5 py-20 lg:py-24 xl:px-0"> <article class="article-panel relative overflow-hidden rounded-[2.5rem] border border-[var(--color-border-strong)] bg-[var(--color-surface)]/94 px-6 py-12 shadow-[var(--shadow-soft)] lg:px-14"> <div class="article-panel__glow" aria-hidden="true"></div> <header class="article-header space-y-6"> <p class="article-eyebrow">Thought</p> <h1 class="article-title">Evening Routine</h1> <div class="article-meta"> <time datetime="2017-01-24T00:00:00.000Z"> Jan 24, 2017 </time>  </div> </header> <div class="article-hero-image"> <img src="/_astro/evening-routine.DttP0A3Z_4tbnq.webp" srcset="/_astro/evening-routine.DttP0A3Z_1zoOc7.webp 640w, /_astro/evening-routine.DttP0A3Z_Z27JevD.webp 960w, /_astro/evening-routine.DttP0A3Z_4tbnq.webp 1100w" alt="Notebook, glasses, and a cup of tea on a desk" sizes="(min-width: 1024px) 960px, 100vw" loading="lazy" decoding="async" fetchpriority="auto" width="1100" height="330" class="h-auto w-full"> </div> <div class="article-content prose max-w-none space-y-6">  <p><a href="https://jonkohlmeier.com/life/morning-routine/">In my last post, we journeyed through my morning routine.</a> The morning routine gives me a solid start to the day by helping me stay alert, grounded, and ready to conquer anything the day can throw at me. My evening routine is also rigid in terms of schedule—the difference is that it contains much more margin.</p>
+<p>The evening routine serves as a calming and reflective ritual that also allows me to do some of my best work of the day.</p>
+<h2 id="evening-routine--weekdays">Evening Routine · Weekdays</h2>
+<h3 id="415--reflect--clean-up-at-work">4:15 – Reflect &#x26; clean up at work</h3>
+<p>My evening routine starts with the end of the work day. I spend the last 15 minutes wrapping up anything that I’m working on, reflecting on what was accomplished that day, and planning out the next work day.</p>
+<h3 id="430--commute-home">4:30 – Commute home</h3>
+<p>More driving. More podcast listening.</p>
+<h3 id="500--workout">5:00 – Workout</h3>
+<p>Usually in the form of 30 minutes on the stationary bike. I try to put in 10 miles in that time. I’ll also have something streaming on the TV. Recently, I’ve been on a Marvel TV show kick.</p>
+<h3 id="545--800--whats-important">5:45 – 8:00 – What’s important?</h3>
+<p>This is where I get a lot of my freelance web work in during the week. Other regular guests during this time include household chores, making/eating dinner, and spending quality time with my wife.</p>
+<h3 id="800--personal-goals">8:00 – Personal goals</h3>
+<p>This year my personal goals are to play a game of chess, journal, and read at least 20 pages each day.</p>
+<ul>
+<li><strong>Chess</strong> – So far this has been a game against the computer on the iPad using the <a href="http://www.tchessgame.com/pro.php">tChess Pro App</a>. Twenty-three days in and I’m not sure if I’m improving at all.</li>
+<li><strong>Journal</strong> – This is mostly to get me into the habit of writing again. Each entry includes the results of the chess game, what I’m reading and page number that I’m currently on, and any interesting thoughts or happenings of the day.</li>
+<li><strong>Read</strong> – Because, as Tyrion Lannister says, “a mind needs books as a sword needs a whetstone if it is to keep its edge.”</li>
+</ul>
+<h3 id="900--1000--wind-down">9:00 – 10:00 – Wind down</h3>
+<p>I wrap up anything left on my task list for the day and assign anything I haven’t completed to a new time slot. I try, usually unsuccessfully, to have all screens off by 9:30.</p>
+<h3 id="1000--bed">10:00 – Bed</h3>
+<p>The best way to wake up early? Go to sleep early!</p>
+<h3 id="your-turn">Your turn!</h3>
+<p>Thanks for taking the time to read through my weekday evening routine. Like I said above, I’m always looking for ways to tweak it to fit with my priorities.</p>
+<p>What does your evening routine include? Is there anything that throws off your whole day—or the next day—when you miss it?</p>  </div> </article> </main>  </main> <footer class="site-footer"> <div class="container-page footer-grid"> <div class="footer-brand"> <p class="footer-eyebrow">Puffs of Smoke · Jon Kohlmeier</p> <p class="footer-title">Craft, clarity, and patient systems.</p> <p class="footer-body">
+Reflections on craft, family, and the small things that make work and life worth doing. Pull up a chair, light
+        the pipe, and stay awhile.
+</p> <a class="footer-cta" href="/contact/">Write from your corner →</a> </div> <div class="footer-links"> <p>In the study</p> <ul> <li> <a href="/writing/">Latest thoughts</a> </li><li> <a href="/about/">About Jon</a> </li><li> <a href="/contact/">Write from your corner</a> </li><li> <a href="/now/">Now page</a> </li> </ul> </div> <div class="footer-social"> <p>Elsewhere</p> <ul> <li> <a href="https://www.linkedin.com/in/jonkohlmeier/" target="_blank" rel="noopener noreferrer"> LinkedIn </a> </li><li> <a href="https://www.instagram.com/jon.kohlmeier/" target="_blank" rel="noopener noreferrer"> Instagram </a> </li><li> <a href="/rss.xml"> RSS feed </a> </li> </ul> </div> </div> <div class="footer-bottom"> <div class="container-page"> <p>© 2025 Jon Kohlmeier. All rights reserved.</p> </div> </div> </footer> </body></html>
