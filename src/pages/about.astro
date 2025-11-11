@@ -1,8 +1,10 @@
 ---
-import { Image } from 'astro:assets';
 import SiteLayout from '../layouts/SiteLayout.astro';
-import Avatar from '../assets/jon-pipe-smoking.jpg';
-import { Handshake, Orbit, Ear, Wind, CupSoda } from 'lucide-astro';
+import Handshake from 'lucide-astro/Handshake';
+import Orbit from 'lucide-astro/Orbit';
+import Ear from 'lucide-astro/Ear';
+import Wind from 'lucide-astro/Wind';
+import CupSoda from 'lucide-astro/CupSoda';
 ---
 
 <SiteLayout title="About · Puffs of Smoke" description="Good systems start with good conversations.">
@@ -24,7 +26,15 @@ import { Handshake, Orbit, Ear, Wind, CupSoda } from 'lucide-astro';
       </div>
       <div class="about-portrait mx-auto w-full max-w-xs lg:mx-0">
         <div class="overflow-hidden rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-surface-muted)]/85 shadow-[var(--shadow-soft)]">
-          <Image src={Avatar} width={320} height={320} alt="Portrait of Jon Kohlmeier" class="h-auto w-full" />
+          <img
+            src="/images/jon-portrait.webp"
+            width="320"
+            height="320"
+            alt="Portrait of Jon Kohlmeier"
+            class="h-auto w-full"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </section>
