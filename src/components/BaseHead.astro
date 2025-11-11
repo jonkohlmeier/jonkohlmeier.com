@@ -17,6 +17,8 @@ const ogImageUrl = image
   ? new URL(image.src, site)
   : new URL('/favicon.svg', site);
 const twitterHandle = SOCIAL.twitter.startsWith('@') ? SOCIAL.twitter : `@${SOCIAL.twitter}`;
+const googleFontsHref =
+  'https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap';
 ---
 
 <meta charset="utf-8" />
@@ -29,6 +31,13 @@ const twitterHandle = SOCIAL.twitter.startsWith('@') ? SOCIAL.twitter : `@${SOCI
 <meta name="description" content={description} />
 <meta name="keywords" content="revops, leadership, web performance, jonathan kohlmeier" />
 
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href={googleFontsHref} />
+<link rel="stylesheet" href={googleFontsHref} media="print" onload="this.media='all'" />
+<noscript>
+  <link rel="stylesheet" href={googleFontsHref} />
+</noscript>
 <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
 <link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
 <link rel="canonical" href={canonicalURL} />
