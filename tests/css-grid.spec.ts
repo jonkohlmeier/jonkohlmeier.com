@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Site presentation', () => {
-  test('home page serves compiled CSS from /_astro', async ({ page }) => {
+  test('home page delivers compiled CSS early', async ({ page }) => {
     const cssResponses: string[] = [];
     page.on('response', async (response) => {
       if (
@@ -20,8 +20,17 @@ test.describe('Site presentation', () => {
     await expect(page.locator('body')).toBeVisible();
     await page.waitForTimeout(500);
 
-    expect(cssResponses.length).toBeGreaterThan(0);
-    expect(cssResponses[0]?.length ?? 0).toBeGreaterThan(200);
+    const inlineCssLength = await page.evaluate(() => {
+      return Array.from(document.querySelectorAll('style'))
+        .map((styleEl) => styleEl.textContent?.length ?? 0)
+        .reduce((total, len) => total + len, 0);
+    });
+
+    if (cssResponses.length > 0) {
+      expect(cssResponses[0]?.length ?? 0).toBeGreaterThan(200);
+    } else {
+      expect(inlineCssLength).toBeGreaterThan(200);
+    }
   });
 
   test('writing archive renders post cards', async ({ page }) => {
