@@ -1,4 +1,5 @@
 ---
+import { SOCIAL } from '../consts';
 import { SOCIAL_LINKS } from '../data/social';
 
 const year = new Date().getFullYear();
@@ -8,6 +9,8 @@ const studyLinks = [
   { href: '/contact/', label: 'Write from your corner' },
   { href: '/now/', label: 'Now page' },
 ];
+const studyHeadingId = 'footer-study-heading';
+const socialHeadingId = 'footer-social-heading';
 ---
 
 <footer class="site-footer">
@@ -19,35 +22,48 @@ const studyLinks = [
         Reflections on craft, family, and the small things that make work and life worth doing. Pull up a chair, light
         the pipe, and stay awhile.
       </p>
-      <a class="footer-cta" href="/contact/">Write from your corner →</a>
+      <div class="footer-actions">
+        <a class="footer-cta footer-cta--primary" href="/contact/">
+          <span>Write from your corner</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a class="footer-cta footer-cta--secondary" href={SOCIAL.podcast} target="_blank" rel="noopener noreferrer">
+          <span>Listen to the podcast</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
 
     <div class="footer-links">
-      <p>In the study</p>
-      <ul>
-        {studyLinks.map((link) => (
-          <li>
-            <a href={link.href}>{link.label}</a>
-          </li>
-        ))}
-      </ul>
+      <p id={studyHeadingId} class="footer-group-label">In the study</p>
+      <nav aria-labelledby={studyHeadingId}>
+        <ul>
+          {studyLinks.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
 
     <div class="footer-social">
-      <p>Elsewhere</p>
-      <ul>
-        {SOCIAL_LINKS.map((link) => (
-          <li>
-            <a
-              href={link.url}
-              target={link.url.startsWith('/') ? undefined : '_blank'}
-              rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <p id={socialHeadingId} class="footer-group-label">Elsewhere</p>
+      <nav aria-labelledby={socialHeadingId}>
+        <ul>
+          {SOCIAL_LINKS.map((link) => (
+            <li>
+              <a
+                href={link.url}
+                target={link.url.startsWith('/') ? undefined : '_blank'}
+                rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   </div>
   <div class="footer-bottom">
