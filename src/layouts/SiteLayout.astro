@@ -28,63 +28,96 @@ const { title, description, image, showHeader = true, className } = Astro.props;
         const storageKey = 'theme';
         const root = document.documentElement;
         const mediaQuery = window.matchMedia?.('(prefers-color-scheme: dark)');
+        const toggles = new Set();
+        let lastTheme;
 
-        const getStoredTheme = () => {
-          try {
-            return localStorage.getItem(storageKey);
-          } catch (error) {
-            return null;
-          }
+        const storage = {
+          get() {
+            try {
+              return localStorage.getItem(storageKey);
+            } catch {
+              return null;
+            }
+          },
+          set(value) {
+            try {
+              localStorage.setItem(storageKey, value);
+            } catch {
+              /* ignore */
+            }
+          },
         };
 
-        const storeTheme = (value) => {
-          try {
-            localStorage.setItem(storageKey, value);
-          } catch (error) {
-            /* ignore */
-          }
+        const syncToggleState = (theme) => {
+          requestAnimationFrame(() => {
+            toggles.forEach((button) => {
+              button.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+            });
+          });
         };
 
         const applyTheme = (value, { persist = true } = {}) => {
           const next = value === 'dark' ? 'dark' : 'light';
-          if (persist) {
-            storeTheme(next);
+          if (lastTheme === next) {
+            return next;
           }
+
+          lastTheme = next;
           root.dataset.theme = next;
           root.style.colorScheme = next;
 
-          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
-            button.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
-          });
+          if (persist) {
+            storage.set(next);
+          }
+
+          syncToggleState(next);
+          return next;
         };
 
-        const initialTheme = getStoredTheme() ?? (mediaQuery?.matches ? 'dark' : 'light');
+        const initialTheme = storage.get() ?? (mediaQuery?.matches ? 'dark' : 'light');
         applyTheme(initialTheme, { persist: false });
 
         const toggleTheme = () => {
-          const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-          applyTheme(next);
+          applyTheme(lastTheme === 'dark' ? 'light' : 'dark');
         };
 
-        const bindToggles = () => {
-          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
-            if (button.dataset.themeToggleBound === 'true') {
-              return;
-            }
-            button.dataset.themeToggleBound = 'true';
-            button.addEventListener('click', toggleTheme);
-          });
-          applyTheme(root.dataset.theme, { persist: false });
+        const registerToggle = (button) => {
+          if (toggles.has(button)) {
+            return;
+          }
+          toggles.add(button);
+          button.dataset.themeToggleBound = 'true';
+          button.setAttribute('aria-pressed', lastTheme === 'dark' ? 'true' : 'false');
+          button.addEventListener('click', toggleTheme);
+        };
+
+        const hydrateToggles = () => {
+          document.querySelectorAll('[data-theme-toggle]').forEach(registerToggle);
+        };
+
+        const scheduleHydration = () => {
+          const runner = () => hydrateToggles();
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(runner);
+          } else {
+            setTimeout(runner, 0);
+          }
         };
 
         if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', bindToggles, { once: true });
+          document.addEventListener(
+            'DOMContentLoaded',
+            () => {
+              scheduleHydration();
+            },
+            { once: true },
+          );
         } else {
-          bindToggles();
+          scheduleHydration();
         }
 
         mediaQuery?.addEventListener?.('change', (event) => {
-          if (getStoredTheme()) {
+          if (storage.get()) {
             return;
           }
           applyTheme(event.matches ? 'dark' : 'light', { persist: false });
