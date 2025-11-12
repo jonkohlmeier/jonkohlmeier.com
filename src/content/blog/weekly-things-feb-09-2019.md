@@ -1,6 +1,6 @@
 ---
-title: "Weekly Things – February 09, 2019"
-description: "A quick rundown of what I watched, read, listened to, and enjoyed at the start of 2019."
+title: 'Weekly Things – February 09, 2019'
+description: 'A quick rundown of what I watched, read, listened to, and enjoyed at the start of 2019.'
 pubDate: 2019-02-10
 tags:
   - weekly-things
@@ -8,10 +8,9 @@ tags:
   - listening
   - consuming
 categories:
-  - life
   - finer-things-in-life
-heroImage: "../../assets/blog/weekly-things.jpg"
-heroAlt: "Coffee cup next to a notebook and headphones"
+heroImage: '../../assets/blog/weekly-things.jpg'
+heroAlt: 'Coffee cup next to a notebook and headphones'
 ---
 
 Tim Ferriss puts out a weekly email called [5-Bullet Friday](https://go.tim.blog/5-bullet-friday/) where he discusses the five things he's “been loving, using, and reading.”
@@ -22,13 +21,13 @@ Here are some things that I watched, read, listened to, or otherwise enjoyed thi
 
 ## Watching
 
-### Netflix's *The Punisher* (Season 2)
+### Netflix's _The Punisher_ (Season 2)
 
 Overall, a really well-done season. I also just learned that Netflix doesn't have an intuitive way to share a link directly to their content, so you'll have to search it.
 
 ## Reading
 
-### *Parables of Judgment* — Robert Farrar Capon
+### _Parables of Judgment_ — Robert Farrar Capon
 
 [Stan Lemon](https://stanlemon.net) sent me this book and I'm finally finishing the third book in the volume on the parables of judgment. I've really been enjoying his treatment of the parables.
 
@@ -36,19 +35,19 @@ Overall, a really well-done season. I also just learned that Netflix doesn't hav
 
 ## Listening
 
-### *Life with a Twist of Lemon*
+### _Life with a Twist of Lemon_
 
 This week we had an episode on the Super Bowl, Weezer, and National Pizza Day. If you haven't listened to the podcast, you should!
 
 [Website](https://twistoflemonpod.com) · [Overcast](https://overcast.fm/itunes1419902908/life-with-a-twist-of-lemon)
 
-### *Art of Manliness* Podcast #470 — A Proven System for Building and Breaking Habits
+### _Art of Manliness_ Podcast #470 — A Proven System for Building and Breaking Habits
 
 Interesting listen on habit theory.
 
 [Listen on Overcast](https://overcast.fm/+NS2zy5W-0)
 
-### *Mac Power Users* #465 — “Stephen... Who?”
+### _Mac Power Users_ #465 — “Stephen... Who?”
 
 Introducing the new co-host of Mac Power Users.
 

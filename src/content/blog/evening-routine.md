@@ -1,6 +1,6 @@
 ---
-title: "Evening Routine"
-description: "How I wind down each weekday to reflect, recharge, and prep for the next day."
+title: 'Evening Routine'
+description: 'How I wind down each weekday to reflect, recharge, and prep for the next day.'
 pubDate: 2017-01-24
 tags:
   - evening-routine
@@ -8,10 +8,9 @@ tags:
   - routine
   - life
 categories:
-  - life
   - productivity
-heroImage: "../../assets/blog/evening-routine.jpg"
-heroAlt: "Notebook, glasses, and a cup of tea on a desk"
+heroImage: '../../assets/blog/evening-routine.jpg'
+heroAlt: 'Notebook, glasses, and a cup of tea on a desk'
 ---
 
 [In my last post, we journeyed through my morning routine.](https://jonkohlmeier.com/life/morning-routine/) The morning routine gives me a solid start to the day by helping me stay alert, grounded, and ready to conquer anything the day can throw at me. My evening routine is also rigid in terms of schedule—the difference is that it contains much more margin.
