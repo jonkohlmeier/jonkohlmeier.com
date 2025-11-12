@@ -9,29 +9,34 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<article class="card flex h-full flex-col justify-between gap-6" data-testid="post-card">
-  <div class="space-y-4">
-    <p class="text-xs uppercase tracking-[0.3em] text-muted">
+<article class="post-card card" data-testid="post-card">
+  <div class="post-card__meta">
+    {post.data.categories?.[0] && (
+      <span class="post-card__category">{post.data.categories[0]}</span>
+    )}
+    <span class="post-card__date">
       <FormattedDate date={post.data.pubDate} />
-    </p>
-    <h3 class="text-xl font-semibold text-[var(--color-text)]">
-      <a class="link-underline" href={`/blog/${post.id}/`}>{post.data.title}</a>
+    </span>
+  </div>
+  <div class="post-card__body">
+    <h3 class="post-card__title">
+      <a class="post-card__title-link" href={`/blog/${post.id}/`}>
+        {post.data.title}
+      </a>
     </h3>
-    <p class="text-sm text-subtle">{post.data.description}</p>
-    {post.data.tags && (
-      <div class="flex flex-wrap gap-2">
+    <p class="post-card__description">{post.data.description}</p>
+  </div>
+  {post.data.tags && (
+    <div class="post-card__tags">
+      <p class="post-card__tags-label">Tags</p>
+      <div class="post-card__tags-list">
         {post.data.tags.map((tag) => (
-          <span class="rounded-full border border-[var(--color-border)] px-3 py-1 text-xs text-muted">
-            {tag}
-          </span>
+          <span class="post-card__tag">{tag}</span>
         ))}
       </div>
-    )}
-  </div>
-  <a
-    class="flex items-center gap-2 text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-strong)]"
-    href={`/blog/${post.id}/`}
-  >
+    </div>
+  )}
+  <a class="post-card__cta" href={`/blog/${post.id}/`}>
     Read thought
     <span aria-hidden="true">→</span>
   </a>

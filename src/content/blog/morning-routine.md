@@ -1,6 +1,6 @@
 ---
-title: "Morning Routine"
-description: "The weekday ritual that helps me start each day centered, caffeinated, and ready to lead."
+title: 'Morning Routine'
+description: 'The weekday ritual that helps me start each day centered, caffeinated, and ready to lead.'
 pubDate: 2017-01-14
 tags:
   - life
@@ -8,10 +8,9 @@ tags:
   - productivity
   - routine
 categories:
-  - life
   - productivity
-heroImage: "../../assets/blog/morning-routine.jpg"
-heroAlt: "Fresh coffee beside a notebook at sunrise"
+heroImage: '../../assets/blog/morning-routine.jpg'
+heroAlt: 'Fresh coffee beside a notebook at sunrise'
 ---
 
 _This post contains Amazon.com affiliate links. If you click one of the product links I may receive a commission on purchases made through Amazon._

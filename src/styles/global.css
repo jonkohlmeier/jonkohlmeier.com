@@ -260,6 +260,126 @@ textarea:focus {
   overflow: hidden;
 }
 
+.post-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-height: 100%;
+  border-radius: 1.75rem;
+  background: linear-gradient(
+      135deg,
+      rgba(var(--color-accent-rgb), 0.04),
+      rgba(var(--color-accent-rgb), 0)
+    ),
+    var(--color-surface);
+}
+
+.post-card__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+.post-card__category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  box-shadow: 0 12px 24px rgba(var(--color-accent-rgb), 0.2);
+}
+
+.post-card__date {
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.post-card__body {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.post-card__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
+  line-height: 1.3;
+}
+
+.post-card__title-link {
+  color: var(--color-text);
+  text-decoration: none;
+  display: inline;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.25s ease, color 0.25s ease;
+  word-break: break-word;
+}
+
+.post-card__title-link:hover,
+.post-card__title-link:focus-visible {
+  color: var(--color-accent);
+  background-size: 100% 2px;
+}
+
+.post-card__description {
+  font-size: 1rem;
+  color: var(--color-text-subtle);
+  margin: 0;
+}
+
+.post-card__tags {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.post-card__tags-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.post-card__tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.post-card__tag {
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: rgba(var(--color-accent-rgb), 0.08);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.2);
+  font-size: 0.75rem;
+  color: var(--color-text-subtle);
+}
+
+.post-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+}
+
+.post-card__cta:hover,
+.post-card__cta:focus-visible {
+  color: var(--color-accent-strong);
+}
+
 .card-muted {
   background: var(--color-surface-muted);
   border-radius: var(--radius-card);
@@ -684,11 +804,17 @@ textarea:focus {
 }
 
 .article-eyebrow {
-  font-size: 0.78rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+  letter-spacing: 0.28em;
+  font-size: 0.75rem;
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  justify-self: start;
+}
+
+.article-eyebrow.badge {
+  box-shadow: 0 18px 30px rgba(var(--color-accent-rgb), 0.22);
 }
 
 .article-title {
@@ -732,6 +858,22 @@ textarea:focus {
   color: var(--color-text-subtle);
 }
 
+.article-content a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--color-accent-rgb), 0.55);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.article-content a:hover,
+.article-content a:focus-visible {
+  color: var(--color-accent-strong);
+  text-decoration-color: currentColor;
+}
+
 .article-content :where(p, li) {
   color: inherit;
   line-height: 1.85;
@@ -742,7 +884,7 @@ textarea:focus {
   font-family: 'Fraunces', 'Times New Roman', serif;
   color: var(--color-text);
   letter-spacing: 0.05em;
-  margin-top: 2.4em;
+  margin-top: 1.8em;
 }
 
 .article-content h2 {
@@ -751,6 +893,28 @@ textarea:focus {
 
 .article-content h3 {
   font-size: clamp(1.6rem, 2.6vw, 2rem);
+}
+
+.article-content ul,
+.article-content ol {
+  margin: 1.25em 0;
+  padding-left: 1.6em;
+  display: grid;
+  gap: 0.65em;
+  list-style-position: outside;
+}
+
+.article-content ul {
+  list-style-type: disc;
+}
+
+.article-content ol {
+  list-style-type: decimal;
+}
+
+.article-content li::marker {
+  color: var(--color-accent);
+  font-weight: 600;
 }
 
 .article-content blockquote {
@@ -784,6 +948,7 @@ textarea:focus {
   padding: 0.15rem 0.4rem;
   background: rgba(15, 18, 24, 0.08);
 }
+
 
 :root[data-theme='dark'] .article-panel {
   background: rgba(18, 22, 30, 0.9);
