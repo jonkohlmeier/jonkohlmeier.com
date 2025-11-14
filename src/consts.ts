@@ -16,3 +16,5 @@ export const SOCIAL = {
   instagram: 'https://www.instagram.com/jon.kohlmeier/',
   podcast: 'https://twistoflemonpod.com',
 };
+
+export const GA_MEASUREMENT_ID = 'G-1D1001XP4D';
