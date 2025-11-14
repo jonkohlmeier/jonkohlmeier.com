@@ -1,0 +1,80 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const title = 'Privacy & Cookie Notice';
+const description = 'How analytics, cookies, and personal data are handled on Puffs of Smoke.';
+const lastUpdated = 'November 14, 2025';
+---
+
+<SiteLayout title={title} description={description}>
+  <section class="py-12">
+    <div class="container-page mx-auto max-w-3xl space-y-10">
+      <header class="space-y-3 text-center">
+        <p class="text-sm font-semibold tracking-[0.15em] text-[var(--color-text-muted)]">Transparency first</p>
+        <h1 class="text-4xl font-semibold lg:text-5xl">{title}</h1>
+        <p class="text-lg text-[var(--color-text-subtle)]">
+          This page explains what limited information I collect when you visit, how cookies are used, and the choices you
+          have while browsing jonkohlmeier.com.
+        </p>
+        <p class="text-sm text-[var(--color-text-muted)]">Last updated: {lastUpdated}</p>
+      </header>
+
+      <article class="space-y-8 rounded-[2.5rem] border border-[var(--color-border-strong)] bg-[var(--color-surface)]/95 p-8 shadow-[var(--shadow-soft)]">
+        <section class="space-y-3">
+          <h2 class="text-2xl font-semibold">What data is collected?</h2>
+          <p>
+            I use Google Analytics 4 (GA4) to understand aggregate traffic patterns—page views, referral sources, and
+            approximate geography. GA4 masks IP addresses and does not reveal individual identities. Outside of GA4, the
+            site only stores the preferences you explicitly choose (such as theme or consent choices) in your browser.
+          </p>
+          <p>
+            If you contact me through the site or subscribe to updates, any details you submit are used solely to reply
+            to you. They are not shared or sold.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-2xl font-semibold">Cookies & local storage</h2>
+          <p>
+            GA4 requires cookies to differentiate anonymous visits. Those cookies only load after you tap “Allow
+            analytics” on the consent banner. You can decline at any time, and analytics code will stay disabled until
+            you opt back in.
+          </p>
+          <p>
+            The site also uses local storage keys for the appearance toggle (<code>theme</code>) and your consent choice
+            (<code>analytics-consent</code>). These stay on your device and can be cleared by removing site data in your
+            browser settings.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-2xl font-semibold">Your choices</h2>
+          <ul class="list-disc space-y-2 pl-6">
+            <li>
+              Use the consent banner (or clear the <code>analytics-consent</code> entry) to change whether analytics run.
+            </li>
+            <li>
+              Disable or remove cookies via your browser’s privacy controls—they take precedence over anything on this
+              site.
+            </li>
+            <li>
+              Reach out if you would like your prior correspondence removed or updated. You can always contact me at{' '}
+              <a class="underline decoration-[var(--color-accent)] decoration-2 underline-offset-4" href="mailto:hello@jonkohlmeier.com">
+                hello@jonkohlmeier.com
+              </a>{' '}
+              or through the <a class="underline decoration-[var(--color-accent)] decoration-2 underline-offset-4" href="/contact/">contact page</a>.
+            </li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-2xl font-semibold">Questions?</h2>
+          <p>
+            Privacy is an ongoing practice. If you spot something unclear or want to request additional details, please
+            send a note. I’ll respond personally and update this page whenever policies change.
+          </p>
+        </section>
+      </article>
+    </div>
+  </section>
+</SiteLayout>

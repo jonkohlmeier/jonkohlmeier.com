@@ -1,0 +1,154 @@
+---
+import { GA_MEASUREMENT_ID } from '../consts';
+
+const measurementId = GA_MEASUREMENT_ID?.trim();
+const consentScript = measurementId
+  ? `(() => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const storageKey = 'analytics-consent';
+  const gaDisableKey = 'ga-disable-${measurementId}';
+  const banner = document.querySelector('[data-analytics-banner]');
+  if (!banner) {
+    return;
+  }
+
+  const getStored = () => {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch {
+      return null;
+    }
+  };
+
+  const setStored = (value) => {
+    try {
+      localStorage.setItem(storageKey, value);
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const hideBanner = () => {
+    banner.setAttribute('hidden', 'true');
+  };
+
+  const showBanner = () => {
+    banner.removeAttribute('hidden');
+  };
+
+  const ensureGtag = () => {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag =
+      window.gtag ||
+      function gtag() {
+        window.dataLayer.push(arguments);
+      };
+  };
+
+  const enableAnalytics = () => {
+    if (window.__analyticsLoaded) {
+      return;
+    }
+    window.__analyticsLoaded = true;
+    window[gaDisableKey] = false;
+    ensureGtag();
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=${measurementId}';
+    document.head.appendChild(script);
+    window.gtag('js', new Date());
+    window.gtag('config', '${measurementId}', { anonymize_ip: true });
+  };
+
+  const disableAnalytics = () => {
+    window[gaDisableKey] = true;
+  };
+
+  const acceptButton = banner.querySelector('[data-analytics-accept]');
+  const declineButton = banner.querySelector('[data-analytics-decline]');
+  const manageButtons = document.querySelectorAll('[data-analytics-manage]');
+
+  const stored = getStored();
+  if (stored === 'granted') {
+    hideBanner();
+    enableAnalytics();
+  } else if (stored === 'denied') {
+    disableAnalytics();
+    hideBanner();
+  } else {
+    disableAnalytics();
+    showBanner();
+  }
+
+  acceptButton?.addEventListener('click', () => {
+    setStored('granted');
+    hideBanner();
+    enableAnalytics();
+  });
+
+  declineButton?.addEventListener('click', () => {
+    setStored('denied');
+    disableAnalytics();
+    hideBanner();
+  });
+
+  manageButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      disableAnalytics();
+      showBanner();
+      banner.focus?.();
+    });
+  });
+})();`
+  : null;
+---
+
+{measurementId && (
+  <>
+    <div
+      class="pointer-events-none fixed bottom-0 left-0 right-0 z-40 px-4 pb-4"
+      data-analytics-banner
+      hidden
+      aria-live="polite"
+      tabindex="-1"
+      role="dialog"
+      aria-label="Analytics consent"
+    >
+      <div class="container-page pointer-events-auto">
+        <div class="rounded-[1.8rem] border border-[var(--color-border-strong)] bg-[var(--color-surface)]/95 p-5 shadow-[var(--shadow-soft)] backdrop-blur supports-[backdrop-filter]:backdrop-blur-[18px] md:flex md:items-center md:justify-between md:gap-6">
+          <div class="space-y-2 text-sm">
+            <p class="font-semibold text-[var(--color-text)]">Cookies & privacy</p>
+            <p class="text-[var(--color-text-subtle)]">
+              I use Google Analytics 4 to understand aggregate traffic and improve the site. Analytics cookies only load
+              after you opt in. Read the full{' '}
+              <a class="underline decoration-[var(--color-accent)] decoration-2 underline-offset-4" href="/privacy/">
+                Privacy & cookie notice
+              </a>
+              .
+            </p>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-3 md:mt-0 md:shrink-0">
+            <button
+              class="consent-banner__button consent-banner__button--primary"
+              type="button"
+              data-analytics-accept
+            >
+              Allow analytics
+            </button>
+            <button
+              class="consent-banner__button consent-banner__button--secondary"
+              type="button"
+              data-analytics-decline
+            >
+              Decline
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {consentScript && <script is:inline set:html={consentScript} />}
+  </>
+)}
