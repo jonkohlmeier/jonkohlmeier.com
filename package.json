@@ -13,20 +13,20 @@
     "test:e2e": "npm run build && playwright test"
   },
   "engines": {
-    "node": ">=18.17.0"
+    "node": ">=22.12.0"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.9",
-    "@astrojs/rss": "^4.0.13",
-    "@astrojs/sitemap": "^3.6.0",
-    "@tailwindcss/vite": "^4.1.16",
-    "astro": "^5.15.3",
-    "lucide-astro": "^0.553.0",
-    "openai": "^6.8.1",
-    "sharp": "^0.34.3",
-    "tailwindcss": "^4.1.16"
+    "@astrojs/mdx": "^6.0.2",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
+    "@lucide/astro": "^1.17.0",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.4.4",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.56.1"
+    "@playwright/test": "^1.60.0",
+    "vite": "^7.3.5"
   }
 }

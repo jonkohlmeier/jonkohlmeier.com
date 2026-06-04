@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { buildTaxonomy } from '../../utils/taxonomy';
+import { getCategoryDescription } from '../../data/categories';
+
+const posts = (await getCollection('blog')).filter((post) => !post.data.draft);
+const categories = buildTaxonomy(posts, 'categories');
+const hasCategories = categories.length > 0;
+---
+
+<SiteLayout
+  title="Categories · Puffs of Smoke"
+  description="Browse writing categories and pillar topics from Puffs of Smoke."
+>
+  <section class="section-gap">
+    <div class="container-page space-y-10">
+      <SectionHeader
+        eyebrow="Categories"
+        title="Pillar pages"
+        description="Each pillar collects related essays and field notes from the archive."
+      />
+
+      {hasCategories ? (
+        <div class="grid gap-6 md:grid-cols-2">
+          {categories.map((category) => (
+            <a
+              class="card flex h-full flex-col justify-between gap-6 p-6 transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:-translate-y-0.5 focus-visible:shadow-lg"
+              href={`/categories/${category.slug}/`}
+            >
+              <div class="space-y-3">
+                <p class="text-xs uppercase tracking-[0.3em] text-muted">Category</p>
+                <h3 class="text-xl font-semibold text-[var(--color-text)]">{category.label}</h3>
+                <p class="text-sm text-subtle">{getCategoryDescription(category.slug, category.label)}</p>
+              </div>
+              <div class="flex items-center justify-between text-sm font-semibold">
+                <span class="text-muted">
+                  {category.count} {category.count === 1 ? 'post' : 'posts'}
+                </span>
+                <span class="text-[var(--color-accent)]">View pillar →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p class="text-subtle text-sm">No categories available yet.</p>
+      )}
+    </div>
+  </section>
+</SiteLayout>

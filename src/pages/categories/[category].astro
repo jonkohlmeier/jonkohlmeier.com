@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import ContentGrid from '../../components/ContentGrid.astro';
+import PostPreviewCard from '../../components/PostPreviewCard.astro';
+import { buildTaxonomy, type TaxonomySummary } from '../../utils/taxonomy';
+import { getCategoryDescription } from '../../data/categories';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).filter((post) => !post.data.draft);
+  const categories = buildTaxonomy(posts, 'categories');
+
+  return categories.map((category) => ({
+    params: { category: category.slug },
+    props: category,
+  }));
+}
+
+type Props = TaxonomySummary;
+
+const category = Astro.props as Props;
+const description = getCategoryDescription(category.slug, category.label);
+const posts = [...category.posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const postCountLabel = `${category.count} ${category.count === 1 ? 'post' : 'posts'}`;
+---
+
+<SiteLayout title={`${category.label} · Puffs of Smoke`} description={description}>
+  <section class="section-gap">
+    <div class="container-page space-y-10">
+      <div class="space-y-4">
+        <SectionHeader eyebrow="Category" title={category.label} description={description} />
+        <div class="flex flex-wrap items-center justify-between gap-4 text-sm">
+          <p class="font-semibold text-muted">{postCountLabel}</p>
+          <a class="text-[var(--color-accent)] hover:text-[var(--color-accent-strong)]" href="/categories/">
+            ← Back to pillar pages
+          </a>
+        </div>
+      </div>
+
+      <ContentGrid>
+        {posts.map((post) => (
+          <PostPreviewCard post={post} />
+        ))}
+      </ContentGrid>
+    </div>
+  </section>
+</SiteLayout>

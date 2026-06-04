@@ -31,8 +31,8 @@ Images for posts live in `src/assets/blog/`. Global styles and design tokens liv
 
 ## Deployment
 
-The site expects Node 18+ (see CI workflow in `.github/workflows/build-and-deploy.yml`). Static output in `dist/` can be deployed to any static host (Vercel, Netlify, GitHub Pages, etc.).
+The site expects Node 22.12+ locally and builds with Node 22 in `.github/workflows/deploy.yml`. Static output in `dist/` can be deployed to any static host (Vercel, Netlify, GitHub Pages, etc.).
 
 ## License
 
-Copyright © 2025 Jon Kohlmeier. All rights reserved.
+Copyright © 2026 Jon Kohlmeier. All rights reserved.
