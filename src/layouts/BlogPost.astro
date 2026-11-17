@@ -5,11 +5,11 @@ import FormattedDate from '../components/FormattedDate.astro';
 import { articlePath, getCategory, getFormatLabel } from '../data/editorial';
 import SiteLayout from './SiteLayout.astro';
 
-interface Props extends CollectionEntry<'blog'>['data'] {
+type Props = CollectionEntry<'blog'>['data'] & {
   slug: string;
   newerPost?: CollectionEntry<'blog'>;
   olderPost?: CollectionEntry<'blog'>;
-}
+};
 
 const {
   slug,

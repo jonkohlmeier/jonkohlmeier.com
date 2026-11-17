@@ -4,6 +4,8 @@ Jon Kohlmeier’s personal publication. Built with Astro, Markdown content colle
 
 ## Local development
 
+Requires Node.js 22.23.4 or newer.
+
 ```bash
 npm install
 npm run dev

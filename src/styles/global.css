@@ -1,21 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-regular.woff") format("woff");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-bold.woff") format("woff");
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
-
 :root {
   color-scheme: light;
   --color-bg: #f6f1e8;
@@ -32,7 +16,7 @@
   --color-border: rgba(38, 41, 35, 0.17);
   --color-border-strong: rgba(38, 41, 35, 0.34);
   --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-  --font-sans: "Atkinson", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
   --page-width: 74rem;
   --article-width: 44rem;
   --wide-width: 61rem;
