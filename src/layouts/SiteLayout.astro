@@ -8,18 +8,28 @@ import ConsentBanner from '../components/ConsentBanner.astro';
 interface Props {
   title: string;
   description: string;
-  image?: ImageMetadata;
+  image?: ImageMetadata | string;
+  canonical?: string;
+  type?: 'website' | 'article';
+  pubDate?: Date;
   showHeader?: boolean;
   className?: string;
 }
 
-const { title, description, image, showHeader = true, className } = Astro.props;
+const { title, description, image, canonical, type, pubDate, showHeader = true, className } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} image={image} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      canonical={canonical}
+      type={type}
+      pubDate={pubDate}
+    />
     <script is:inline>
       (() => {
         if (typeof window === 'undefined') {
@@ -127,14 +137,11 @@ const { title, description, image, showHeader = true, className } = Astro.props;
     </script>
   </head>
   <body>
-    <a
-      href="#page-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-[var(--color-accent)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[var(--color-accent-contrast)]"
-    >
+    <a href="#page-content" class="skip-link">
       Skip to content
     </a>
     {showHeader && <Header />}
-    <main id="page-content" class={`min-h-screen ${className ?? ''}`}>
+    <main id="page-content" class={className}>
       <slot />
     </main>
     <Footer />

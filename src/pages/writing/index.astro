@@ -1,32 +1,84 @@
 ---
 import { getCollection } from 'astro:content';
 import SiteLayout from '../../layouts/SiteLayout.astro';
-import SectionHeader from '../../components/SectionHeader.astro';
-import ContentGrid from '../../components/ContentGrid.astro';
 import PostPreviewCard from '../../components/PostPreviewCard.astro';
+import { CATEGORIES, sortPosts } from '../../data/editorial';
 
-const posts = (await getCollection('blog'))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = sortPosts((await getCollection('blog')).filter((post) => !post.data.draft));
 ---
 
 <SiteLayout
   title="Writing · Puffs of Smoke"
-  description="Thoughts, field notes, and dispatches on RevOps, leadership, and the craft of building teams."
+  description="Essays, notes, and roundups by Jon Kohlmeier on work, technology, faith, family, and the finer things."
 >
-  <section class="section-gap">
-    <div class="container-page space-y-10">
-      <SectionHeader
-        eyebrow="Puffs from the Study"
-        title="Pull up a chair"
-        description="Long-form reflections on work, faith, and the craft of making things better. These pieces usually begin in conversation, stretch out over coffee, and settle in only when they’re worth sharing."
-        align="center"
-      />
-      <ContentGrid>
-        {posts.map((post) => (
-          <PostPreviewCard post={post} />
+  <header class="page-header container-page">
+    <p class="eyebrow">The archive</p>
+    <h1>Writing</h1>
+    <p class="page-header__lede">
+      Essays, notes, and occasional roundups about work and ideas, life and reflection, and the finer things along the
+      way. Everything lives together here, newest first.
+    </p>
+  </header>
+
+  <section class="archive container-page" aria-labelledby="archive-heading">
+    <div class="filter-bar" aria-label="Filter writing by category">
+      <h2 class="sr-only" id="archive-heading">Browse writing by category</h2>
+      <div class="filter-bar__buttons" data-filters>
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        {CATEGORIES.map((category) => (
+          <button type="button" data-filter={category.slug} aria-pressed="false">{category.label}</button>
         ))}
-      </ContentGrid>
+      </div>
     </div>
+
+    <p class="filter-status sr-only" aria-live="polite" data-filter-status></p>
+    <div class="article-list" data-archive-list>
+      {posts.map((post) => <PostPreviewCard post={post} />)}
+    </div>
+    <p class="archive-empty" data-archive-empty hidden>No writing is available in this category yet.</p>
   </section>
 </SiteLayout>
+
+<script is:inline>
+  const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
+  const archiveArticles = Array.from(document.querySelectorAll('[data-article]'));
+  const status = document.querySelector('[data-filter-status]');
+  const emptyState = document.querySelector('[data-archive-empty]');
+
+  const applyFilter = (filter, updateUrl = true) => {
+    let visibleCount = 0;
+
+    archiveArticles.forEach((article) => {
+      if (!(article instanceof HTMLElement)) return;
+      const visible = filter === 'all' || article.dataset.category === filter;
+      article.hidden = !visible;
+      if (visible) visibleCount += 1;
+    });
+
+    filterButtons.forEach((button) => {
+      if (button instanceof HTMLButtonElement) {
+        button.setAttribute('aria-pressed', String(button.dataset.filter === filter));
+      }
+    });
+
+    if (status) status.textContent = `${visibleCount} ${visibleCount === 1 ? 'piece' : 'pieces'} shown.`;
+    if (emptyState instanceof HTMLElement) emptyState.hidden = visibleCount !== 0;
+
+    if (updateUrl) {
+      const url = new URL(window.location.href);
+      if (filter === 'all') url.searchParams.delete('category');
+      else url.searchParams.set('category', filter);
+      history.replaceState({}, '', url);
+    }
+  };
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (button instanceof HTMLButtonElement) applyFilter(button.dataset.filter ?? 'all');
+    });
+  });
+
+  const requestedFilter = new URL(window.location.href).searchParams.get('category') ?? 'all';
+  const validFilter = filterButtons.some((button) => button instanceof HTMLButtonElement && button.dataset.filter === requestedFilter);
+  applyFilter(validFilter ? requestedFilter : 'all', false);
+</script>

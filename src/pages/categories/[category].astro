@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PostPreviewCard from '../../components/PostPreviewCard.astro';
+import { CATEGORIES, getCategory, sortPosts, type CategorySlug } from '../../data/editorial';
+
+export async function getStaticPaths() {
+  const legacyAliases: Record<string, CategorySlug> = {
+    life: 'life-and-reflection',
+    productivity: 'life-and-reflection',
+    'web-design': 'work-and-ideas',
+    'finer-things-in-life': 'the-finer-things',
+  };
+
+  return [
+    ...CATEGORIES.map((category) => ({ params: { category: category.slug }, props: { category: category.slug } })),
+    ...Object.entries(legacyAliases).map(([alias, category]) => ({ params: { category: alias }, props: { category } })),
+  ];
+}
+
+const category = getCategory(Astro.props.category as CategorySlug);
+const posts = sortPosts(
+  (await getCollection('blog')).filter((post) => !post.data.draft && post.data.category === category.slug),
+);
+---
+
+<SiteLayout
+  title={`${category.label} · Puffs of Smoke`}
+  description={category.description}
+  canonical={`/categories/${category.slug}/`}
+>
+  <header class="page-header container-page">
+    <p class="eyebrow">Category</p>
+    <h1>{category.label}</h1>
+    <p class="page-header__lede">{category.description}</p>
+    <a class="text-link" href="/writing/">View the full archive <span aria-hidden="true">→</span></a>
+  </header>
+  <section class="archive container-page">
+    <div class="article-list">
+      {posts.map((post) => <PostPreviewCard post={post} />)}
+    </div>
+  </section>
+</SiteLayout>

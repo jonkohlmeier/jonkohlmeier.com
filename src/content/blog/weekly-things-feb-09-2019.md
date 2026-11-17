@@ -7,10 +7,10 @@ tags:
   - reading
   - listening
   - consuming
-categories:
-  - finer-things-in-life
-heroImage: '../../assets/blog/weekly-things.jpg'
-heroAlt: 'Coffee cup next to a notebook and headphones'
+category: the-finer-things
+format: roundup
+heroImage: "../../assets/blog/weekly-things.jpg"
+heroAlt: "Coffee cup next to a notebook and headphones"
 ---
 
 Tim Ferriss puts out a weekly email called [5-Bullet Friday](https://go.tim.blog/5-bullet-friday/) where he discusses the five things he's “been loving, using, and reading.”

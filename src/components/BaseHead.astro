@@ -6,16 +6,18 @@ import { AUTHOR, SITE_DESCRIPTION, SITE_TITLE, SITE_URL, SOCIAL } from '../const
 interface Props {
   title: string;
   description?: string;
-  image?: ImageMetadata;
+  image?: ImageMetadata | string;
+  canonical?: string;
+  type?: 'website' | 'article';
+  pubDate?: Date;
 }
 
 const site = Astro.site ?? new URL(SITE_URL);
-const canonicalURL = new URL(Astro.url.pathname, site);
-
-const { title, description = SITE_DESCRIPTION, image } = Astro.props;
+const { title, description = SITE_DESCRIPTION, image, canonical, type = 'website', pubDate } = Astro.props;
+const canonicalURL = canonical ? new URL(canonical, site) : new URL(Astro.url.pathname, site);
 const ogImageUrl = image
-  ? new URL(image.src, site)
-  : new URL('/favicon.svg', site);
+  ? new URL(typeof image === 'string' ? image : image.src, site)
+  : new URL('/og.png', site);
 const twitterHandle = SOCIAL.twitter.startsWith('@') ? SOCIAL.twitter : `@${SOCIAL.twitter}`;
 const googleFontsHref =
   'https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap';
@@ -29,7 +31,6 @@ const googleFontsHref =
 <meta name="generator" content={Astro.generator} />
 <meta name="author" content={AUTHOR.name} />
 <meta name="description" content={description} />
-<meta name="keywords" content="revops, leadership, web performance, jonathan kohlmeier" />
 
 <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
@@ -44,7 +45,7 @@ const googleFontsHref =
 
 <title>{title}</title>
 <meta property="og:site_name" content={SITE_TITLE} />
-<meta property="og:type" content="website" />
+<meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -56,3 +57,4 @@ const googleFontsHref =
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImageUrl} />
+{type === 'article' && pubDate && <meta property="article:published_time" content={pubDate.toISOString()} />}

@@ -1,21 +1,12 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import SectionHeader from '../components/SectionHeader.astro';
 ---
 
-<SiteLayout title="Thank you" description="Thanks for reaching out to Jon Kohlmeier.">
-  <section class="section-gap">
-    <div class="container-page mx-auto max-w-2xl space-y-6 text-center">
-      <SectionHeader
-        eyebrow="Message received"
-        title="Thanks for reaching out!"
-        description="I appreciate the note and typically respond within two business days. In the meantime, explore recent thoughts or learn more about my work."
-        align="center"
-      />
-      <div class="flex flex-wrap justify-center gap-3">
-        <a class="btn btn-primary" href="/writing/">Read the latest thoughts</a>
-        <a class="btn btn-secondary" href="/about/">Visit the studio</a>
-      </div>
-    </div>
-  </section>
+<SiteLayout title="Thank you · Puffs of Smoke" description="Thanks for getting in touch with Jon Kohlmeier.">
+  <header class="page-header container-page">
+    <p class="eyebrow">Thank you</p>
+    <h1>Glad you reached out.</h1>
+    <p class="page-header__lede">I appreciate the note. In the meantime, there is always another idea waiting in the archive.</p>
+    <p style="margin-top: 2rem;"><a class="button-link" href="/writing/">Read the latest writing</a></p>
+  </header>
 </SiteLayout>

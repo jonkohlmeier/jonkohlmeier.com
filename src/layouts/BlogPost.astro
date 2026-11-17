@@ -2,46 +2,95 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
+import { articlePath, getCategory, getFormatLabel } from '../data/editorial';
 import SiteLayout from './SiteLayout.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+interface Props extends CollectionEntry<'blog'>['data'] {
+  slug: string;
+  newerPost?: CollectionEntry<'blog'>;
+  olderPost?: CollectionEntry<'blog'>;
+}
 
-const { title, description, pubDate, updatedDate, heroImage, heroAlt } = Astro.props;
+const {
+  slug,
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  heroAlt,
+  category: categorySlug,
+  format,
+  canonical,
+  tags,
+  newerPost,
+  olderPost,
+} = Astro.props;
+const category = getCategory(categorySlug);
 ---
 
-<SiteLayout title={`${title} · Puffs of Smoke`} description={description} image={heroImage}>
-  <main class="article-layout mx-auto max-w-5xl px-5 py-20 lg:py-24 xl:px-0">
-    <article class="article-panel relative overflow-hidden rounded-[2.5rem] border border-[var(--color-border-strong)] bg-[var(--color-surface)]/94 px-6 py-12 shadow-[var(--shadow-soft)] lg:px-14">
-      <div class="article-panel__glow" aria-hidden="true"></div>
-      <header class="article-header space-y-6">
-        <p class="article-eyebrow badge">Thought</p>
-        <h1 class="article-title">{title}</h1>
-        <div class="article-meta">
-          <FormattedDate date={pubDate} />
-          {updatedDate && (
-            <span class="inline-flex items-center gap-2">
-              <span class="article-meta__divider" aria-hidden="true"></span>
-              Updated <FormattedDate date={updatedDate} />
-            </span>
-          )}
-        </div>
-      </header>
+<SiteLayout
+  title={`${title} · Puffs of Smoke`}
+  description={description}
+  image={heroImage}
+  canonical={canonical ?? `/blog/${slug}/`}
+  type="article"
+  pubDate={pubDate}
+>
+  <article class="article-page">
+    <header class="article-header container-article">
+      <a class="article-back" href="/writing/">← Back to writing</a>
+      <div class="article-meta">
+        <a href={`/writing/?category=${category.slug}`}>{category.label}</a>
+        <span aria-hidden="true">·</span>
+        <span>{getFormatLabel(format)}</span>
+      </div>
+      <h1>{title}</h1>
+      <p class="article-description">{description}</p>
+      <div class="article-date">
+        <span>Published <FormattedDate date={pubDate} /></span>
+        {updatedDate && <span>Updated <FormattedDate date={updatedDate} /></span>}
+      </div>
+    </header>
 
-      {heroImage && (
-        <div class="article-hero-image">
-          <Image
-            src={heroImage}
-            alt={heroAlt ?? ''}
-            widths={[640, 960, 1280]}
-            sizes="(min-width: 1024px) 960px, 100vw"
-            class="h-auto w-full"
-          />
+    {heroImage && (
+      <figure class="article-hero container-wide">
+        <Image
+          src={heroImage}
+          alt={heroAlt ?? ''}
+          widths={[720, 1080, 1440]}
+          sizes="(min-width: 960px) 960px, 100vw"
+        />
+        {heroAlt && <figcaption>{heroAlt}</figcaption>}
+      </figure>
+    )}
+
+    <div class="prose container-article">
+      <slot />
+    </div>
+
+    <footer class="article-footer container-article">
+      {tags?.length && (
+        <div class="article-tags" aria-label="Article tags">
+          <span>Filed under</span>
+          {tags.map((tag) => <span>{tag}</span>)}
         </div>
       )}
-
-      <div class="article-content prose max-w-none space-y-6">
-        <slot />
+      <div class="article-adjacent">
+        {olderPost ? (
+          <a href={articlePath(olderPost)}>
+            <span>Older</span>
+            <strong>{olderPost.data.title}</strong>
+          </a>
+        ) : <span></span>}
+        {newerPost && (
+          <a class="article-adjacent__newer" href={articlePath(newerPost)}>
+            <span>Newer</span>
+            <strong>{newerPost.data.title}</strong>
+          </a>
+        )}
       </div>
-    </article>
-  </main>
+      <a class="button-link" href="/writing/">Return to the full archive</a>
+    </footer>
+  </article>
 </SiteLayout>

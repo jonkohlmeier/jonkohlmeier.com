@@ -7,8 +7,9 @@ tags:
   - craftsmanship
   - leadership
   - reflection
-categories:
-  - work
+category: work-and-ideas
+format: essay
+featured: true
 heroImage: '../../assets/blog/revenue-operations-tools-of-clarity.png'
 heroAlt: 'A warm study bathed in golden sunlight with a MacBook open on a wooden desk beside a briar pipe, a coffee mug, and a closed book. Dust particles glow softly in the light streaming through a nearby window, creating a calm and reflective atmosphere.'
 ---

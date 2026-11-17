@@ -7,10 +7,10 @@ tags:
   - morning-routine
   - productivity
   - routine
-categories:
-  - productivity
-heroImage: '../../assets/blog/morning-routine.jpg'
-heroAlt: 'Fresh coffee beside a notebook at sunrise'
+category: life-and-reflection
+format: essay
+heroImage: "../../assets/blog/morning-routine.jpg"
+heroAlt: "Fresh coffee beside a notebook at sunrise"
 ---
 
 _This post contains Amazon.com affiliate links. If you click one of the product links I may receive a commission on purchases made through Amazon._

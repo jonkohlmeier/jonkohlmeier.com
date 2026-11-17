@@ -9,13 +9,14 @@ const blog = defineCollection({
 		z.object({
 			title: z.string(),
 			description: z.string(),
-			// Transform string to Date object
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: image().optional(),
 			heroAlt: z.string().optional(),
 			tags: z.array(z.string()).optional(),
-			categories: z.array(z.string()).optional(),
+			category: z.enum(['work-and-ideas', 'life-and-reflection', 'the-finer-things']),
+			format: z.enum(['essay', 'note', 'roundup']).default('essay'),
+			featured: z.boolean().optional(),
 			draft: z.boolean().optional(),
 			canonical: z.string().url().optional(),
 		}),

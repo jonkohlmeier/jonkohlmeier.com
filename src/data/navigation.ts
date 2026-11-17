@@ -9,6 +9,6 @@ export const NAV_LINKS: NavLink[] = [
   { href: '/', label: 'Home' },
   { href: '/writing/', label: 'Writing', aliases: ['/blog/'] },
   { href: '/about/', label: 'About' },
-  { href: 'https://twistoflemonpod.com', label: 'Podcast ↗', external: true },
+  { href: '/now/', label: 'Now' },
   { href: '/contact/', label: 'Contact' },
 ];

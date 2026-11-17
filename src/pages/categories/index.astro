@@ -1,0 +1,24 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { CATEGORIES } from '../../data/editorial';
+---
+
+<SiteLayout
+  title="Writing Categories · Puffs of Smoke"
+  description="Browse Puffs of Smoke by editorial category."
+>
+  <header class="page-header container-page">
+    <p class="eyebrow">Writing categories</p>
+    <h1>Three broad shelves.</h1>
+    <p class="page-header__lede">A simple way into the archive without putting every idea in too small a box.</p>
+  </header>
+  <div class="category-index container-page">
+    {CATEGORIES.map((category, index) => (
+      <a href={`/categories/${category.slug}/`}>
+        <span>{String(index + 1).padStart(2, '0')}</span>
+        <h2>{category.label}</h2>
+        <p>{category.description}</p>
+      </a>
+    ))}
+  </div>
+</SiteLayout>

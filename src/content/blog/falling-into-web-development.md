@@ -6,10 +6,10 @@ tags:
   - career
   - web-development
   - life
-categories:
-  - work
-heroImage: '../../assets/blog/screen-shot-2019-12-08-at-8.23.27-pm.png'
-heroAlt: 'Screenshot of an early church website built in Dreamweaver'
+category: work-and-ideas
+format: essay
+heroImage: "../../assets/blog/screen-shot-2019-12-08-at-8.23.27-pm.png"
+heroAlt: "Screenshot of an early church website built in Dreamweaver"
 ---
 
 Apparently, 11 years ago today I was finishing up building a website using Dreamweaver—complete with image maps and using tables for layout. This wasn’t the first website that I ever built, but it was the first one that would be the internet home for an organization (in this case, my church).

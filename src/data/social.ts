@@ -20,7 +20,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'podcast',
     label: 'Life with a Twist of Lemon',
-    url: SOCIAL.podcast,
+    url: 'https://twistoflemonpod.com',
   },
   {
     name: 'rss',

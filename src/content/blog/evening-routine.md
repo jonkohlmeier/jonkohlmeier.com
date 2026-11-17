@@ -7,10 +7,10 @@ tags:
   - productivity
   - routine
   - life
-categories:
-  - productivity
-heroImage: '../../assets/blog/evening-routine.jpg'
-heroAlt: 'Notebook, glasses, and a cup of tea on a desk'
+category: life-and-reflection
+format: essay
+heroImage: "../../assets/blog/evening-routine.jpg"
+heroAlt: "Notebook, glasses, and a cup of tea on a desk"
 ---
 
 [In my last post, we journeyed through my morning routine.](https://jonkohlmeier.com/life/morning-routine/) The morning routine gives me a solid start to the day by helping me stay alert, grounded, and ready to conquer anything the day can throw at me. My evening routine is also rigid in terms of schedule—the difference is that it contains much more margin.

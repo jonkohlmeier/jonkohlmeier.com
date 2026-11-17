@@ -1,43 +1,29 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
+import { articlePath, getCategory } from '../data/editorial';
 
 interface Props {
   post: CollectionEntry<'blog'>;
 }
 
 const { post } = Astro.props;
+const category = getCategory(post.data.category);
 ---
 
-<article class="post-card card" data-testid="post-card">
-  <div class="post-card__meta">
-    {post.data.categories?.[0] && (
-      <span class="post-card__category">{post.data.categories[0]}</span>
-    )}
-    <span class="post-card__date">
+<article
+  class="article-row"
+  data-testid="post-card"
+  data-article
+  data-category={category.slug}
+>
+  <div class="article-row__content">
+    <div class="article-meta">
       <FormattedDate date={post.data.pubDate} />
-    </span>
-  </div>
-  <div class="post-card__body">
-    <h3 class="post-card__title">
-      <a class="post-card__title-link" href={`/blog/${post.id}/`}>
-        {post.data.title}
-      </a>
-    </h3>
-    <p class="post-card__description">{post.data.description}</p>
-  </div>
-  {post.data.tags && (
-    <div class="post-card__tags">
-      <p class="post-card__tags-label">Tags</p>
-      <div class="post-card__tags-list">
-        {post.data.tags.map((tag) => (
-          <span class="post-card__tag">{tag}</span>
-        ))}
-      </div>
+      <span aria-hidden="true">·</span>
+      <span>{category.label}</span>
     </div>
-  )}
-  <a class="post-card__cta" href={`/blog/${post.id}/`}>
-    Read thought
-    <span aria-hidden="true">→</span>
-  </a>
+    <h3><a href={articlePath(post)}>{post.data.title}</a></h3>
+    <p>{post.data.description}</p>
+  </div>
 </article>

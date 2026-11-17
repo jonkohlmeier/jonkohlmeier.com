@@ -4,13 +4,13 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: [['html', { open: 'never' }], ['list']],
   use: {
     baseURL: 'http://127.0.0.1:4173',
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'npm run preview -- --host 127.0.0.1 --port 4173',
+    command: 'npm run preview -- --host 0.0.0.0 --port 4173',
     port: 4173,
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
