@@ -549,6 +549,18 @@ p {
   gap: 0.45rem;
 }
 
+.article-meta__archive {
+  color: var(--color-accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.featured-story .article-meta__archive {
+  color: inherit;
+}
+
 .article-row h3 {
   margin: 0.55rem 0 0.35rem;
   font-size: clamp(1.5rem, 3vw, 2.25rem);
@@ -823,19 +835,6 @@ p {
   margin-top: 4rem;
   padding-top: 2rem;
   border-top: 1px solid var(--color-border-strong);
-}
-
-.article-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  color: var(--color-text-muted);
-  font-size: 0.72rem;
-}
-
-.article-tags span:not(:first-child) {
-  padding: 0.2rem 0.5rem;
-  border: 1px solid var(--color-border);
 }
 
 .article-adjacent {

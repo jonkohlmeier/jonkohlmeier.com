@@ -9,6 +9,7 @@ tags:
   - routine
 category: life-and-reflection
 format: essay
+archive: true
 heroImage: "../../assets/blog/morning-routine.jpg"
 heroAlt: "Fresh coffee beside a notebook at sunrise"
 ---

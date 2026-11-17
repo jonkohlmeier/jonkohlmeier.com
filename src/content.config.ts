@@ -16,6 +16,7 @@ const blog = defineCollection({
 			tags: z.array(z.string()).optional(),
 			category: z.enum(['work-and-ideas', 'life-and-reflection', 'the-finer-things']),
 			format: z.enum(['essay', 'note', 'roundup']).default('essay'),
+			archive: z.boolean().optional(),
 			featured: z.boolean().optional(),
 			draft: z.boolean().optional(),
 			canonical: z.string().url().optional(),

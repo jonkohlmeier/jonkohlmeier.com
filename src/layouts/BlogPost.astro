@@ -21,8 +21,8 @@ const {
   heroAlt,
   category: categorySlug,
   format,
+  archive,
   canonical,
-  tags,
   newerPost,
   olderPost,
 } = Astro.props;
@@ -44,6 +44,12 @@ const category = getCategory(categorySlug);
         <a href={`/writing/?category=${category.slug}`}>{category.label}</a>
         <span aria-hidden="true">·</span>
         <span>{getFormatLabel(format)}</span>
+        {archive && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span class="article-meta__archive">From the Archive</span>
+          </>
+        )}
       </div>
       <h1>{title}</h1>
       <p class="article-description">{description}</p>
@@ -70,12 +76,6 @@ const category = getCategory(categorySlug);
     </div>
 
     <footer class="article-footer container-article">
-      {tags?.length && (
-        <div class="article-tags" aria-label="Article tags">
-          <span>Filed under</span>
-          {tags.map((tag) => <span>{tag}</span>)}
-        </div>
-      )}
       <div class="article-adjacent">
         {olderPost ? (
           <a href={articlePath(olderPost)}>

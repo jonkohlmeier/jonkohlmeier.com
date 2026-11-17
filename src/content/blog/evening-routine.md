@@ -9,6 +9,7 @@ tags:
   - life
 category: life-and-reflection
 format: essay
+archive: true
 heroImage: "../../assets/blog/evening-routine.jpg"
 heroAlt: "Notebook, glasses, and a cup of tea on a desk"
 ---

@@ -17,7 +17,7 @@ const { quote, author, role } = Astro.props;
       </blockquote>
       {(author || role) && (
         <p class="relative mt-4 text-sm text-subtle">
-          — {author}
+          {author}
           {role && <span class="text-muted"> · {role}</span>}
         </p>
       )}

@@ -9,6 +9,44 @@ test.describe('Site functionality', () => {
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
+  test('editorial pages use the refreshed copy and shared chrome', async ({ page }) => {
+    const pages = [
+      ['/', /Ideas worth\s*sitting with\./],
+      ['/about/', /A little about me\./],
+      ['/now/', /What I’m up to now/],
+      ['/writing/', /^Writing$/],
+      ['/contact/', /Have something to say\?/],
+    ] as const;
+
+    for (const [path, heading] of pages) {
+      await page.goto(path);
+      await expect(page.getByRole('heading', { level: 1 })).toHaveText(heading);
+      await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link'))
+        .toHaveText(['Home', 'Writing', 'About', 'Now', 'Contact']);
+      await expect(page.getByRole('contentinfo')).toContainText('Come for an idea. Stay for the perspective.');
+    }
+
+    await page.goto('/about/');
+    await expect(page.getByText(/Koine Greek and I weren’t getting along/)).toBeVisible();
+    await page.goto('/now/');
+    await expect(page.getByText('Updated November 2026.')).toBeVisible();
+  });
+
+  test('archive status remains separate from editorial categories', async ({ page }) => {
+    await page.goto('/writing/');
+
+    const filters = page.locator('[data-filter]');
+    await expect(filters).toHaveText(['All', 'Work & Ideas', 'Life & Reflection', 'The Finer Things']);
+    await expect(page.getByRole('button', { name: 'From the Archive' })).toHaveCount(0);
+    await expect(page.locator('.article-meta__archive')).toHaveCount(5);
+    await expect(page.getByText('finer-things-in-life')).toHaveCount(0);
+
+    await page.goto('/blog/core-values/');
+    await expect(page.locator('.article-meta__archive')).toHaveText('From the Archive');
+    await expect(page.locator('.article-tags')).toHaveCount(0);
+    await expect(page.getByText('March 28, 2018')).toBeVisible();
+  });
+
   test('mobile navigation opens and closes from the keyboard', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/');

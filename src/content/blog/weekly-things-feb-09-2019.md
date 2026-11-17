@@ -9,6 +9,7 @@ tags:
   - consuming
 category: the-finer-things
 format: roundup
+archive: true
 heroImage: "../../assets/blog/weekly-things.jpg"
 heroAlt: "Coffee cup next to a notebook and headphones"
 ---

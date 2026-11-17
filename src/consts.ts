@@ -3,7 +3,7 @@
 
 export const SITE_TITLE = 'Puffs of Smoke';
 export const SITE_DESCRIPTION =
-  'A personal publication by Jon Kohlmeier about work, technology, faith, family, and the finer things.';
+  'A personal publication by Jon Kohlmeier about work, technology, faith, family, books, good drinks, and whatever else seems interesting.';
 export const SITE_URL = 'https://jonkohlmeier.com';
 export const AUTHOR = {
   name: 'Jon Kohlmeier',

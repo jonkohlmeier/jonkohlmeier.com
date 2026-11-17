@@ -22,6 +22,12 @@ const category = getCategory(post.data.category);
       <FormattedDate date={post.data.pubDate} />
       <span aria-hidden="true">·</span>
       <span>{category.label}</span>
+      {post.data.archive && (
+        <>
+          <span aria-hidden="true">·</span>
+          <span class="article-meta__archive">From the Archive</span>
+        </>
+      )}
     </div>
     <h3><a href={articlePath(post)}>{post.data.title}</a></h3>
     <p>{post.data.description}</p>

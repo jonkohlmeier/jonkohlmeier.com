@@ -8,6 +8,7 @@ tags:
   - life
 category: work-and-ideas
 format: essay
+archive: true
 heroImage: "../../assets/blog/screen-shot-2019-12-08-at-8.23.27-pm.png"
 heroAlt: "Screenshot of an early church website built in Dreamweaver"
 ---
