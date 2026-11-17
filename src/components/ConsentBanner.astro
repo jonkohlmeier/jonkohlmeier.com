@@ -1,0 +1,97 @@
+---
+import { GA_MEASUREMENT_ID } from '../consts';
+
+const measurementId = GA_MEASUREMENT_ID.trim();
+const consentScript = `(() => {
+  const storageKey = 'analytics-consent';
+  const disableKey = 'ga-disable-${measurementId}';
+  const banner = document.querySelector('[data-analytics-banner]');
+  if (!banner) return;
+
+  const getChoice = () => {
+    try { return localStorage.getItem(storageKey); } catch { return null; }
+  };
+
+  const saveChoice = (value) => {
+    try { localStorage.setItem(storageKey, value); } catch {}
+  };
+
+  const hide = () => banner.setAttribute('hidden', '');
+  const show = () => banner.removeAttribute('hidden');
+
+  const disable = () => {
+    window[disableKey] = true;
+  };
+
+  const enable = () => {
+    if (window.__analyticsLoaded) return;
+    window.__analyticsLoaded = true;
+    window[disableKey] = false;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=${measurementId}';
+    document.head.appendChild(script);
+    window.gtag('js', new Date());
+    window.gtag('config', '${measurementId}', { anonymize_ip: true });
+  };
+
+  const choice = getChoice();
+  if (choice === 'granted') {
+    hide();
+    enable();
+  } else if (choice === 'denied') {
+    disable();
+    hide();
+  } else {
+    disable();
+    show();
+  }
+
+  banner.querySelector('[data-analytics-accept]')?.addEventListener('click', () => {
+    saveChoice('granted');
+    hide();
+    enable();
+  });
+
+  banner.querySelector('[data-analytics-decline]')?.addEventListener('click', () => {
+    saveChoice('denied');
+    disable();
+    hide();
+  });
+
+  document.querySelectorAll('[data-analytics-manage]').forEach((button) => {
+    button.addEventListener('click', () => {
+      disable();
+      show();
+      banner.focus();
+    });
+  });
+})();`;
+---
+
+<div
+  class="consent-banner"
+  data-analytics-banner
+  hidden
+  aria-live="polite"
+  tabindex="-1"
+  role="dialog"
+  aria-label="Analytics consent"
+>
+  <div class="consent-banner__inner container-page">
+    <div>
+      <p class="consent-banner__title">Cookies & privacy</p>
+      <p>
+        I use optional analytics to understand how the publication is read. Nothing loads until you allow it.
+        <a href="/privacy/">Read the privacy notice.</a>
+      </p>
+    </div>
+    <div class="consent-banner__actions">
+      <button type="button" data-analytics-accept>Allow analytics</button>
+      <button type="button" data-analytics-decline>Decline</button>
+    </div>
+  </div>
+</div>
+<script is:inline set:html={consentScript} />

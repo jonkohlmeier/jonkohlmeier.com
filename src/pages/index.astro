@@ -1,69 +1,103 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import SiteLayout from '../layouts/SiteLayout.astro';
-import HeroSection from '../components/HeroSection.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import ContentGrid from '../components/ContentGrid.astro';
 import PostPreviewCard from '../components/PostPreviewCard.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Portrait from '../assets/jon-reading.jpeg';
+import { articlePath, getCategory, getFormatLabel, sortPosts } from '../data/editorial';
 
-const posts = (await getCollection('blog'))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+const posts = sortPosts((await getCollection('blog')).filter((post) => !post.data.draft));
+const featured = posts.find((post) => post.data.featured) ?? posts[0];
+const recentPosts = posts.filter((post) => post.id !== featured?.id).slice(0, 5);
+const featuredCategory = featured ? getCategory(featured.data.category) : undefined;
 ---
 
 <SiteLayout
-  title="Puffs of Smoke"
-  description="Pipes, product, and leadership musings from technologist Jon Kohlmeier."
+  title="Puffs of Smoke · Ideas worth sitting with"
+  description="A personal publication by Jon Kohlmeier about work, technology, faith, family, and the finer things."
 >
-  <HeroSection
-    eyebrow="Welcome In"
-    title="Every good idea starts with a good conversation."
-  >
-    <div slot="extra" class="hero-copy text-lg text-subtle">
-      <p class="hero-copy__subheading text-sm uppercase tracking-[0.3em] text-muted">…and maybe a bit of smoke in the air</p>
+  <section class="home-intro container-page">
+    <div class="home-intro__heading">
+      <p class="eyebrow">Puffs of Smoke · No. 01</p>
+      <h1>Ideas worth<br />sitting with.</h1>
+    </div>
+    <div class="home-intro__copy">
+      <p class="home-intro__lede">I’m Jon Kohlmeier.</p>
       <p>
-        I’m Jon Kohlmeier. I build RevOps systems that help teams work with more clarity, connection,
-        and craft.
+        By day, I work at the intersection of people, technology, and business, trying to make complicated things work
+        a little better. Outside of work, I’m a husband, father, reader, occasional winemaker, and someone with more
+        interests than time to pursue them.
       </p>
       <p>
-        Puffs of Smoke is my study — a place for reflection and slow thinking, where curiosity lingers and
-        half-formed ideas find shape.
+        Puffs of Smoke is where I put some of those thoughts into words—about leadership, technology, faith, family,
+        good drinks, and whatever else I’ve been thinking about lately.
       </p>
-      <p>
-        Here, I write to make sense of work, technology, and the quiet, human moments that hold it all
-        together.
-      </p>
-      <div class="flex flex-wrap gap-3" data-hero-cta>
-        <a class="btn btn-primary" href="/writing/">Enter the Study</a>
-        <a class="btn btn-ghost" href="/about/">My Story</a>
+      <a class="text-link" href="/about/">A little more about me <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  {featured && featuredCategory && (
+    <section class="section container-page" aria-labelledby="featured-heading">
+      <div class="section-heading section-heading--rule">
+        <p class="eyebrow">Featured writing</p>
+        <a href="/writing/">Browse all writing <span aria-hidden="true">→</span></a>
       </div>
-    </div>
-  </HeroSection>
+      <article class="featured-story">
+        {featured.data.heroImage && (
+          <a class="featured-story__image" href={articlePath(featured)} tabindex="-1" aria-hidden="true">
+            <Image
+              src={featured.data.heroImage}
+              alt=""
+              widths={[640, 960, 1280]}
+              sizes="(min-width: 960px) 52vw, 100vw"
+              loading="eager"
+            />
+          </a>
+        )}
+        <div class="featured-story__content">
+          <div class="article-meta">
+            <span>{featuredCategory.label}</span>
+            <span aria-hidden="true">·</span>
+            <span>{getFormatLabel(featured.data.format)}</span>
+          </div>
+          <h2 id="featured-heading"><a href={articlePath(featured)}>{featured.data.title}</a></h2>
+          <p>{featured.data.description}</p>
+          <div class="featured-story__footer">
+            <FormattedDate date={featured.data.pubDate} />
+            <a class="text-link" href={articlePath(featured)}>Read the piece <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+    </section>
+  )}
 
-  <section class="hero-ribbon">
-    <div class="container-page hero-ribbon__inner">
-      <p class="hero-ribbon__eyebrow">Pull up a chair.</p>
-      <p class="hero-ribbon__body">
-        This is where I think out loud about work, faith, and the craft of making things better. Most of what I write
-        starts with a good conversation, a quiet evening in the study, or a bit of smoke curling toward the ceiling.
+  <section class="section section--tinted" aria-labelledby="recent-heading">
+    <div class="container-page">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">From the archive</p>
+          <h2 id="recent-heading">Recent writing</h2>
+        </div>
+        <p>Practical, personal, and occasionally just curious.</p>
+      </div>
+      <div class="article-list">
+        {recentPosts.map((post) => <PostPreviewCard post={post} />)}
+      </div>
+      <div class="section-action"><a class="button-link" href="/writing/">Explore the full archive</a></div>
+    </div>
+  </section>
+
+  <section class="author-note container-page">
+    <Image src={Portrait} alt="Jon Kohlmeier reading in his study" width={300} height={300} />
+    <div>
+      <p class="eyebrow">About the author</p>
+      <h2>A systems thinker with a long list of side interests.</h2>
+      <p>
+        Jon works where people, technology, and business meet. He writes to make sense of that work—and to leave room
+        for faith, family, books, wine, coffee, and the rest of a life that refuses to fit in one category.
       </p>
+      <a class="text-link" href="/about/">Meet Jon <span aria-hidden="true">→</span></a>
     </div>
   </section>
-
-  <section class="section-gap section-study">
-    <div class="container-page study-panel space-y-8">
-      <SectionHeader
-        eyebrow="Puffs from the Study"
-        title="Pull up a chair"
-        description="Here’s what I’ve been thinking about lately. Ideas that start in conversation, take shape over coffee, and stick around long enough to be worth sharing."
-      />
-      <ContentGrid>
-        {posts.map((post) => (
-          <PostPreviewCard post={post} />
-        ))}
-      </ContentGrid>
-    </div>
-  </section>
-
 </SiteLayout>

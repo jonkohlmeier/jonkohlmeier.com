@@ -3,49 +3,38 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 ---
 
 <SiteLayout
-  title="Contact"
-  description="Reach out to Jon for speaking, advisory, or collaboration opportunities."
+  title="Contact Jon Kohlmeier · Puffs of Smoke"
+  description="Start a conversation with Jon Kohlmeier."
 >
-  <section class="section-gap">
-    <div class="container-page contact-panel contact-panel--single">
-      <div class="contact-panel__copy">
-        <p class="contact-panel__eyebrow">WRITE FROM YOUR CORNER.</p>
-        <h2 class="contact-panel__title">
-          I always enjoy hearing what others are building, learning, or thinking about.
-        </h2>
-        <p class="contact-panel__body">
-          Share a thought, a story, or just a hello. I usually reply within a couple of days, sometimes with a resource,
-          sometimes with a question, sometimes just to keep the conversation going.
+  <div class="contact-page container-page">
+    <header>
+      <p class="eyebrow">Contact</p>
+      <h1>Say hello.</h1>
+      <p class="page-header__lede">
+        If something here made you think of a question, a story, or an idea of your own, I’d be glad to hear it.
+      </p>
+    </header>
+
+    <div class="contact-details">
+      <div>
+        <p class="footer-label">The easiest way</p>
+        <h2>Send a note on LinkedIn.</h2>
+        <p>
+          I usually reply within a couple of days—sometimes with a resource, sometimes with a question, and sometimes
+          simply to keep the conversation going.
         </p>
-        <div class="contact-panel__focus">
-          <p>If you’re reaching out, it’s usually about:</p>
-          <ul class="contact-panel__list">
-            <li>Finding more clarity and connection in your work</li>
-            <li>Building systems that make room for people</li>
-            <li>Practicing craftsmanship and care in leadership or life</li>
-          </ul>
-        </div>
-        <div class="contact-panel__meta">
-          <span>Prefer LinkedIn?</span>
-          <a
-            class="link-underline"
-            href="https://www.linkedin.com/in/jonkohlmeier/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Send a note on LinkedIn
-          </a>
-        </div>
-        <div class="contact-panel__socials">
-          <p>Find me elsewhere</p>
-          <div>
-            <a href="https://www.linkedin.com/in/jonkohlmeier/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://github.com/jonkohlmeier" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.instagram.com/jon.kohlmeier/" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://www.facebook.com/jon.kohlmeier" target="_blank" rel="noopener noreferrer">Facebook</a>
-          </div>
-        </div>
+        <a class="button-link" href="https://www.linkedin.com/in/jonkohlmeier/" target="_blank" rel="noopener noreferrer">
+          Message Jon on LinkedIn
+        </a>
+      </div>
+
+      <div class="contact-links">
+        <p class="footer-label">Elsewhere</p>
+        <a href="https://github.com/jonkohlmeier" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span>↗</span></a>
+        <a href="https://www.instagram.com/jon.kohlmeier/" target="_blank" rel="noopener noreferrer"><span>Instagram</span><span>↗</span></a>
+        <a href="https://www.facebook.com/jon.kohlmeier" target="_blank" rel="noopener noreferrer"><span>Facebook</span><span>↗</span></a>
+        <a href="https://twistoflemonpod.com" target="_blank" rel="noopener noreferrer"><span>Life with a Twist of Lemon</span><span>↗</span></a>
       </div>
     </div>
-  </section>
+  </div>
 </SiteLayout>

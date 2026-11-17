@@ -7,9 +7,8 @@ tags:
   - morning-routine
   - productivity
   - routine
-categories:
-  - life
-  - productivity
+category: life-and-reflection
+format: essay
 heroImage: "../../assets/blog/morning-routine.jpg"
 heroAlt: "Fresh coffee beside a notebook at sunrise"
 ---

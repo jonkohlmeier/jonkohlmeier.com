@@ -1,21 +1,12 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import SectionHeader from '../components/SectionHeader.astro';
 ---
 
-<SiteLayout title="Page not found" description="We couldn’t find the page you were looking for.">
-  <section class="section-gap">
-    <div class="container-page mx-auto max-w-2xl space-y-6 text-center">
-      <SectionHeader
-        eyebrow="404"
-        title="This trail of smoke vanished"
-        description="The page you requested no longer exists or has moved. Try heading back to the homepage or explore the latest writing."
-        align="center"
-      />
-      <div class="flex flex-wrap justify-center gap-3">
-        <a class="btn btn-primary" href="/">Head home</a>
-        <a class="btn btn-secondary" href="/writing/">Read the latest</a>
-      </div>
-    </div>
-  </section>
+<SiteLayout title="Page not found · Puffs of Smoke" description="The requested page could not be found.">
+  <header class="page-header container-page">
+    <p class="eyebrow">404</p>
+    <h1>That page isn’t here.</h1>
+    <p class="page-header__lede">It may have moved, or the address may be incomplete. The writing archive is a good place to begin again.</p>
+    <p style="margin-top: 2rem;"><a class="button-link" href="/writing/">Browse the writing</a></p>
+  </header>
 </SiteLayout>

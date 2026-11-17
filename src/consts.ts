@@ -3,7 +3,7 @@
 
 export const SITE_TITLE = 'Puffs of Smoke';
 export const SITE_DESCRIPTION =
-  'Pipes, product, and leadership musings from technologist Jon Kohlmeier.';
+  'A personal publication by Jon Kohlmeier about work, technology, faith, family, and the finer things.';
 export const SITE_URL = 'https://jonkohlmeier.com';
 export const AUTHOR = {
   name: 'Jon Kohlmeier',
@@ -16,3 +16,5 @@ export const SOCIAL = {
   instagram: 'https://www.instagram.com/jon.kohlmeier/',
   podcast: 'https://twistoflemonpod.com',
 };
+
+export const GA_MEASUREMENT_ID = 'G-1D1001XP4D';

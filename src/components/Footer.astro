@@ -1,58 +1,42 @@
 ---
+import { NAV_LINKS } from '../data/navigation';
 import { SOCIAL_LINKS } from '../data/social';
 
 const year = new Date().getFullYear();
-const studyLinks = [
-  { href: '/writing/', label: 'Latest thoughts' },
-  { href: '/about/', label: 'About Jon' },
-  { href: '/contact/', label: 'Write from your corner' },
-  { href: '/now/', label: 'Now page' },
-];
 ---
 
 <footer class="site-footer">
-  <div class="container-page footer-grid">
-    <div class="footer-brand">
-      <p class="footer-eyebrow">Puffs of Smoke · Jon Kohlmeier</p>
-      <p class="footer-title">Craft, clarity, and patient systems.</p>
-      <p class="footer-body">
-        Reflections on craft, family, and the small things that make work and life worth doing. Pull up a chair, light
-        the pipe, and stay awhile.
-      </p>
-      <a class="footer-cta" href="/contact/">Write from your corner →</a>
+  <div class="container-page site-footer__main">
+    <div>
+      <a class="site-footer__title" href="/">Puffs of Smoke</a>
+      <p>Come for an idea. Stay for the perspective.</p>
+      <p class="site-footer__byline">Written and published by Jon Kohlmeier in Cedar Rapids, Iowa.</p>
     </div>
 
-    <div class="footer-links">
-      <p>In the study</p>
-      <ul>
-        {studyLinks.map((link) => (
-          <li>
-            <a href={link.href}>{link.label}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <nav aria-label="Footer navigation">
+      <p class="footer-label">Read</p>
+      {NAV_LINKS.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
 
-    <div class="footer-social">
-      <p>Elsewhere</p>
-      <ul>
-        {SOCIAL_LINKS.map((link) => (
-          <li>
-            <a
-              href={link.url}
-              target={link.url.startsWith('/') ? undefined : '_blank'}
-              rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <nav aria-label="Elsewhere">
+      <p class="footer-label">Elsewhere</p>
+      {SOCIAL_LINKS.map((link) => (
+        <a
+          href={link.url}
+          target={link.url.startsWith('/') ? undefined : '_blank'}
+          rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
   </div>
-  <div class="footer-bottom">
-    <div class="container-page">
-      <p>© {year} Jon Kohlmeier. All rights reserved.</p>
+  <div class="container-page site-footer__bottom">
+    <p>© {year} Jon Kohlmeier.</p>
+    <div class="site-footer__utility">
+      <a href="/privacy/">Privacy</a>
+      <button type="button" data-analytics-manage>Manage cookies</button>
+      <a href="/rss.xml">RSS</a>
     </div>
   </div>
 </footer>

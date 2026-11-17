@@ -6,9 +6,8 @@ tags:
   - career
   - web-development
   - life
-categories:
-  - life
-  - web-design
+category: work-and-ideas
+format: essay
 heroImage: "../../assets/blog/screen-shot-2019-12-08-at-8.23.27-pm.png"
 heroAlt: "Screenshot of an early church website built in Dreamweaver"
 ---

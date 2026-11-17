@@ -7,9 +7,8 @@ tags:
   - reading
   - listening
   - consuming
-categories:
-  - life
-  - finer-things-in-life
+category: the-finer-things
+format: roundup
 heroImage: "../../assets/blog/weekly-things.jpg"
 heroAlt: "Coffee cup next to a notebook and headphones"
 ---

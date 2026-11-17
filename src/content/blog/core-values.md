@@ -5,8 +5,8 @@ pubDate: 2018-03-28
 tags:
   - core-values
   - reflection
-categories:
-  - life
+category: life-and-reflection
+format: essay
 heroImage: "../../assets/blog/if-more-of-us-valued-food-and-cheer-and-song-above-hoarded-gold-it-would-be-a-merrier-world-5.jpg"
 heroAlt: "Book and pipe resting on a rustic table"
 ---

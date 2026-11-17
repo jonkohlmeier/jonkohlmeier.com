@@ -1,121 +1,74 @@
 ---
 import { Image } from 'astro:assets';
 import SiteLayout from '../layouts/SiteLayout.astro';
-import Avatar from '../assets/jon-pipe-smoking.jpg';
-import { Handshake, Orbit, Ear, Wind, CupSoda } from '@lucide/astro';
+import Portrait from '../assets/jon-reading.jpeg';
 ---
 
-<SiteLayout title="About · Puffs of Smoke" description="Good systems start with good conversations.">
-  <main class="about-layout mx-auto max-w-5xl px-5 py-20 lg:py-24 xl:px-0">
-    <section class="about-hero grid items-start gap-12 rounded-[2.5rem] border border-[var(--color-border-strong)] bg-[var(--color-surface)]/92 px-7 py-12 shadow-[var(--shadow-soft)] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.8fr)] lg:px-16">
-      <div class="space-y-8 max-w-xl">
-        <p class="about-eyebrow">About</p>
-        <h1 class="about-title">Good systems start with good conversations.</h1>
-        <div class="about-accent"></div>
-        <div class="space-y-5">
-          <p class="about-lede">
-            I have always believed that the way we work says something about who we are.
-          </p>
-          <p class="about-body">
-            When we take the time to listen, align, and build with care, the result is something that not only works but
-            feels right to the people using it. That is the craft I keep chasing.
-          </p>
-        </div>
-      </div>
-      <div class="about-portrait mx-auto w-full max-w-xs lg:mx-0">
-        <div class="overflow-hidden rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-surface-muted)]/85 shadow-[var(--shadow-soft)]">
-          <Image src={Avatar} width={320} height={320} alt="Portrait of Jon Kohlmeier" class="h-auto w-full" />
-        </div>
-      </div>
-    </section>
-
-    <section class="about-section">
-      <h2 class="about-heading">
-        <span class="about-heading__icon" aria-hidden="true">
-          <Handshake aria-hidden="true" />
-        </span>
-        <span>Helping people work better, together.</span>
-      </h2>
-      <p class="about-body">
-        I am Jon Kohlmeier, RevOps Lead at West Music, where I help bring marketing, sales, and service teams
-        together around clear and connected systems that make work feel more human.
+<SiteLayout
+  title="About Jon Kohlmeier · Puffs of Smoke"
+  description="About Jon Kohlmeier, the person behind Puffs of Smoke."
+>
+  <header class="about-hero container-page">
+    <div>
+      <p class="eyebrow">About Jon</p>
+      <h1>I like making complicated things work a little better.</h1>
+      <p class="page-header__lede">
+        Usually that means helping people, technology, and business understand one another. Sometimes it means making
+        wine, recording a podcast, or working through an idea on this site.
       </p>
-      <p class="about-body">
-        I started my career in IT and fell in love with web development. Over time I worked across marketing, nonprofit,
-        and agency web projects before finding my home in RevOps. Through it all, one thread has stayed the same. Make
-        complex systems simple and help good people succeed.
-      </p>
-    </section>
+    </div>
+    <figure>
+      <Image src={Portrait} alt="Jon Kohlmeier reading in his study" width={600} height={600} />
+      <figcaption>Jon Kohlmeier · Cedar Rapids, Iowa</figcaption>
+    </figure>
+  </header>
 
-    <section class="about-section about-section--wide">
-      <figure class="about-card about-card--quote text-center">
-        <blockquote>“Jon makes people successful.”</blockquote>
-        <figcaption>Stan Lemon</figcaption>
-      </figure>
-      <p class="about-body">
-        My good friend Stan Lemon once told his son, “Jon makes people successful.” That is what I try to do every day.
-        Build things that make others better at what they do.
-      </p>
-    </section>
+  <div class="about-body container-page">
+    <aside class="about-body__aside">
+      <p class="pull-quote">“Good systems and good relationships both start with clarity, respect, and a real effort to understand.”</p>
+    </aside>
 
-    <section class="about-section">
-      <h2 class="about-heading">
-        <span class="about-heading__icon" aria-hidden="true">
-          <Orbit aria-hidden="true" />
-        </span>
-        <span>Working with HubSpot</span>
-      </h2>
-      <p class="about-body">
-        In 2025 I served on the HubSpot Customer Advisory Board, collaborating with product leaders and operators to
-        help shape how teams use HubSpot. I am also part of Lighthouse, HubSpot’s customer advocacy community, focused
-        on sharing insight, craftsmanship, and what it means to grow with care instead of chaos.
+    <div class="about-body__content prose prose--page">
+      <h2>Work, in plain language</h2>
+      <p>
+        I’m Jon Kohlmeier, RevOps Lead at West Music. My work brings marketing, sales, and service teams together around
+        clear, connected systems that make it easier for people to do good work and serve customers well.
       </p>
-    </section>
-
-    <section class="about-section">
-      <h2 class="about-heading">
-        <span class="about-heading__icon" aria-hidden="true">
-          <Ear aria-hidden="true" />
-        </span>
-        <span>Listening and communicating</span>
-      </h2>
-      <p class="about-body">
-        At my core, I am a listener and a communicator. Whether I am helping an engineer and a salesperson finally
-        understand each other, or sitting down as a Reconciler for the Lutheran Church Missouri Synod to help people
-        talk through conflict, I have learned that good systems and good relationships both start the same way. With
-        clarity, respect, and a real effort to understand.
+      <p>
+        I started in IT, fell in love with web development, and spent time across nonprofit, marketing, and agency work
+        before finding my way into Revenue Operations. The job titles have changed, but the thread has stayed the same:
+        listen carefully, make the complex understandable, and build things that help people succeed.
       </p>
-    </section>
 
-    <section class="about-section">
-      <h2 class="about-heading">
-        <span class="about-heading__icon" aria-hidden="true">
-          <Wind aria-hidden="true" />
-        </span>
-        <span>Puffs of Smoke</span>
-      </h2>
-      <p class="about-body">
-        Puffs of Smoke is my study. It is where I step back from the dashboards and reflect on craftsmanship,
-        technology, and the human side of work. It is where I think out loud about what makes systems trustworthy,
-        communication meaningful, and craft worth protecting.
+      <h2>People are part of the system</h2>
+      <p>
+        In 2025, I served on the HubSpot Customer Advisory Board and worked with product leaders and operators on how
+        teams use the platform. I’m also part of Lighthouse, HubSpot’s customer advocacy community.
       </p>
-    </section>
+      <p>
+        Outside of software, I serve as a Reconciler for the Lutheran Church—Missouri Synod, helping people talk through
+        conflict. Those worlds are less different than they look. Good tools, healthy organizations, and lasting
+        relationships all depend on people being willing to listen and communicate clearly.
+      </p>
 
-    <section class="about-section about-section--wide">
-      <div class="about-card space-y-5">
-        <h2 class="about-heading">
-          <span class="about-heading__icon" aria-hidden="true">
-            <CupSoda aria-hidden="true" />
-          </span>
-          <span>Life outside the laptop</span>
-        </h2>
-        <p class="about-body">
-          When I am not building systems, I am usually fermenting wine, recording an episode of Life with a Twist of
-          Lemon, or spending time with my wife and daughter in Cedar Rapids. A good evening usually ends with
-          conversation, a little pipe smoke, and the satisfaction of having helped someone do their work just a little
-          bit better.
-        </p>
-      </div>
-    </section>
-  </main>
+      <h2>Life outside the laptop</h2>
+      <p>
+        I live in Cedar Rapids with my wife and daughter. I’m a reader, occasional winemaker, pipe smoker, and co-host
+        of <a href="https://twistoflemonpod.com">Life with a Twist of Lemon</a> with my friend Stan. I care about faith,
+        friendship, craftsmanship, good coffee, and the quiet satisfaction of learning how something works.
+      </p>
+
+      <h2>Why Puffs of Smoke</h2>
+      <p>
+        This is where I step back from dashboards and day-to-day work long enough to notice what I think. Some pieces
+        are practical. Some are personal. Others are simply an excuse to follow an interesting thread and see where it
+        leads.
+      </p>
+      <p>
+        The subjects may range from leadership and technology to faith, family, books, or a good drink. The point is not
+        to build a personal brand. It is to make room for considered thought—and, with luck, a worthwhile conversation.
+      </p>
+      <p><a class="button-link" href="/writing/">Read the writing</a></p>
+    </div>
+  </div>
 </SiteLayout>

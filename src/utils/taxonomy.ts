@@ -1,6 +1,6 @@
 import type { CollectionEntry } from 'astro:content';
 
-export type TaxonomyField = 'categories' | 'tags';
+export type TaxonomyField = 'tags';
 
 export interface TaxonomySummary {
   slug: string;

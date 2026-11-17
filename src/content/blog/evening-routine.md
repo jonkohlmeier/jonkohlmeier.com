@@ -7,9 +7,8 @@ tags:
   - productivity
   - routine
   - life
-categories:
-  - life
-  - productivity
+category: life-and-reflection
+format: essay
 heroImage: "../../assets/blog/evening-routine.jpg"
 heroAlt: "Notebook, glasses, and a cup of tea on a desk"
 ---
