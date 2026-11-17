@@ -2,6 +2,7 @@
   "name": "jonkohlmeier",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "npm@10.9.4",
   "description": "Puffs of Smoke — Jon Kohlmeier's hub for writing, work, and experiments.",
   "author": "Jon Kohlmeier",
   "scripts": {

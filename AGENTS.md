@@ -4,7 +4,7 @@ This document is for automated agents that work on `jonkohlmeier.com`. It is not
 ## 0. Repository Context
 - Site: **Puffs of Smoke** at `jonkohlmeier.com`.
 - Stack: Astro 7 static output with content collections, Tailwind CSS 4 layered on `src/styles/global.css`, TypeScript utilities/tests, Playwright browser tests, and GitHub Pages deployment.
-- Runtime: Node 22.23.4+ (follow the version declared in `package.json`/README to avoid mismatched toolchains).
+- Runtime: Node 22.23.4+ with npm 10.9.4 for lockfile generation (follow `package.json`/README to avoid mismatched toolchains).
 - Key paths:
   - Pages & routes: `src/pages/`
   - Components & layouts: `src/components/`, `src/layouts/`
@@ -83,7 +83,7 @@ Agents must not:
 - **Asset integrity:** Keep the failed-local-resource test. Missing fonts, images, stylesheets, scripts, RSS, or sitemap files should fail automated validation rather than ship as silent 404s.
 - **Dependency checks:** Use `npm outdated --long` to assess currency and `npm audit` to assess advisories. Update `package.json` and `package-lock.json` together, avoid `--force` unless the migration is understood, and rerun the full suite after every upgrade.
 - **Security baseline:** The dependency tree should report zero known vulnerabilities. Treat high or critical production advisories as release blockers.
-- **Lockfile hygiene:** Keep `package-lock.json` valid and reproducible with `npm ci`. Do not hand-edit generated dependency entries or allow duplicate root keys to survive a merge.
+- **Lockfile hygiene:** GitHub Actions uses npm 10 on Node 22. Generate lockfile changes with npm 10.9.4 (`npx --yes npm@10.9.4 install --package-lock-only`) and validate them with `npx --yes npm@10.9.4 ci`. npm 11 can omit optional `@emnapi` entries required by npm 10. Do not hand-edit generated dependency entries or allow duplicate root keys to survive a merge.
 - **Test hygiene:** Remove `playwright-report/` and `test-results/` before handoff. Use `git diff --check` to catch whitespace errors.
 
 ## 6. Communication Expectations
